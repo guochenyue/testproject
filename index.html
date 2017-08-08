@@ -6,7 +6,8 @@
 
 <body>
 <h3 id="content">let's try something with github!</h3><span></span>
-<button onclick="bilibili()"> J u s t C l i c k </button>
+<button id="start" onclick="start()"> S t a r t C l i c k </button>
+<button id="end" onclick="end()" disabled="disabled"> E n d C l i c k </button>
 </body>
 <script>
 function GetRandomNum(Min,Max)
@@ -14,7 +15,8 @@ function GetRandomNum(Min,Max)
 	var Range = Max - Min;   
 	var Rand = Math.random();   
 	return(Min + Math.round(Rand * Range));   
-}  
+}
+var int = '';
 var color = ['red','green','blue','yellow','gray','azure','khaki','gold','silver','brown','pink'];
 function bilibili(){
 	var obj = document.getElementById('content');
@@ -22,6 +24,16 @@ function bilibili(){
 	var k = GetRandomNum(0,length);
 	obj.style="color:"+color[k];
 	//document.getElementsByTagName('span').innerHTML = color[k];
+}
+function start(){
+	int = setInterval("bilibili()",50);
+	document.getElementById('start').disabled = 'disabled';
+	document.getElementById('end').disabled = '';
+}
+function end(){
+	int=window.clearInterval(int);
+	document.getElementById('start').disabled = '';
+	document.getElementById('end').disabled = 'disabled';
 }
 </script>
 </html>
