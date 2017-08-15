@@ -16,16 +16,21 @@ function GetRandomNum(Min,Max)
 	var Rand = Math.random();   
 	return(Min + Math.round(Rand * Range));   
 }
+var k = 0;
 var int = '';
-var color = ['red','green','blue','yellow','gray','azure','khaki','gold','silver','brown','pink'];
+var color = ['red','green','blue','yellow','gray','azure','khaki','gold','silver','brown','pink','palegoldenrod','palegreen','palevioletred','peachpuff','camel','maroon','scarlet','plum','rosybrown','rubine','seagreen','stone','wheat'];
 function bilibili(){
 	var obj = document.getElementById('content');
 	var length = color.length;
-	var k = GetRandomNum(0,length);
 	obj.style="color:"+color[k];
+	if(k >= length-1){
+		k=0;
+	}else{
+		k++;
+	}
 }
 function start(){
-	int = setInterval("bilibili()",50);
+	int = setInterval("bilibili()",30);
 	document.getElementById('start').disabled = 'disabled';
 	document.getElementById('end').disabled = '';
 }
