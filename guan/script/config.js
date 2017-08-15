@@ -1,1 +1,0 @@
-var DTPath = "http://192.168.100.146/";var SKPath = "http://192.168.100.146/skin/default/";var MEPath = "http://192.168.100.146/member/";var DTEditor = "fckeditor";var CKDomain = "";var CKPath = "/";var CKPrex = "cf6_";
