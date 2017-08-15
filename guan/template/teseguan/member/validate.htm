@@ -1,0 +1,370 @@
+{template 'header',$module}
+<link rel="stylesheet" href="{DT_STATIC}{$MODULE[2][moduledir]}/images/gerenxinxi.css">
+{if $action == 'truename'}
+<div class="wrapContent fr">
+			<h3>个人认证</h3>
+			<div class="wrapContent_inn shxz_out">
+				<div class="shxz clearfix">
+					<h4>审核须知：实名认证支持手机、电脑客户端提交资料，请选择网络安全环境提交认证信息</h4>
+					<ul class="shxz_in1">
+		                <li>1. 我们保证您提供的信息将被予以保护，不挪作他用</li>
+		                <li>2. 个人实名请上传手持身份证正面半身照、身份证正面照、身份证反面照三张图片</li>
+		                <li>3. 身份证正面照片和反面照片必须为同一证件</li>
+		                <li>4. 人物图像与身份证头像保持一致，人物要求露脸并保持五官清晰</li>
+		            </ul>
+		            <ul>
+		                <li>5. 证件内容要求文字完整清晰可辨无遮挡</li>
+		                <li>6. 请上传真实有效的证件照片，有效期至少保持一个月</li>
+		                <li>7. 审核通过后不支持修改证件，请确定无误后提交审核</li>
+		                <li>8. 临时身份证、第一代身份证、过期身份证将无法通过审核</li>
+		            </ul>
+				</div>
+				<form class="submit_infor" action="?" method="post"  id="dform">
+				<input type="hidden" name="action" value="{$action}"/>
+					<p class="submit_infor_tit">请提交以下认证材料（手持身份证正面半身照、身份证正面照、身份证反面照）</p>
+					<p class="submit_infor_col">
+						<span><span>*</span>姓名：</span>
+						<input type="text" placeholder="请填写身份证上的姓名" name="truename" id="truename" value="{$user[truename]}">
+					</p>
+					<p class="submit_infor_col">
+						<span><span>*</span>身份证号码：</span>
+						<input type="text" placeholder="请保证所填号码与证件一致" name="sfz" id="sfz" value="{$user[sfz]}">
+					</p>
+					<div class="submit_infor_col">
+						<span>照片示例：</span>
+						<dl>
+							<dt><img src="images/1.png" alt=""></dt>
+							<dd>证件的正面要求文字完整清晰可辨无遮挡点击图片查完整示例说明。</dd>
+						</dl>
+						<dl>
+							<dt><img src="images/2.jpg" alt=""></dt>
+							<dd>必须能够看清楚签发机关和有效日期点击图片查完整示例说明。</dd>
+						</dl>
+						<dl>
+							<dt><img src="images/3.jpg" alt=""></dt>
+							<dd>要求露脸并保持五官清晰，人物与证件头像保持一致，点击图片查看完整示例说明</dd>
+						</dl>
+					</div>
+					<div class="submit_infor_col">
+						<span><span>*</span>上传照片：</span>
+							<input type="hidden" name="thumb" id="thumb" value="{$thumb}"/>
+							<input type="hidden" name="thumb1" id="thumb1" value="{$thumb1}"/>
+							<input type="hidden" name="thumb2" id="thumb2" value="{$thumb2}"/>
+						<table width="760" id="good_img">
+							<tr align="center" height="120" class="c_p">
+
+							<td width="120"><img src="{if $thumb}{$thumb}{else}{DT_PATH}member/images/waitpic.jpg{/if}" width="220" height="141" id="showthumb" title="预览图片" alt="" /></td>
+							<td width="120"><img src="{if $thumb1}{$thumb1}{else}{DT_PATH}member/images/waitpic.jpg{/if}" width="220" height="141" id="showthumb1" title="预览图片" alt=""/></td>
+							<td width="120"><img src="{if $thumb2}{$thumb2}{else}{DT_PATH}member/images/waitpic.jpg{/if}" width="220" height="141" id="showthumb2" title="预览图片" alt="" /></td>
+
+							</tr>
+							<tr align="center" class="c_p">
+							<td>
+								<span class="shangcs" title="上传" onclick="Dalbum('',{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);">上传</span>
+								&nbsp;&nbsp;
+								&nbsp;&nbsp;
+								<span title="删除" onclick="delAlbum('','wait');">删除</span>
+							</td>
+
+							<td>
+								<span class="shangcs" title="上传" onclick="Dalbum(1,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);">上传</span>
+								&nbsp;&nbsp;
+								&nbsp;&nbsp;
+								<span title="删除" onclick="delAlbum(1,'wait');">删除</span>
+							</td>
+							<td> 
+								<span class="shangcs" title="上传" onclick="Dalbum(2,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);">上传</span>
+								&nbsp;&nbsp;
+								&nbsp;&nbsp;
+								<span title="删除" onclick="delAlbum(2,'wait');">删除</span>
+							</td>
+							</tr>
+						</table>
+					</div>
+					<div class="tips">
+						注：请保持以上信息真实准确，审核时间一般在工作日8小时内完成，节假日稍有延迟。
+					</div>
+					<input class="submitss" type="submit" name="submit" value="提交">
+				</form>
+			</div>
+</div>
+{elseif $action == 'company'}
+<script type="text/javascript" src="{DT_STATIC}{$MODULE[2][moduledir]}/images/qiyerenzheng.js"></script>
+<div class="wrapContent fr">
+			<h3>企业认证</h3>
+			<div class="wrapContent_inn shxz_out">
+				<div class="shxz clearfix">
+					<h4>审核须知：</h4>
+					<ul class="shxz_in1">
+		                <li>1. 您提供的信息仅供惠农网实名认证，不挪作他用</li>
+		                <li>2. 三证合一的企业请上传有效的统一社会信用代码证件照</li>
+		                <li>3. 
+		                非三证合一企业请上传有效营业执照和组织机构代码证件，两证需齐全
+		                </li>
+		                <li>4.企业名称、法人代表请与证件上名称保持一致</li>
+		            </ul>
+		            <ul>
+		                <li>5. 证件要求完整清晰无遮挡</li>
+		                <li>6. 证件上文字清晰可辨</li>
+		                <li>7. 证件未备案、过期将无法通过审核</li>
+		                <li>8. 审核通过后，不支持修改，请核实后确认提交</li>
+		            </ul>
+				</div>
+				<form class="submit_infor clearfix" method="post" action="?" id="dform">
+				<input type="hidden" name="action" value="{$action}"/>
+					<div class="submit_infor_tit submit_tit clearfix">
+					    <div class="submit_titlf">
+						    <input type="radio" value="True" checked="" name="Sex"> 
+						    三证合一执照
+						</div>
+						<div class="submit_titri">    
+						    <input type="radio" name="Sex" value="False">
+						    旧版营业执照
+						</div>    
+					</div>
+						<div class="submit_infor_col submit_col">
+							<h2>企业姓名：</h2>
+								<input type="text" name="company" id="company" value="{$user[company]}" placeholder="企业名称与证件名称需保持一致">
+								<span class="star">*</span>
+							<h4>（注：通过企业实名认证后将不能再修改，请确保填写正确）</h4>
+						</div>
+						<div class="submit_infor_col submit_col">
+							<h2>法人代表：</h2>
+							<input type="text" name="frdb" id="frdb" value="{$user[frdb]}" placeholder="法人名称与证件名称需保持一致">
+							<span class="star">*</span>
+						</div>
+						<div class="submit_in">
+							<div class="submits" style="display: block;">
+								<div class="submit_infor_col submit_col">
+									<h2>统一社会信用代码：</h2>
+									<input type="text" name="xydm" id="xydm" value="{$user[xydm]}" placeholder="执照号码与图片号码需保持一致">
+									<span class="star">*</span>
+								</div>
+								<div class="submit_infor_col infor_col">
+									<div class="shangc">
+										<input type="hidden" name="thumb" id="thumb" value="{$thumb}"/>
+									   
+									    <a href="javascript:void(0);" onclick="Dalbum('',{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);">上传图片</a>
+									</div>
+									<span class="shili">示例</span>
+									<div class="submit_infor_img">
+										<img src="/member/images/shangc.png">
+									</div>
+									<div class="hint">
+								    请上传1张图片，支持jpg、png、gif格式，每张最大2M，建议上传清晰、真实图片<br>
+								    	<span class="star">*</span>
+									</div>
+
+								</div>
+								<div class="infor_col IDphoto clearfix">
+									<p>
+										{if $thumb}
+										<img src="{$thumb}" id="showthumb" alt="" />
+										{else}
+										<img src="" id="showthumb" alt="" />
+										{/if}
+									</p>
+								</div>
+							</div>
+							<div class="submits">
+								<div class="submit_infor_col submit_col">
+									<h2>营业执照号码：</h2>
+									<input type="text" name="yyzz" id="yyzz" value="{$user[yyzz]}" placeholder="执照号码与图片号码需保持一致">
+									<span class="star">*</span>
+								</div>
+								<div class="submit_infor_col infor_col">
+									<div class="shangc">
+									    <input type="hidden" name="thumb1" id="thumb1" value="{$thumb1}">
+									    <a href="javascript:void(0);" onclick="Dalbum(1,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb1').value, true);">上传图片</a>
+									</div>
+									<span class="shili">示例</span>
+									<div class="submit_infor_img submit_img">
+										<img src="/member/images/yyzz.png">
+									</div>
+									<div class="hint">
+									    请上传1张图片，支持jpg、png、gif格式，每张最大2M，建议上传清晰、真实图片<br>
+									    <span class="star">*</span>
+									</div>
+								</div>
+								<div class="infor_col IDphoto clearfix">
+									<p>
+										{if $thumb1}
+										<img src="{$thumb1}" id="showthumb1" alt="" />
+										{else}
+										<img src="" id="showthumb1" alt="" />
+										{/if}
+									</p>
+								</div>
+								<div class="submit_infor_col submit_col">
+									<h2>组织机构代码证号码：</h2>
+									<input type="text" name="zzjg" id="zzjg" value="{$user[zzjg]}" placeholder="组织机构号码与图片号码需保持一致" >
+									<span class="star">*</span>
+								</div>
+								<div class="submit_infor_col infor_col">
+									<div class="shangc">
+									    <input type="hidden" name="thumb2" id="thumb2" value="{$thumb2}">
+									    <a href="javascript:void(0);" onclick="Dalbum(2,{$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb2').value, true);">上传图片</a>
+									</div>
+									<span class="shili">示例</span>
+									<div class="submit_infor_img submit_img2">
+										<img src="/member/images/zjhm.png">
+									</div>
+									<div class="hint">
+									    请上传1张图片，支持jpg、png、gif格式，每张最大2M，建议上传清晰、真实图片<br>
+										<span class="star">*</span>
+									</div>
+								</div>
+								<div class="infor_col IDphoto clearfix">
+									<p>
+										{if $thumb2}
+										<img src="{$thumb2}" id="showthumb2" alt="" />
+										{else}
+										<img src="" id="showthumb2" alt="" />
+										{/if}
+									</p>
+								</div>
+							</div>
+						</div>	
+						<div class="submit_infor_col infor_col">
+							<h2>注：请保持以上信息真实准确，审核时间一般在工作日8小时内完成，节假日稍有延迟。</h2>
+						</div>
+						<div class="infor_col refer">
+							<input type="submit" name="submit" class="tj">
+						</div>
+					</form>
+	</div>
+</div>
+{elseif $action == 'vtruename'}
+<div class="wrapContent fr">
+			<h3>实名认证</h3>
+			<div class="wrapContent_inn">
+				<div class="renzheng">
+					<ul class="rz_geren clearfix">
+						<li class="rz_renzheng1">个人认证{$vturename}</li>
+						<li class="rz_renzheng2">完成个人认证可点亮您的个人认证图标，为自己的店铺贴上身份标识，有效提升您的个人诚信度。</li>
+						
+						 {if $user[vtruename] && $va[status] == 3}
+							 <li class="rz_renzheng3">
+								<p>已认证</p>
+							</li>
+							{else}
+							<li class="rz_renzheng3">
+								<p>认证中</p>
+							</li>
+							{/if}
+					</ul>
+				</div>
+			</div>
+</div>
+{elseif $action == 'vcompany'}
+<div class="wrapContent fr">
+			<h3>企业认证</h3>
+			<div class="wrapContent_inn">
+				<div class="renzheng">
+					<ul class="rz_geren clearfix">
+						<li class="rz_renzheng1">企业认证</li>
+						<li class="rz_renzheng2">完成企业认证可点亮企业认证图标。同时可提升您的公司品牌信誉度，公司形象更具影响力，认证后，可能会收获更多交易订单喔~</li>
+						 {if $user[vtruename] && $va[status] == 3}
+							 <li class="rz_renzheng3">
+								<p>已认证</p>
+							</li>
+							{else}
+							<li class="rz_renzheng3">
+								<p>认证中</p>
+							</li>
+							{/if}
+					</ul>
+				</div>
+			</div>
+</div>
+{elseif $action == 'mobile'}
+{if $step ==2}
+<div class="ok">恭喜！手机号码 {$mobile} 认证成功，<a href="./" class="t">点此返回</a></div>
+{elseif $step == 1}
+<form method="post" action="validate.php?action={$action}" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="step" value="2"/>
+	<div class="cggl_index_ri member_index">
+      <div class="cggl_index_one tit">
+        <h2>账号安全</h2>
+      </div>
+      <div class="cggl_index_two revisein">
+        <div class="enroll">
+            <div class="enroll_lf"><span>手机号码</span></div>
+             <input type="text" size="30" name="mobile" id="mobile" value="{$mobile}"/>
+          </div>  
+          <!-- <div class="enroll clearfix">
+              <div class="enroll_lf"><span>验证码</span></div>
+            <div class="enroll_ri">
+                {template 'captcha', 'chip'}<span id="dcaptcha"></span>
+            </div>
+          </div> -->
+          <div class="enroll clearfix">
+              <div class="enroll_lf"><span>短信验证码</span></div>
+            <div class="enroll_ri">
+                <input type="text"  name="code" id="code" placeholder="请输入验证码">
+                <!-- <input type="submit" value=" 获取验证码 " > -->
+            </div>
+
+          </div>
+          <div class="sure clearfix">
+          <span><input type="submit" value=" 下一步 " ></span>
+        </div>        
+      </div>      
+    </div>
+    </form>
+{else}
+<form method="post" action="validate.php?action={$action}" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="step" value="1"/>
+	<div class="cggl_index_ri member_index">
+      <div class="cggl_index_one tit">
+        <h2>账号安全</h2>
+      </div>
+      <div class="cggl_index_two revisein">
+        <div class="enroll">
+            <div class="enroll_lf"><span>手机号码</span></div>
+             <input type="text" size="30" name="mobile" id="mobile" value="{$mobile}"/>
+          </div>  
+          <div class="enroll clearfix">
+              <div class="enroll_lf"><span>验证码</span></div>
+            <div class="enroll_ri">
+                {template 'captcha', 'chip'}<span id="dcaptcha"></span>
+            </div>
+          </div>
+          <div class="sure clearfix">
+          <span><input type="submit" name="submit" value=" 下一步 " ></span>
+        </div>        
+      </div>      
+    </div>
+    </form>
+    {/if}
+{elseif $action == 'vmobile'}
+			<div class="menu">
+			<table cellpadding="0" cellspacing="0">
+			<tr>
+			<td class="tab_on" id="Tab0"><a href="?action={$action}"><span>手机认证</span></a></td>
+			</tr>
+			</table>
+			</div>
+			<table cellpadding="10" cellspacing="1" class="tb">
+			<tr>
+			<td class="tl">手机号码</td>
+			<td class="tr"><strong>{$user[mobile]}</strong> <a href="send.php?action=mobile" class="t">[修改]</a></td>
+			</tr>
+			<tr>
+			<td class="tl">认证状态</td>
+			<td class="tr f_green">已认证</td>
+			</tr>
+			</table>
+{/if}
+	</div>
+</div>
+<script>
+	$(function () {
+		$(".wrapCont_inn_tit li").click(function () {
+			$(this).addClass("on").siblings("li").removeClass("on");
+		})
+	})
+</script>
+{template 'footer',$module}

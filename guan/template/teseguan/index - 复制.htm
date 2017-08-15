@@ -1,0 +1,204 @@
+{template 'header'}
+<script type="text/javascript" src="{DT_STATIC}skin/lqts/js/js.js"></script>
+  <div class="index_banner">
+    <div class="index_slide">
+      <div id="slideBox" class="slideBox">
+        <div class="hd">
+          <ul><li></li><li></li><li></li><li></li></ul>
+        </div>
+        <div class="bd">
+          <ul>
+          <!-- {php $ad = tag("table=ad&condition=pid=14&order=listorder&template=null")} -->
+          {loop $ad $t}
+          <li><img src="{$t[image_src]}" alt="" width="1920" height="450"></li>
+          {/loop}
+    
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--地方特产-->
+<div class="place louti">
+  <div class="laoqu">
+      <h2>老区特色产品</h2>
+       <!--  {php $tags = tag("table=company&condition=groupid<>1 and level=1&pagesize=6&template=null")} -->
+      <ul class="cpname">
+      {loop $tags $k $v}
+      {if $k < 1}
+          <li class="on"><a href="{$v[linkurl]}">{area_pos($v[areaid])}特产</a</li>
+        {else}
+        <li><a href="{$v[linkurl]}">{area_pos($v[areaid])}特产</a</li>
+        {/if}
+        {/loop}
+      </ul>
+  </div>
+  <div class="tcin">
+      <div class="tc clearfix" style="display: block;">
+          <img src="/skin/lqts/images/tc.png">
+         <!--  {php $tags = tag("table=mall&condition=level=1&pagesize=8&order=addtime desc&template=null")} -->
+          <div class="cpxq">
+          {loop $tags $k $v}
+            <dl class="tscp">
+              <dt><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" target="_blank"><img src="{str_replace('.thumb.', '.middle.',$v[thumb])}"></a></dt>
+              <dd><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" class="bttitle" title="{$v[title]}" target="_blank">【{area_pos($v[areaid])}老区特色馆】</a></dd>
+              <dd><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" title="{$v[title]}" target="_blank">{$v[title]}</a></dd>
+            </dl>
+            {/loop} 
+          </div>
+      </div>
+            
+  </div>
+</div>
+<!--特色馆-->
+<div class="pavilionin louti">
+  <div class="pavilion clearfix">
+    <div class="titleshow teseguan clearfix">
+        <h2>特色馆 | <span>弘扬老区旅游，带动老区脱贫</span></h2>
+        <!--  {php $guan = tag("table=company&condition=level=3&pagesize=4&template=null")} -->
+        <ul>
+        {loop $guan $v}
+          <li><a href="{$v[linkurl]}">{$v[changguan]}</a></li>
+        {/loop}
+          <li><a href="{$MODULE[4][linkurl]}">更多</a></li>
+        </ul>
+    </div>
+    <div class="feature">
+     <!--  {php $guan = tag("table=company&condition=level=1&pagesize=9&template=null")} -->
+    {loop $guan $k $v}
+      <div class="guan">
+          <!-- <div class="guanname">
+              <div class="name">
+                <h2><a href="{$v[linkurl]}">{$v[changguan]}</a></h2>
+                <h3><a href="{$v[linkurl]}">{$v[introduce]}</a></h3>
+            </div>    
+        </div> -->
+        <div class="guant">
+			<img src="/skin/lqts/images/tese/{$v[username]}.jpg">
+			<a class="ts_cover" href="{$v[linkurl]}"></a>
+		</div>
+      </div>
+      {/loop}
+    </div> 
+    <div class="cg">
+    {php $tj = get_tjg()}
+      <div class="cg_inn">
+          <img src="/skin/lqts/images/tese/{$tj[username]}.jpg" width="388" height="355">
+		  <a class="ts_cover" href="{$tj[linkurl]}"></a>
+      </div>
+      <div class="gjs">
+        <img src="/skin/lqts/images/tsg_11.jpg">
+        <div class="an"></div>
+      </div>
+      <div class="kq">
+       <img src="/skin/lqts/images/tsg_11.jpg">
+        <h2><a href="{$MODULE[4][linkurl]}">28个省/市<br>已开启</a></h2>        
+      </div>
+    </div>
+  </div>
+</div>
+<!--正文-->
+<div class="index">
+    <!--农副产品-->
+    <div class="productin">
+    <div class="product louti">
+      <div class="titleshow nongfu_pro clearfix">
+        <h2>农副产品 | <span>弘扬老区产品，带动老区脱贫</span></h2>
+        {php $cats = get_maincat(4)}
+        <ul>
+        {loop $cats $k $v}
+          <li><a href="{$MODULE[16][linkurl]}{$v[linkurl]}">{$v[catname]}</a></li>
+          {/loop}
+          <li><a href="{$MODULE[16][linkurl]}list.php?catid=4">更多</a></li>  
+        </ul>
+      </div>
+      <div class="productin clearfix">
+          <!-- <img src="/skin/lqts/images/cpkl.png" class="nfcpl">
+          <img src="/skin/lqts/images/cpkr.png" class="nfcpr"> -->
+        {php $producters = get_goods(4,10)}
+        {loop $producters $k $v}
+        <dl class="cp">
+          <dt><a href="{$MODULE[16][linkurl]}{$v[linkurl]}"><img src="{str_replace('.thumb.', '.middle.',$v[thumb])}"></a></dt>
+          <dd><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" class="bttitle" title="{$v[title]}">【{area_pos($v[areaid])}老区特色馆】</a></dd>
+          <dd><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" title="{$v[title]}">{$v[title]}</a></dd>
+        </dl>
+        {/loop}
+      </div>
+      </div>
+      <div class="tsg clearfix">
+        <div class="adve">
+          <a href="#"><img src="/skin/lqts/images/guangg_01.jpg" width="393" height="100"></a>
+          <a href="#"><img src="/skin/lqts/images/guangg_02.jpg" width="393" height="100"></a>
+          <a href="#"><img src="/skin/lqts/images/guangg_03.jpg" width="393" height="100">
+        </div></a>
+      </div> 
+  </div>
+    <!--文化产品-->
+    <div class="productin">
+    <div class="product louti">
+      <div class="titleshow culture_pro">
+        <h2>文化产品 | <span>品文化享产品</span></h2>
+        {php $cats = get_maincat(5)}
+        <ul>
+          {loop $cats $k $v}
+          <li><a href="{$MODULE[16][linkurl]}{$v[linkurl]}">{$v[catname]}</a></li>
+          {/loop}
+          <li><a href="{$MODULE[16][linkurl]}list.php?catid=5">更多</a></li> 
+        </ul>
+      </div>
+      <div class="productin clearfix">
+         {php $producters = get_goods(5,10)}
+        {loop $producters $k $v}
+        <dl class="cp">
+          <dt><a href="{$MODULE[16][linkurl]}{$v[linkurl]}"><img src="{str_replace('.thumb.', '.middle.',$v[thumb])}"></a></dt>
+          <dd><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" class="bttitle" title="{$v[title]}">【{area_pos($v[areaid])}老区特色馆】</a></dd>
+          <dd><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" title="{$v[title]}">{$v[title]}</a></dd>
+        </dl>
+        {/loop}
+      </div>
+      </div>
+      <div class="tsg">
+        <div class="adve">
+          <a href="#"><img src="/skin/lqts/images/guangg_04.jpg" width="393" height="100"></a>
+          <a href="#"><img src="/skin/lqts/images/guangg_05.jpg" width="393" height="100"></a>
+          <a href="#"><img src="/skin/lqts/images/guangg_06.jpg" width="393" height="100">
+        </div></a>
+        </div>
+      </div>
+  </div>
+    <!--旅游产品1-->
+    <div class="productin">
+    <div class="product louti">
+      <div class="titleshow ture_pro">
+        <h2>旅游产品 | <span>品文化享产品</span></h2>
+        {php $cats = get_maincat(6)}
+        <ul>
+          {loop $cats $k $v}
+          <li><a href="{$MODULE[16][linkurl]}{$v[linkurl]}">{$v[catname]}</a></li>
+          {/loop}
+          <li><a href="{$MODULE[16][linkurl]}list.php?catid=6">更多</a></li> 
+        </ul>
+      </div>
+      <div class="productin clearfix">
+         {php $producters = get_goods(6,10)}
+        {loop $producters $k $v}
+        <dl class="cp">
+          <dt><a href="{$MODULE[16][linkurl]}{$v[linkurl]}"><img src="{str_replace('.thumb.', '.middle.',$v[thumb])}"></a></dt>
+          <dd><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" class="bttitle" title="{$v[title]}">【{$v[title]}】</a></dd>
+          <dd><a href="{$MODULE[16][linkurl]}{$v[linkurl]}" title="{$v[introduce]}">{$v[introduce]}</a></dd>
+        </dl>
+        {/loop}
+      </div>
+      </div>
+      <div class="tsg">
+        <div class="adve">
+          <a href="#"><img src="/skin/lqts/images/guangg_02.jpg" width="393" height="100"></a>
+          <a href="#"><img src="/skin/lqts/images/guangg_03.jpg" width="393" height="100"></a>
+          <a href="#"><img src="/skin/lqts/images/guangg_04.jpg" width="393" height="100">
+        </div></a>
+        </div>
+      </div>
+  </div>
+</div>
+
+{template 'footer'}

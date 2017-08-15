@@ -1,0 +1,463 @@
+{if $action != 'ajax'}
+<!-- 详情开始 -->
+{if $itemid}
+{template 'header1', 'mobile'}
+<script src="{DT_STATIC}skin/mobile/js/jquery-1.8.3.min.js"></script>
+<script src="{DT_STATIC}skin/mobile/js/jquery.slides.min.js"></script>  
+<script src="{DT_STATIC}skin/mobile/js/swiper.min.js"></script> 
+<script src="{DT_STATIC}skin/mobile/js/detail.js"></script>    
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/detail.css">
+{php make_history($itemid)}
+<div class="index">
+	<div class="detail_in" style="display: block;">
+    	<div class="detail_inn">
+			<div class="picture">
+		        <div class="banner">
+                    <ul class="banner_in clearfix" id="slides">
+	                {if $thumb}
+	                    <li>
+	                    <img src="{str_replace('.thumb.'.file_ext($thumb), '', $thumb)}">
+	                    </li>
+	                {/if}
+	                {if $thumb1}
+	                    <li>
+	                    <img src="{str_replace('.thumb.'.file_ext($thumb1), '', $thumb1)}">
+	                    </li>
+	               	{/if}
+	                {if $thumb2}
+	                    <li>
+	                    <img src="{str_replace('.thumb.'.file_ext($thumb2), '', $thumb2)}">
+	                    </li>
+	                {/if}
+	                {if $thumb3}
+	                    <li>
+	                    <img src="{str_replace('.thumb.'.file_ext($thumb3), '', $thumb3)}">
+	                    </li>
+	                {/if}
+	                </ul>
+		        </div>
+		    	<div class="picture_two">
+		    		<ul class="clearfix">
+		    		{php $shoucang = is_favorite($itemid)}
+		    			<li class="keep" onclick="favorite({$itemid},{$orders})"><a href="javascript:void(0)"><span class="shoucang">{if $shoucang}已收藏{else}收藏{/if}</span>{php echo $db->count($DT_PRE.'favorite', "typeid=$itemid");}</a></li>
+		    			<li class="partake"><a href="share.php?moduleid={$moduleid}&itemid={$itemid}">分享</a></li>
+		    		</ul>
+		    	</div>
+		    </div>
+
+		<!-- 获取场馆信息与分类 -->
+		    {php $area = get_area($areaid)}
+		    {php $cat = get_cat($catid)}
+			<div class="intro">
+		    	<div class="intro_one">
+		    	    <div class="titname">【{$area[areaname]}馆】{$title}</div>
+		    	    <div class="station clearfix">
+		    	    	<div class="station_lf">
+		    	    	{if $location != ''}{$location}{else}{$address}{/if}
+		    	    	<span>{$hits}人查看</span></div>
+		    	    	<div class="station_ri"><span>{$price}</span>元/{$unit}</div>
+		    	    </div>
+		    	</div> 
+		    	<div class="intro_two">
+		    		<ul class="clearfix">
+		    		{if $P1}
+						<li>  {$n1}：
+							{loop $P1 $i $v}
+							{$v}
+							{/loop}
+						</li>
+						{elseif $n1}
+						<li>{$n1}:{$v1}</li>
+						{/if}
+						{if $P2}
+						<li>  {$n2}：
+							{loop $P2 $i $v}
+							{$v}
+							{/loop}
+						</li>
+						{elseif $n2}
+						<li>{$n2}:{$v2}</li>
+						{/if}
+						{if $P3}
+						<li>  {$n3}：
+							{loop $P3 $i $v}
+							{$v}
+							{/loop}
+						</li>
+						{elseif $n3}
+						<li>{$n3}:{$v3}</li>
+					{/if}
+		    		</ul>
+		    	</div>   
+		    </div>
+		    <div class="shtick clearfix">
+		        <div class="shtick_a clearfix"><a href="area.php?areaid={$area[areaid]}">
+			    	<div class="portrait"> 
+			    	    <span><img src="{DT_STATIC}skin/mobile/images/teseguan.png"></span>
+			    	</div>
+			    	<div class="speciality">
+			    		<div class="speciatit">{$area[areaname]}馆({$cat[catname]})</div>
+			    		<div class="specia">零售  批发</div>
+			    	</div>
+			    	<div class="ingress">
+			    		<a href="area.php?areaid={$area[areaid]}">进馆</a>
+			    	</div>
+		    	</a></div> 
+		    	<div class="shtick_b clearfix">
+		    		<ul class="clearfix">
+		    			<li class="attention"><a href="area.php?areaid={$area[areaid]}">
+		    			    <h2>{$area[hits]}</h2>
+		    			    <em>关注人数</em>
+		    			</a></li>
+		    			<li class="total"><a href="area.php?areaid={$area[areaid]}">
+		    			<!-- <li class="total"><a href="index.php?moduleid=16&areaid={$area[areaid]}"> -->
+		    				<h2>{$area[countgoods]}</h2>
+		    				<em>全部商品</em>
+						</a></li>
+		    			<li class="dynamic"><a href="area.php?areaid={$area[areaid]}">
+		    				<h2>20900</h2>
+		    				<em>特色馆动态</em>
+						</a></li>
+		    		</ul>
+		    	</div>
+		    </div>
+		    <div class="unfurl">
+		    	<div class="unfurl_titl">产品展示</div>
+		    	<div class="unfurl_in">
+		    		<p>{$content}</p>
+		    	</div>
+		    </div>
+		</div>
+	</div>
+	<!--详情-->
+    <div class="detail_in">
+        <div class="good_unfurl">
+            {$content}
+        </div>
+    </div>
+    <!--评论-->
+    <div class="detail_in">
+    {php $comment = get_goods_comment($itemid)}
+        <div class="comment clearfix">
+            <ul class="comment_tit clearfix">
+               <li class="on"><a href="#">全部评价<p>{$comment[all]}</p></a></li>
+               <li><a href="#">好评<p>{$comment[good]}</p></a></li>
+               <li><a href="#">中评<p>{$comment[middle]}</p></a></li>
+               <li><a href="#">差评<p>{$comment[bad]}</p></a></li>
+               <li><a href="#">有图<p>65</p></a></li> 
+            </ul>
+            {php unset($comment[all])}
+            {php unset($comment[good])}
+            {php unset($comment[middle])}
+            {php unset($comment[bad])}
+            <div class="comment_in">
+                <div class="comment_inn clearfix" style="display: block;">
+                {loop $comment $k $v}
+                    <div class="commentin">
+                        <div class="commentin_tit clearfix">
+                            <div class="username">
+                                {substr_replace($v[buyer],'**',1,3)}
+                            </div>
+                            <span> {date("Y-m-d",$v[seller_ctime])}</span>
+                        </div>
+                        <div class="comment_writ clearfix">
+                            <span class="comment_img">
+                                <span class="real_star {if $v[seller_star]==3}comment_stars_width5{elseif $v[seller_star]==2}comment_stars_width3{elseif $v[seller_star]==1}comment_stars_width1{else}{/if}"></span>
+                            </span>
+                            <h2>{$v[seller_comment]}</h2>
+                            <em>购买日期：2017-07-15 15:41:29 </em>
+                        </div>
+                        <div class="praise_in clearfix">
+                            <div class="praise_a"><a href="#">
+                                (0)
+                            </a></div>
+                            <div class="praise_b"><a href="#">
+                                (0)</a>
+                            </div>
+                        </div>
+                    </div>
+                {/loop}
+                </div>
+                <div class="comment_inn clearfix">
+                    {loop $comment $k $v}
+                    {if $v[seller_star] == 3}
+                        <div class="commentin">
+                            <div class="commentin_tit clearfix">
+                                <div class="username">
+                                    {substr_replace($v[buyer],'**',1,3)}
+                                </div>
+                                <span> {date("Y-m-d",$v[seller_ctime])}</span>
+                            </div>
+                            <div class="comment_writ clearfix">
+                                <span class="comment_img">
+                                    <span class="real_star comment_stars_width5"></span>
+                                </span>
+                                <h2>{$v[seller_comment]}</h2>
+                                <em>购买日期：2017-07-15 15:41:29 </em>
+                            </div>
+                            <div class="praise_in clearfix">
+                                <div class="praise_a"><a href="#">
+                                    (0)
+                                </a></div>
+                                <div class="praise_b"><a href="#">
+                                    (0)</a>
+                                </div>
+                            </div>
+                        </div>
+                        {/if}
+                    {/loop}
+                </div>
+                <div class="comment_inn clearfix">
+                    {loop $comment $k $v}
+                    {if $v[seller_star] == 2}
+                        <div class="commentin">
+                            <div class="commentin_tit clearfix">
+                                <div class="username">
+                                    {substr_replace($v[buyer],'**',1,3)}
+                                </div>
+                                <span> {date("Y-m-d",$v[seller_ctime])}</span>
+                            </div>
+                            <div class="comment_writ clearfix">
+                                <span class="comment_img">
+                                    <span class="real_star comment_stars_width3"></span>
+                                </span>
+                                <h2>{$v[seller_comment]}</h2>
+                                <em>购买日期：2017-07-15 15:41:29 </em>
+                            </div>
+                            <div class="praise_in clearfix">
+                                <div class="praise_a"><a href="#">
+                                    (0)
+                                </a></div>
+                                <div class="praise_b"><a href="#">
+                                    (0)</a>
+                                </div>
+                            </div>
+                        </div>
+                        {/if}
+                    {/loop}
+                </div>
+                <div class="comment_inn clearfix">
+                    {loop $comment $k $v}
+                    {if $v[seller_star] == 1}
+                        <div class="commentin">
+                            <div class="commentin_tit clearfix">
+                                <div class="username">
+                                    {substr_replace($v[buyer],'**',1,3)}
+                                </div>
+                                <span> {date("Y-m-d",$v[seller_ctime])}</span>
+                            </div>
+                            <div class="comment_writ clearfix">
+                                <span class="comment_img">
+                                    <span class="real_star comment_stars_width1"></span>
+                                </span>
+                                <h2>{$v[seller_comment]}</h2>
+                                <em>购买日期：2017-07-15 15:41:29 </em>
+                            </div>
+                            <div class="praise_in clearfix">
+                                <div class="praise_a"><a href="#">
+                                    (0)
+                                </a></div>
+                                <div class="praise_b"><a href="#">
+                                    (0)</a>
+                                </div>
+                            </div>
+                        </div>
+                        {/if}
+                    {/loop}
+                    <!-- <div class="commentin">
+                        <div class="commentin_tit clearfix">
+                            <div class="username">
+                                m**il
+                            </div>
+                            <span> 2017-5-1</span>
+                        </div>
+                        <div class="comment_writ clearfix">
+                            <span class="comment_img">
+                                <span class="real_star comment_stars_width1"></span>
+                            </span>
+                            <h2>设计风格现代简约式的，喜欢！然而，配送的短链插入表盘时太松了，简直可以自动滑落！</h2>
+                            <div class="com_img">
+                                <img src="{DT_STATIC}skin/mobile/images/com_img1.jpg">
+                                <img src="{DT_STATIC}skin/mobile/images/com_img2.jpg">
+                                <img src="{DT_STATIC}skin/mobile/images/com_img3.jpg">
+                                <img src="{DT_STATIC}skin/mobile/images/com_img4.jpg">
+                            </div>
+                            <em>购买日期：2017-07-15 15:41:29 </em>
+                        </div>
+                        <div class="praise_in clearfix">
+                            <div class="praise_a"><a href="#">
+                                (0)
+                            </a></div>
+                            <div class="praise_b"><a href="#">
+                                (0)</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="foot">
+	    <span class="shop"><a href="javascript:void(0)" onclick="AddCart();">加入购物车</a></span>
+	    <span class="mai"><a href="purchase.php?moduleid={$moduleid}&itemid={$itemid}">立即购买</a></span>
+	</div>    
+</div>
+<!-- 弹窗 -->
+<div class="silde" id="silde">  
+    <div class="picture_in">
+        <ul>
+            <li><img src="{DT_STATIC}skin/mobile/images/com_img1.jpg"></li>
+            <li><img src="{DT_STATIC}skin/mobile/images/com_img2.jpg"></li>
+            <li><img src="{DT_STATIC}skin/mobile/images/com_img3.jpg"></li>
+            <li><img src="{DT_STATIC}skin/mobile/images/com_img4.jpg"></li>
+        </ul>
+    </div>  
+    <div class="pic_header">
+        <a href="#" class="to_back"></a>
+        <div class="page_box">
+            <em class="fz17">1</em>
+            <em class="fz12">/</em>
+            <em class="fz17">10</em>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content_move">
+            <p>这个评价有点长，京东要不要给我1000个京豆当幸苦费呢？我收到的是完美品相，开机激活一步到位；保修也没有问题。没有碰到其他朋友讲的情况（比如：屏幕右下角按动有会想，屏幕发黄，开机不能激活，有别人使用过的ID痕迹），电池也是100%满容量，生产日期：2017（32GB是特别版，苹果公司今年发布预约的）</p>
+            <p>2017年3月，在没有任何官方宣传、没有广告、没有宣传视频，新款金色iPhone6 32GB就悄然发布了。该机仅针对亚洲市场。iPhone 6最初发布的时候仅提供了16GB、64GB、128GB三个版本，如今补齐了32GB（配置没有任何变化），价格也便宜了不少。上个月月底，国内各大电商就开启了预售，定价3399元，基本和国产中高端手机差不多。如今，台湾市场也开启了该机的预售，台湾大哥大提供限时预约，3月10日正式发售。观点：相比32GB版iPhone6，苹果更新iPhone SE或许更适合据了解，此次发布的金色iPhone 6 32GB仅针对运营商、第三方电商渠道，苹果官方渠道比如官网和苹果零售店都是买不到的。。。（此处省略几百字，有兴趣的朋友可以到百度搜索相关资料）</p>       
+        </div>
+    </div>
+</div>
+
+<!-- 详情结束 -->
+{else}
+{php $drop = 1}
+{template 'header1', 'mobile'}
+<link rel="stylesheet" href="{DT_STATIC}skin/mobile/css/dropload.css"> 
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/liebiaoye.css">
+	{if $kw}
+	<!-- 按搜索结果查看 -->
+	<input type="hidden" value="{$kw}" id="kw">
+	{/if}
+	{if $catid}
+	<!-- 按分类查看 -->
+	<input type="hidden" value="{$catid}" id="catid">
+	{/if}
+	{if $areaid}
+	<input type="hidden" value="{$areaid}" id="areaid">
+	{/if}
+<!-- 按分类查看或查看全部 -->
+<div class="screen">
+    	<ul class="clearfix">
+    		<li class="zongh cur"><a href="javascript:void(0)">综合</a><i><img src="{DT_STATIC}skin/mobile/images/xia.png"></i></li>
+    		<li><a href="javascript:void(0)">销量</a></li>
+    		<li class="money"><a href="javascript:void(0)">价格</a><i class="xia"><img src="{DT_STATIC}skin/mobile/images/xia.png"></i>
+    		<i class="shang"><img src="{DT_STATIC}skin/mobile/images/shang.png"></i></li>
+    		<li><a href="javascript:void(0)">评论数</a></li>
+    	</ul>
+    </div>
+</div>
+
+<div class="index">
+	<div class="carou" id="list">
+	    <div class="listIn clearfix">
+	    {php $child = get_maincat(0,16,1);}
+		    <ul class="clearfix" id="list1">
+            	{loop $child $k $v}
+            	{php $k = $k+3}
+			    <li><a href="?moduleid=16&catid={$v[catid]}">
+				    <img src="{DT_STATIC}skin/mobile/images/wenhua{$k}.png">
+				    <h2>{$v[catname]}</h2>
+			    </a></li>
+			    {/loop}
+			    <li><a href="?moduleid=16"><img src="{DT_STATIC}skin/mobile/images/gengd.png"><h2>全部产品</h2></a></li>
+		    </ul>
+		</div>
+	</div>
+	<!--列表-->
+<div class="column">
+    <div class="lists"></div>
+    <div class="lists"></div>
+    <div class="lists"></div>
+    <div class="lists"></div>
+    <div class="droptext">
+    	<p><span class="loading"></span>加载中...</p>
+    </div>
+</div>
+{/if}
+<script>
+	(function (doc, win) {
+	       var docEl = doc.documentElement,
+	           resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	           recalc = function () {
+	               var clientWidth = docEl.clientWidth;
+	               if (!clientWidth) return;
+	               if(clientWidth>=640){
+	                   docEl.style.fontSize = '100px';
+	               }else{
+	                   docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+	               }
+	           };
+	 
+	       if (!doc.addEventListener) return;
+	       win.addEventListener(resizeEvt, recalc, false);
+	       doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+    window.onload=function () {  
+        document.addEventListener('touchstart',function (event) {  
+            if(event.touches.length>1){  
+                event.preventDefault();  
+            }  
+        })  
+        var lastTouchEnd=0;  
+        document.addEventListener('touchend',function (event) {  
+            var now=(new Date()).getTime();  
+            if(now-lastTouchEnd<=300){  
+                event.preventDefault();  
+            }  
+            lastTouchEnd=now;  
+        },false)  
+    };	
+
+	function favorite(itemid,orders){
+		var str = 'itemid='+itemid+'orders'+orders;
+		$.post('mall.php?action=favorite',str,function(data){
+			if(data == 1){
+				$('.shoucang').html('已收藏');
+			}else{
+				$('.shoucang').html('收藏');
+			}
+		});
+	}
+
+
+	var s_s = {'1':0,'2':0,'3':0};
+	function AddCart() {
+		$.get(AJPath+'?action=mall&job=cart&moduleid=16&itemid={$itemid}&s1='+s_s[1]+'&s2='+s_s[2]+'&s3='+s_s[3]+'&a=1', function(data) {
+			if(data > 0) {
+				alert('商品已成功加入购物车');
+				if($('.my-cart').html().indexOf('em') != -1) {
+					var t = parseInt($('.my-cart em').html());
+					$('.my-cart').html('<em>'+(t+1)+'</em>');
+				} else {
+					$('.my-cart').html('<em>1</em>');
+				}
+				setTimeout(function() {
+					alert('<a href="cart.php?reload={$DT_TIME}"><span>查看购物车</span></a>|<a href="javascript:;"><span>继续购物</span></a>', '取消', '商品已成功加入购物车');
+				}, 1000);
+			} else if(data == '-2') {
+				alert('购物车已存在此商品');
+			} else if(data == '-4') {
+				alert('不能添加自己的商品');
+			} else if(data == '-5') {
+				alert('请先登录再加购物车');
+			} else {
+				alert('操作失败，请重试'+data);
+			}
+		});
+	}
+</script>
+</body>
+</html>
+{/if}

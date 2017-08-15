@@ -1,0 +1,143 @@
+{if $DT_TOUCH}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{DT_CHARSET}"/>
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width"/>
+<title>{$head_title}</title>
+{else}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<meta name="robots" content="nofollow"/>
+<meta name="generator" content="DESTOON B2B - www.destoon.com"/>
+<meta http-equiv="x-ua-compatible" content="IE=8"/>
+<title>{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}商务中心{$DT[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{$DT[seo_delimiter]}Powered By DESTOON B2B</title>
+{/if}
+<link rel="shortcut icon" href="{DT_STATIC}favicon.ico"/>
+<link rel="bookmark" href="{DT_STATIC}favicon.ico"/>
+<link rel="stylesheet" href="/skin/lqts/css/reset.css">
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}{$MODULE[2][moduledir]}/images/party.css"/>
+{if $DT_TOUCH}
+<link rel="stylesheet" type="text/css" href="{$EXT[mobile_url]}static/member.css"/>
+<script type="text/javascript">var Dbrowser = '{$DT_MOB[browser]}';</script>
+{else}
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+<script type="text/javascript" src="{DT_STATIC}file/script/ie6png.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<!--[if IE]>
+<style type="text/css">
+.head_user em {margin:-4px 0 0 -4px;}
+#mini_profile {margin:20px 0 0 -140px;}
+</style>
+<![endif]-->
+{/if}
+{if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
+<script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/member.js"></script>
+{if $DT_TOUCH}<script type="text/javascript" src="{$EXT[mobile_url]}static/js/fix.js"></script>{/if}
+<!--[以上为系统关键代码，请勿删除]-->
+</head>
+<body>
+<!--头部-->
+	<!-- 头部 -->
+	<div class="header">
+		<div class="headerIn clearfix">
+			<div class="in_locat">
+				<a href="#">返回首页</a>
+			</div>
+			<ul class="in_decription">
+			    <li>欢迎访问全国老区特色馆！</li>
+				<li><a href="#">退出</a></li>
+				<li class="fore2"><a href="#">消息</a>
+				    <span><i></i>0</span> 
+				</li>
+			</ul>
+			<div class="h_nav">
+				<ul class="fl">
+					<li class="fore1">
+						<a href="javascript:void(0);">我的老区</a>
+					</li>
+					<li class="spacer"></li>
+					<li class="fore fore2">
+						<i class="jhd"></i>
+						<a href="javascript:void(0);">我的订单</a>
+						<span>
+							<i></i>
+							110
+						</span>
+					</li>
+					<li class="spacer"></li>
+					<li class="fore fore3">
+					    <i class="jhd"></i>
+						<a href="javascript:void(0);">客户服务</a>
+					</li>
+					<li class="spacer"></li>
+					<li class="fore fore4">
+					    <i class="jhd"></i>
+						<a href="javascript:void(0);">微信关注</a>
+					</li>
+					<li class="spacer"></li>
+				</ul>
+				<div class="in_navs">
+					网页导航
+					<span></span>
+					<ul class="in_cityList">
+						<p class="cover"> </p>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+						<li><a href="javascript:;">北京</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+		<!--logo-->
+		<div class="header_in">
+			<div class="top">
+				<div class="logo"><img src="images/logo.png"></div>
+				<ul class="top_nav">
+					<li class="on"><a href="#">首页</a></li>
+					<li class="account_in"><a href="#">账号管理</a>
+                        <ul id="account" class="account">
+                        	<li class="on"><a href="#">个人信息</a></li>
+                        	<li><a href="#">实名认证</a></li>
+                        	<li><a href="#">系统消息</a></li>
+                        	<li><a href="#">账号安全</a></li>
+                        	<li><a href="#">我的关注</a></li>
+                        	<li><a href="#">我的收藏</a></li>
+                        </ul>  
+					</li>
+					<li class="account_inn"><a href="#">会员服务</a>
+					    <ul id="account" class="account">
+                        	<li class="on"><a href="#">广告服务</a></li>
+                        	<li><a href="#">商机推送</a></li>
+                        	<li><a href="#">服务购买明细</a></li>
+                        </ul>   
+					</li>
+				</ul>
+				<div class="top_call">
+					客服热线：<span>010-53551133</span>
+				</div>
+			</div>
+		</div>
+	</div>	

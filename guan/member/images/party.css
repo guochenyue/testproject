@@ -1,0 +1,366 @@
+body,html{
+	width: 100%;
+	min-width: 1180px;
+}
+.header{
+	width: 100%;
+	background: #f5f5f5;
+	margin-bottom: 8px;
+}
+.headerIn{
+	width: 1180px;
+	margin: 0 auto;
+	height: 31px;
+}
+.in_locat a{
+	float: left;
+	width: 74px;
+	padding-left: 38px;
+	background: url(../images/index.png) 15px 7px no-repeat;
+	font-size: 12px;
+	color: #000;
+	line-height: 30px;
+	position: relative;
+	cursor: pointer;
+}
+.in_decription{
+	float: left;
+	height: 22px;
+	margin-top: 4px;
+	}
+.in_decription li{
+	float: left;
+	padding-left: 10px;
+	font-size: 12px;
+	color: #333;
+	line-height: 22px;	
+}
+.in_decription li a{
+	font-size: 12px;
+	color: #333;
+	line-height: 22px;	
+}
+.in_decription li span{
+	float: right;
+	font-size: 12px;
+	line-height: 14px;
+	margin-top: 5px;
+	padding: 0 2px;
+	color: #fff;
+	background: #32a632;
+	position: relative;
+	margin-left: 5px;
+}
+.in_decription li span i{
+	position: absolute;
+	left: -3px;
+	top: 4px;
+	width: 0;
+	height: 0;
+	border-top: 3px solid transparent; 
+	border-bottom: 3px solid transparent; 
+	border-right: 3px solid #32a632;; 
+}
+.h_nav{
+	float: right;
+}
+.h_nav ul li{
+	float: left;
+	padding: 0 9px;
+	position: relative;
+}
+.h_nav ul li:hover{
+	background: #fff;
+}
+.h_nav ul li.spacer{
+	width: 1px;
+	height: 20px;
+	margin-top: 5px;
+	padding: 0;
+	background: #e0e0e0;
+}
+.h_nav ul li span{
+	float: right;
+	font-size: 12px;
+	line-height: 14px;
+	margin-top: 8px;
+	padding: 0 2px;
+	color: #fff;
+	background: #32a632;
+	position: relative;
+	margin-left: 5px;
+}
+.h_nav ul li span i{
+	position: absolute;
+	left: -3px;
+	top: 4px;
+	width: 0;
+	height: 0;
+	border-top: 3px solid transparent; 
+	border-bottom: 3px solid transparent; 
+	border-right: 3px solid #32a632;; 
+}
+.h_nav ul li a{
+	font-size: 12px;
+	color: #333;
+	line-height: 30px;
+}
+.h_nav ul li.fore{
+	padding-left: 23px;
+}
+.h_nav ul li.fore .jhd{
+	position: absolute;
+	left: 5px;
+	top: 9px;
+	width: 15px;
+	height: 15px;
+} 
+.h_nav ul li.fore2 .jhd{
+	background: url(../images/wddingd.png) 0 0 no-repeat;
+} 
+.h_nav ul li.fore3 .jhd{
+	background: url(../images/kehufw.png) 0 0 no-repeat;
+}
+.h_nav ul li.fore4 .jhd{
+	background: url(../images/smallweixin.png) 0 0 no-repeat;
+}
+.in_navs{
+    float: left;
+    width: 74px;
+    padding-left: 23px;
+    background: url(../images/smalldaoh.jpg) 8px 10px no-repeat;
+    font-size: 12px;
+    color: #000;
+    line-height: 32px;
+    position: relative;
+    cursor: pointer;	
+}
+.in_navs span{
+    position: absolute;
+    right: 5px;
+    top: 13px;
+    width: 10px;
+    height: 7px;
+    background: url(../images/in_cityList.png) 0 0 no-repeat;
+	background: url(../images/in_cityList.png) 0 0 no-repeat;
+	-webkit-transition: transform 0.1s ease-in 0s;
+    -moz-transition: transform 0.1s ease-in 0s;
+    -ms-transition: transform 0.1s ease-in 0s;
+    -o-transition: transform 0.1s ease-in 0s;
+    transition: transform 0.1s ease-in 0s;  	
+}
+.in_navs:hover{
+	background-color: #fff;
+	padding-left: 23px;
+	width: 73px;
+	margin-left: -1px;
+	background-position: 8px 10px;
+	height: 32px;
+	border-left: 1px solid #f00e0e;
+	border-right: 1px solid #f00e0e;
+}
+.in_navs:hover .in_cityList{
+	display: block;
+}
+.in_navs:hover span{
+	right: 5px;
+	-webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.in_cityList{
+    position: absolute;
+    top: 32px;
+    right: -1px;
+    width: 465px;
+    padding: 10px 0;
+    background: #fff;
+    border: 1px solid #f00e0e;
+    z-index: 101;
+    display: none;
+}
+.in_cityList li{
+    float: left;
+    width: 70px;
+    text-align: center;
+}
+.in_cityList .cover{
+	position: absolute;
+	right: 0;
+	top: -1px;
+	width: 96px;
+	height: 5px;
+	background: #fff;
+}
+.in_cityList a{
+	color: #666;
+	line-height: 30px;
+}
+.in_cityList a:hover{
+	color: #f00e0e;
+}
+/*logo*/
+.header_in{
+	width: 100%;
+	height:72px;
+	background: #e72418;
+}
+.top{
+	width: 1180px;
+	margin: 0px auto;
+}
+.logo{
+	float: left;
+	padding: 14px;
+}
+.top_nav{
+	float: left;
+	padding-left: 25px;
+}
+.top_nav li{
+	float: left;
+	width: 120px;
+	text-align: center;
+	background: url(../images/xiala_03.png) 100px 33px no-repeat;
+	position: relative;
+}
+.top_nav li a{
+	font-size: 16px;
+	color: #ffffff;
+	line-height: 72px;
+}
+.top_nav li.on{
+	background: url(../images/tubiao.png) 54px 66px no-repeat;
+}
+
+#account{
+	position: absolute;
+	top: 72px;
+	left: 0px;
+	width: 120px;
+	background: #e72418;
+	display: none;
+	z-index: 2;
+}
+#account li{
+	background: #e72418;
+}
+#account li.on{
+	background: #f56960;
+}
+#account li a{
+	font-size: 16px;
+	color: #fff;
+	line-height: 35px;
+}	
+#account li:hover{
+	background: #f56960;
+}
+.account_in:hover #account,.account_inn:hover #account{
+	display: block;
+}
+.top_call{
+	float: right;
+	font-size: 14px;
+	color: #FFF;
+	line-height: 68px;
+}
+.top_call span{
+	font-size: 24px;
+}
+
+
+
+/*底部*/
+.footer{
+	width: 100%;
+	border-top: 1px solid #e0e0e0;
+}
+.footone{
+	background-color: #ececec;
+	width: 100%;
+}
+.foot{
+	width: 1182px;
+	margin: 0px auto;
+}
+.lqza{
+	margin: 0px auto;
+	overflow: hidden;
+}
+.lqza li{
+	font-size: 18px;
+	color: #666666;
+	font-weight: bolder;
+	line-height: 111px;
+	float: left;
+	width: 295px;
+	text-align: center;
+}
+.lqza span{
+	color: #d81e06;
+	background: url(../images/footerliu.png) 4px 0px no-repeat;
+	padding: 6px 11px;
+}
+.footin{
+	padding: 20px 0px 60px;
+	overflow: hidden;
+}
+.ewm{
+	padding-left: 75px;
+	float: left;
+}
+.ewm img{
+	display: block;
+}
+.ewm p{
+	font-size: 15px;
+	color: #333333;
+	line-height: 24px;
+}
+.footin ul{
+	float: left;
+	padding: 0px 46px;
+}
+.footin .jrwm{
+	padding-left: 108px;
+}
+.footin ul h2{
+	font-size: 16px;
+	color: #333333;		
+	margin-bottom: 5px;
+}
+.footin ul h2 a{
+	font-size: 16px;
+	color: #333333;	
+}
+.footin ul li{
+	font-size: 12px;
+	color: #666666;
+	line-height: 24px;
+}
+.footin ul li a{
+	font-size: 15px;
+	color: #666666;
+	line-height: 24px;	
+}
+.foottwo{
+	width: 100%;
+	background: #3f3f3f;
+}
+.foottwoin{
+	width: 1100px;
+	margin: 0px auto;
+	padding-bottom: 18px;
+}
+.foottwoin h2{
+	font-size: 14px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 20px;
+}
+.foottwoin .daoh{
+	padding-top: 18px;
+}

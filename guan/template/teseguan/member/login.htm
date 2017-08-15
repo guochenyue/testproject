@@ -1,0 +1,57 @@
+{template 'loginheader'}
+  <link rel="stylesheet" href="/skin/lqts/css/signIn.css">
+	<div class="si_wrap clearfix">
+		<div class="si_wrapadd fl">
+			<div id="slideBox" class="slideBox">
+			<div class="hd">
+				<ul><li></li><li></li><li></li></ul>
+			</div>
+			<div class="bd">
+				<ul>
+					<li><a href="javascript:;" target="_blank"><img src="/skin/lqts/images/si_wrapadd.jpg" /></a></li>
+					<li><a href="javascript:;" target="_blank"><img src="/skin/lqts/images/si_wrapadd.jpg" /></a></li>
+					<li><a href="javascript:;" target="_blank"><img src="/skin/lqts/images/si_wrapadd.jpg" /></a></li>
+				</ul>
+			</div>
+		</div>
+		</div>
+		<div class="si_wrap_check_message fr">
+			<form class="si_wrap_cmIn" method="post" action="{$DT[file_login]}">
+				<p class="tips">
+					<span class="on">账号和密码不匹配，请重新输入</span>
+					<span>请输入账号和密码</span>
+				</p>
+				<p class="si_wrap_title">
+					<span>特色馆用户登录</span>
+					<a href="{$DT[file_register]}?forward={urlencode($forward)}">注册新账号</a>
+				</p>
+				<p class="userName"><input type="text" name="username" placeholder="邮箱/手机/用户名"></p>
+				<input name="forward" type="hidden" value="{$forward}">
+				<p class="paddWord"><input type="password" name="password" placeholder="密码"></p>
+				<p class="zdwm clearfix">
+					<input type="checkbox">
+					<span>自动登录</span>
+					<a href="send.php">忘记密码？</a>
+				</p>
+				<p class="denglu"><input type="submit" name="submit" value="登录"></p>
+				<p class="three">
+					<span>更多合作网号登录</span>
+					<!-- <a href="javascript:;" title="QQ"></a>
+					<a class="weix" href="javascript:;" title="微信"></a>
+					<a class="weib" href="javascript:;" title="微博"></a> -->
+					{loop $OAUTH $k $v}
+					{if $v[enable]}<a href="{DT_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}"><img src="{DT_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/></a> &nbsp;{/if}
+					{/loop}
+				</p>
+			</form>
+		</div>
+	</div>
+	<div class="si_foot">
+		<p>京ICP备 1304496号  | 合字B1.B3-2014004  |  营业执照</p>
+		<p>Copyright 号店网上超市  2015-2017，AllRights Reserved</p>
+	</div>
+<script>
+	jQuery(".slideBox").slide({mainCell:".bd ul",effect:"left",autoPlay:true});
+</script>
+</body>
+</html>

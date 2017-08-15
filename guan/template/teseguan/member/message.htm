@@ -1,0 +1,161 @@
+{template 'header', $module}
+{if $action == 'outbox' && $typeid == '2'}
+<link rel="stylesheet" type="text/css" href="../css/index.css">
+<script src="../js/index.js"></script>
+<div class="cggl_index_ri">
+			<div class="cggl_index_one">
+				<h2>收到的报价</h2>
+			</div>
+			<div class="cggl_index_two">
+				<div class="search_in">
+				    <div class="search">
+					    <input type="text" placeholder="输入采购标题">
+			            <a class="sear" href="javascript:;">查找</a>
+				    </div>
+				</div>
+				<div class="interfix_in">
+					<ul class="interfix">
+						<li>产品/品种</li>
+						<li>发布时间</li>
+						<li>已收到的报价</li>
+						<li>
+                            <select size="1" name="xz"><option selected value="xz">状态</option><option value="tj">采购中</option><option value="hb">审核中</option></select> 
+						</li>
+						<li>操作</li>
+					</ul>
+					<!--无发出报价信息-->
+					{if !$messages}
+					<div class="interfix_no interfix_index">
+						未找到相关报价信息，你可以<span><a href="#"> 返回首页 </a></span>。
+					</div>
+					<!--有发出报价信息-->
+					{else}
+					<div class="interfix_on">
+					{loop $messages $message}
+						<ul class="interfix">
+						    <li>红富士苹果</li>
+						    <li>2017.05.09 12:33</li>
+						    <li>10元/斤</li>
+						    <li>采购中</li>
+						    <li class="cz_interfix"><a href="#">查看</a>/<span><a href="#">删除</a></span></li>
+					    </ul>
+					    {/loop}
+					   {/if}
+					   <!--  <ul class="interfix">
+						    <li>红富士苹果</li>
+						    <li>2017.05.09 12:33</li>
+						    <li>10元/斤</li>
+						    <li>采购中</li>
+						    <li class="cz_interfix"><a href="#">查看</a>/<span><a href="#">删除</a></span></li>
+					    </ul>
+					    <ul class="interfix">
+						    <li>红富士苹果</li>
+						    <li>2017.05.09 12:33</li>
+						    <li>10元/斤</li>
+						    <li>采购中</li>
+						    <li class="cz_interfix"><a href="#">查看</a>/<span><a href="#">删除</a></span></li>
+					    </ul>
+					    <ul class="interfix">
+						    <li>红富士苹果</li>
+						    <li>2017.05.09 12:33</li>
+						    <li>10元/斤</li>
+						    <li>采购中</li>
+						    <li class="cz_interfix"><a href="#">查看</a>/<span><a href="#">删除</a></span></li>
+					    </ul>
+					    <ul class="bot">
+                            <li><a href="#" class="active">1</a></li>
+                            <li><a href="#">2</a></li>
+        					<li><a href="#">3</a></li>
+        					<li><a href="#">4</a></li>
+        					<li>. . .</li>
+        					<li><a href="#">16</a></li>
+        					<li><a href="#">下一页</a></li> 
+    					</ul> -->
+					</div>
+				</div>
+			</div>
+		</div>
+{elseif $action == 'inbox' && $typeid == '2'}
+<div class="cggl_index_ri">
+			<div class="cggl_index_one">
+				<h2>收到的报价</h2>
+			</div>
+			<div class="cggl_index_two">
+				<div class="search_in">
+				    <div class="search">
+					    <input type="text" placeholder="输入采购标题">
+			            <a class="sear" href="javascript:;">查找</a>
+				    </div>
+				</div>
+				<div class="interfix_in">
+					<ul class="interfix">
+						<li>产品/品种</li>
+						<li>发布时间</li>
+						<li>已收到的报价</li>
+						<li>
+                            <select size="1" name="xz"><option selected value="xz">状态</option><option value="tj">采购中</option><option value="hb">审核中</option></select> 
+						</li>
+						<li>操作</li>
+					</ul>
+					<!--无收到报价信息-->
+					{if !$messages}
+					<div class="interfix_no interfix_index">
+						未找到相关报价信息，你可以<span><a href="#"> 返回首页 </a></span>。
+					</div>
+					<!--有收到报价信息-->
+					{else}
+					<div class="interfix_on">
+					{loop $messages $message}
+						<ul class="interfix">
+						    <li>红富士苹果</li>
+						    <li>2017.05.09 12:33</li>
+						    <li>10元/斤</li>
+						    <li>采购中</li>
+						    <li class="cz_interfix"><a href="#">查看</a>/<span><a href="#">删除</a></span></li>
+					    </ul>
+					    {/loop}
+					   {/if}
+					</div>
+				</div>
+			</div>
+		</div>
+{else}
+<link rel="stylesheet" href="{DT_STATIC}{$MODULE[2][moduledir]}/images/gerenxinxi.css">
+<div class="wrapContent fr">
+			<h3>系统消息<span>（共{if $limit_used}{$limit_used}{else}0{/if}条消息，其中<strong> {if $_message}{$_message}{else}0{/if} </strong>条未读）</span></h3>
+			<div class="wrapContent_inn">
+				<div class="xtxx_title clearfix">
+					<input class="all_chose" type="checkbox">
+					<span class="all_chose2">全选</span>
+					<input class="deletes" type="button" value="删除">
+					<input class="has_red" type="button" value="标为已读">
+					<input class="all_has_red" type="button" value="全部标为已读">
+					<p class="page">
+						<span>1/15 页</span>
+						<a href="javascript:;">下一页</a>
+					</p>
+				</div>
+				<ul class="all_messages">
+				{if $messages}
+				{loop $messages $message}
+					<li class="unread">
+						<input type="checkbox">
+						<a href="{if $status==1}?action=edit&itemid={$message[itemid]}{else}?action=show&itemid={$message[itemid]}{/if}" {if $status>2 && $message[feedback]}onclick="if(confirm('该信件请求发送已读回执，是否发送？')){ Go(this.href+'&feedback=1');return false;}"{/if} title="{$message[dtitle]}">{$message[dtitle]}</a>
+						<span>{$message[adddate]}</span>
+					</li>
+					{/loop}
+					{/if}
+				</ul>
+			</div>
+		</div>
+{/if}
+	</div>
+</div>
+<script>
+	$(function () {
+		$(".wrapCont_inn_tit li").click(function () {
+			$(this).addClass("on").siblings("li").removeClass("on");
+		})
+	})
+</script>
+{template 'footer',$module}

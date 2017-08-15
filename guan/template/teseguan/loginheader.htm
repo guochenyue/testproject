@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=xhtml; url={$head_mobile}"> 
+<meta http-equiv="mobile-agent" content="format=html5; url={$head_mobile}">
+{/if}
+<link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+{if $EXT[archiver_enable]}
+<link rel="archives" title="{$DT[sitename]}" href="{$EXT[archiver_url]}"/>
+{/if}
+<!-- <link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}public.css"/> -->
+<link rel="stylesheet"  type="text/css" href="/skin/lqts/css/reset.css">
+<link rel="stylesheet"  type="text/css" href="/skin/lqts/css/center_headfoot.css">
+{if $moduleid>4}<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$module}.css"/>{/if}
+<!-- {if $CSS}
+{loop $CSS $css}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$css}.css"/>
+{/loop}
+{/if} -->
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+<![endif]-->
+{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
+<script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<!-- <script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script> -->
+<script type="text/javascript" src="/skin/lqts/js/jquery1.42.min.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+<script type="text/javascript" src="{DT_SKIN}js/jstx.js"></script>
+<script type="text/javascript" src="{DT_SKIN}js/bann.js"></script>
+<script type="text/javascript" src="{DT_SKIN}js/home.js"></script>
+<script type="text/javascript" src="{DT_SKIN}js/qy.js"></script>
+<!-- <script type="text/javascript" src="{DT_SKIN}js/jquery.SuperSlide.2.1.1.js"></script> -->
+
+<script type="text/javascript" src="/skin/lqts/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="/skin/lqts/js/index.js"></script>
+{if $lazy}<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>{/if}
+{if $JS}
+{loop $JS $js}
+<script type="text/javascript" src="{DT_STATIC}file/script/{$js}.js"></script>
+{/loop}
+{/if}
+{php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ? $moduleid : 5;}
+{php $searchids = array(5,6,4,21,22);}
+{if !in_array($searchid, $searchids)}
+	{php $searchids[] = $searchid;}
+{/if}
+<script type="text/javascript">
+{if $head_mobile && $EXT[wap_goto]}
+GoMobile('{$head_mobile}');
+{/if}
+var searchid = {$searchid};
+function setModule(i, o) {
+Dd('destoon_moduleid').value = i;
+searchid = i;
+var lis = Dd('search_module').getElementsByTagName('li');
+for(var i = 0;i < lis.length;i++) {
+  lis[i].className = lis[i] == o ? 'current' : '';
+}}
+</script>
+<!--[以上为系统关键代码，除非您明确其含义，否则请勿修改或删除，否则会导致系统错误]-->
+<!--[模板中所有带id的元素，请勿修改或删除，否则会导致部分JS代码无法运行]-->
+<!--[以上类似的注释，在编译模板时，系统会自动移除，不会显示在实际的页面中]-->
+{template 'qymb'}
+</head>
+<body>
+  <div class="si_header">
+    <div class="si_headerIn clearfix">
+      <p class="si_header_logo fl"><img src="/skin/lqts/images/bigLogo.png" alt=""></p>
+      <p class="si_header_side fr">
+        <span>您好，欢迎光老区特色馆！</span>
+        <a href="{$DT[file_login]}?forward={urlencode($forward)}">请登录</a>
+      </p>
+    </div>
+  </div>

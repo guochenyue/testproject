@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$changguan}{/if}</title>
+{if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
+{if $head_description}<meta name="description" content="{$head_description}"/>{/if}
+<meta name="generator" content="DESTOON B2B - www.destoon.com"/>
+<meta name="template" content="{$template}"/>
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
+{/if}
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<!-- <link rel="stylesheet" type="text/css" href="{DT_STATIC}{$MODULE[4][moduledir]}/skin/common.css"/> -->
+<link rel="stylesheet" type="text/css" href="{$HSPATH}reset.css"/>
+<link rel="stylesheet" type="text/css" href="{$HSPATH}style.css"/>
+{if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
+<!-- <script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/homepage.js"></script> -->
+<script type="text/javascript" src="{DT_STATIC}skin/lqts/js/jquery1.42.min.js"></script>
+<script type="text/javascript" src="{DT_STATIC}skin/lqts/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{DT_STATIC}skin/lqts/js/parts.js"></script> 
+
+{if $lazy}<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>{/if}
+<script type="text/javascript">
+{if $head_mobile && $EXT[mobile_goto]}
+GoMobile('{$head_mobile}');
+{/if}
+{if $itemid && $DT[anticopy]}
+document.oncontextmenu=function(e){return false;};
+document.onselectstart=function(e){return false;};
+{/if}
+</script>
+{if $css}<style type="text/css">{$css}</style>{/if}
+</head>
+<body>
+	<div class="header">
+		<div class="headerIn clearfix">
+			<div class="in_locat">
+				北京市
+				<span></span>
+				<ul class="in_citylist">
+					<p class="cover"></p>
+					<li><a href="javascript:;">全国</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+					<li><a href="javascript:;">北京</a></li>
+				</ul>
+			</div>
+			<div class="in_decription">
+			    欢迎登陆老区特色馆！
+			</div>
+			<div class="h_nav">
+				<ul class="fl">
+					<li class="fore1">
+					    <a href="javascript:void(0);">注册</a>
+						<a href="javascript:void(0);" class="dl">登陆</a>
+					</li>
+					<li class="fore2">
+						<a href="javascript:void(0);">我的老区</a>
+					</li>
+					<li class="fore3">
+						<a href="javascript:void(0);">客户服务</a>
+					</li>
+					<li class="fore4">
+						<a href="javascript:void(0);">微信关注</a>
+					</li>
+					<li class="fore5">
+						<a href="javascript:void(0);">网站导航<span></span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--logo-->
+		<div class="header_in">
+			<div class="top clearfix">
+			    <div class="top_lf">
+				    <div class="logo"><img src="{$HSPATH}logo.png"></div>
+				    <div class="top_seat">江西 · 鄱阳县馆<span></span></div>
+				</div>
+                <div class="top_inn">
+				    <input type="text" placeholder="请输入你想查找的产品">
+				    <a class="sear" href="javascript:;">搜特色</a>
+			    </div>
+			    <ul class="top_ri">
+			    	<li><span>共建</span>
+			    	    <div class="gj" id="gj">
+			    	    	<i></i>
+			    	    	<span>江西开川实业有限公司</span>
+			    	    </div>
+			    	</li>
+			    	<li><span>扶持</span></li>
+			    	<li><span>特色</span></li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+	<!--正文-->
+	<div class="index">
+	    <div class="index_nav">
+			<div class="nav_in">
+				<ul class="nav">
+					<li><a href="{$COM[linkurl]}">首页</a></li>
+					<li><a href="#">全部分类</a></li>
+					<li><a href="#">特色产品</a></li>
+					<li><a href="#">手工艺品</a></li>
+					<li><a href="#">特色旅游</a></li>
+				</ul>
+				<div class="jrtsg">加入特色馆</div>
+			</div>
+		</div>
+		<!--banner-->
+		<div class="index_ban">
+			<div class="particular">
+				<div class="tit"><img src="{$HSPATH}panyanx.png"></div>
+				<p>鄱阳有“中国湖城”之称，是国家商品粮、棉、油、猪、鱼基地县。</p>
+				<p>鄱阳县“水上丝绸之路”的起点、景德镇瓷器、浮梁茶叶、德兴铜镜。渔俗文化、商贾文化、鄱阳渔鼓厚重的历史积淀孕育出丰富的人文资源。</p>
+			</div>
+		</div>

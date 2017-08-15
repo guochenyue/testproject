@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>{$head_title}</title>
+
+    {if $action == 'order'}
+	<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/entire.css">
+	{elseif $action == 'update' && $step=='pay'}
+	<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/shopping.css">
+	{elseif $action == 'update' && $step=='comment'}
+	<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/criticism.css">
+	{elseif $action == 'update' && $step=='detail'}
+	<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/order_detail.css">
+	{/if}
+
+    <script src="{DT_STATIC}skin/mobile/js/swipe.js"></script>
+    <script src="{DT_STATIC}skin/mobile/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+    <script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+    <script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+    <script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+    <script src="{DT_STATIC}skin/mobile/js/criticism.js"></script>    
+</head>
+<body>
+<div class="header">
+    <div class="titl">     
+        <a href="javascript:void(0)" onclick="window.history.back()"><img src="{DT_STATIC}skin/mobile/images/fanhui.png"></a>
+		<h2>{$head_title}</h2>
+
+		{if $action == 'order'}
+        <div class="navigation" id="box_title">
+        	<span><img src="{DT_STATIC}skin/mobile/images/classify.png"></span>
+    	</div>
+    	{/if} 
+    </div>
+    {if $action == 'order'}
+    <div class="nav clearfix" id="box_content">
+        <ul class="clearfix">
+            <li class="on"><a href="/mobile/index.php"><span><img src="{DT_STATIC}skin/mobile/images/nav.png"></span><em>首页</em></a></li>
+            <li class="footer_fl"><a href="/mobile/search.php?action=cate"><span><img src="{DT_STATIC}skin/mobile/images/nav.png"></span><em>分类</em></a></li>
+            <li class="tsg"><a href="/mobile/area.php"><span><img src="{DT_STATIC}skin/mobile/images/nav.png"></span><em>特色馆</em></a></li>
+            <li class="gwc"><a href="/mobile/cart.php"><span><img src="{DT_STATIC}skin/mobile/images/nav.png"></span><em>购物车</em></a></li>
+            <li class="wd"><a href="/mobile/my.php"><span><img src="{DT_STATIC}skin/mobile/images/nav.png"></span><em>我的</em></a></li>
+        </ul>
+    </div>
+    {/if}
+    {if $action == 'order'}
+    <div class="tit">
+        <ul class="clearfix">
+            <li {if $nav != 1 && $nav != 2 && $nav != 3 && $nav != 4}class="on"{/if}>
+            	<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?mobile=1&action={$action}">全部订单</a>
+            </li>
+            <li {if $nav == 1} class="on" {/if}><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?mobile=1&action={$action}&nav=1">待支付</a></li>
+            <li {if $nav == 3} class="on" {/if}><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?mobile=1&action={$action}&nav=3">待收货</a></li>
+            <li {if $nav == 4} class="on" {/if}><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?mobile=1&action={$action}&nav=4">待评价</a></li>
+        </ul>
+    </div>
+    {/if}
+</div>
+
+<!--右边-->
+<!--[我收到的退款，我是卖家]-->
+{if $action == 'index' && $nav == '5'}
+	<div class="cggl_index_ri evaluate_index">
+			<div class="cggl_index_one">
+				<h2>我收到的退款申请</h2>
+			</div>
+			<div class="cggl_index_two auditing">         
+				<div class="form">
+                    <ul>
+                    	<li>
+                    	    <span>订单编号</span><input type="test" name="">
+                    	</li>
+                    	<li class="identifier">
+                    		<span>退单编号</span><input type="test" name="">
+                    	</li>
+                    	<li class="state">
+                    		<span>退款状态</span>
+                    		<select size="1" name="xz">
+                    		    <option selected value="xz">全部</option>
+                    		    <option value="tj">退款成功</option>
+                    		    <option value="hb">退款关闭</option>
+                    		    <option value="tj">退款中</option>
+                    		</select>
+                    	</li>                    	
+                    </ul>
+                    <ul class="resetting_in">
+                    	<li class="resetting_one">
+                    	    <a href="javascript:;">搜索</a>
+                    	</li>
+                    	<li class="resetting_two">
+                    	    <a href="javascript:;">重置</a>
+                    	</li>
+                    </ul>
+				</div>
+				<div class="interfix_in refund_in">
+					<ul class="interfix refund">
+						<li class="refund1">商品信息</li>
+						<li class="refund1">订单编号</li>
+						<li>买家</li>
+						<li>交易金额</li>
+						<li>退款金额</li>
+						<li class="refund2">下单时间</li>
+						<li>状态</li>
+						<li>操作</li>
+					</ul> 
+					<!--无订单信息-->
+					{if !$lists}	                                     
+					<div class="interfix_no refund_no">
+						没有符合的退款订单
+					</div>
+					{else}
+					<!--有订单信息-->
+					<div class="interfix_on refund_on">
+					{loop $lists $k $v}
+						<ul class="interfix refund">
+						    <li class="refund1">{$v[title]}</li>
+						    <li class="refund1">{$v[itemid]}</li>
+						    <li>{$v[buyer]}</li>
+						    <li>￥{$v[money]}</li>
+						    <li>￥{$v[money]}</li>
+						    <li class="refund2">{$v[addtime]}</li>
+						    <li>{$v[dstatus]}</li>
+						    <li class="cz_interfix evaluate2">
+						    {if $v[status] == 0}
+							<a href="?itemid={$v[itemid]}&action=update&step=edit_price&confirm=1">确认</a>
+							{elseif $v[status] == 2}
+							<a href="?itemid={$v[itemid]}&action=update&step=send_goods">发货</a>
+							{elseif $v[status] == 4}
+								{if $v[mid] == 16 && !$v[buyer_star]}
+								<a href="?itemid={$v[itemid]}&action=update&step=comment">评价</a>
+								{/if}
+							{elseif $v[status] == 5}
+								<a href="?itemid={$v[itemid]}&action=update&step=refund_agree">退款</a>
+							{elseif $v[status] == 10}
+								{if $v[send_time]}
+								<a href="?itemid={$v[itemid]}&action=update&step=cod_success" onclick="return confirm('您确定已经收到货款，交易完成吗？此操作将不可撤销');">完成</a>
+								{else}
+								<a href="?itemid={$v[itemid]}&action=update&step=send_goods">发货</a>
+								{/if}
+							{/if}
+						</li>
+					    </ul> 
+					    {/loop}
+					    {/if}
+					    <!-- <ul class="interfix refund">
+						    <li class="refund1">159872654325987</li>
+						    <li class="refund1">159872654325987</li>
+						    <li>大商股份</li>
+						    <li>￥999</li>
+						    <li>￥999</li>
+						    <li class="refund2">2017-4-9—2017-5-1</li>
+						    <li>退款中</li>
+						    <li class="cz_interfix evaluate2"><a href="#">查看</a></li>
+					    </ul> -->
+					</div>
+				</div>
+			</div>
+	</div>
+<!--[我发起的退款，我是买家]-->
+{elseif $action == 'order' && $nav == '5'}
+	<div class="cggl_index_ri evaluate_index">
+			<div class="cggl_index_one">
+				<h2>我发起的退款申请</h2>
+			</div>
+			<div class="cggl_index_two auditing">         
+				<div class="form">
+                    <ul>
+                    	<li>
+                    	    <span>订单编号</span><input type="test" name="">
+                    	</li>
+                    	<li class="identifier">
+                    		<span>退单编号</span><input type="test" name="">
+                    	</li>
+                    	<li class="state">
+                    		<span>退款状态</span>
+                    		<select size="1" name="xz">
+                    		    <option selected value="xz">全部</option>
+                    		    <option value="tj">退款成功</option>
+                    		    <option value="hb">退款关闭</option>
+                    		    <option value="tj">退款中</option>
+                    		</select>
+                    	</li>                    	
+                    </ul>
+                    <ul class="resetting_in">
+                    	<li class="resetting_one">
+                    	    <a href="javascript:;">搜索</a>
+                    	</li>
+                    	<li class="resetting_two">
+                    	    <a href="javascript:;">重置</a>
+                    	</li>
+                    </ul>
+				</div>
+				<div class="interfix_in refund_in">
+					<ul class="interfix refund">
+						<li class="refund1">商品信息</li>
+						<li class="refund1">订单编号</li>
+						<li>卖家</li>
+						<li>交易金额</li>
+						<li>退款金额</li>
+						<li class="refund2">起始时-结束时</li>
+						<li>状态</li>
+						<li>操作</li>
+					</ul> 
+				{if !$lists}
+					<!--无订单信息-->	                                
+					<div class="interfix_no refund_no">
+						没有符合的退款订单
+					</div>
+					<!--有订单信息-->
+					<div class="interfix_on refund_on">
+					{else}
+						{loop $lists $k $v}
+							<ul class="interfix refund">
+							    <li class="refund1">{$v[title]}</li>
+							    <li class="refund1">{$v[itemid]}</li>
+							    <li>{$v[seller]}</li>
+							    <li>￥{$v[money]}</li>
+							    <li>￥{$v[money]}</li>
+							    <li class="refund2">{$v[addtime]}</li>
+							    <li>{$v[dstatus]}</li>
+							    <li class="cz_interfix evaluate2">
+							 {if $v[status] == 1}
+								{if $DT[trade]}
+									<div style="margin-top:10px;"><a href="?itemid={$v[itemid]}&action=update&step=pay" target="_blank"><img src="{DT_PATH}api/trade/{$DT[trade]}/pay.gif" align="absmiddle" title="{$DT[trade_nm]}付款"/></a></div>
+								{else}
+									<a href="?itemid={$v[itemid]}&action=update&step=pay">付款</a>
+								{/if}
+							{elseif $v[status] == 3}
+								<a href="?itemid={$v[itemid]}&action=update&step=receive_goods" onclick="return confirm('确认已收到货且质量与数量无误吗？\n\n请注意:确认后您的钱将直接支付给卖家');">收货</a>
+							{elseif $v[status] == 4}
+								{if $v[mid] == 16 && !$v[seller_star]}
+									<a href="?itemid={$v[itemid]}&action=update&step=comment">评价</a>
+								{/if}
+						{/if}
+						</li>
+						    </ul> 
+					    {/loop}
+				 {/if}
+					</div>
+				</div>
+			</div>
+	</div>
+<!--[供应订单，我是卖家]-->
+{elseif $action == 'index'}
+	{if $step == 'comment_detail'}
+		<div class="cggl_index_ri evaluate_index">
+			<div class="cggl_index_one">
+				<h2>收到的评价</h2>
+			</div>
+			<div class="cggl_index_two auditing">
+				<div class="interfix_in evaluate_in">
+					<ul class="interfix evaluate">
+						<li class="evaluate1">
+                             <select size="1" name="xz"><option selected value="xz">好评</option><option value="tj">中评</option><option value="hb">差评</option><option value="tj">全部</option></select> 
+						</li>
+						<li>评价内容</li>
+						<li>产品信息</li>
+						<li class="evaluate2">买家</li>
+						<li class="evaluate2">操作</li>
+					</ul>                                                                                   
+					<!--无收到报价信息-->
+					{if !$lists}	                                     
+					<div class="interfix_no evaluate_no">
+						没有符合的评价
+					</div>
+					<!--有收到报价信息-->
+					{else}
+					<div class="interfix_on evaluate_on">
+					{loop $lists $k $v}
+						<ul class="interfix evaluate">
+						    <li class="evaluate1">好评</li>
+						    <li>安徽的分工股份哈发布</li>
+						    <li>700克玫瑰八宝茶</li>
+						    <li class="evaluate2">大师傅的说法</li>
+						    <li class="cz_interfix evaluate2"><a href="#">查看</a>/<span><a href="#">删除</a></span></li>
+					    </ul>
+					   {/loop}
+					</div>
+					{/if}
+				</div>                                                                                                                              
+			</div>
+		</div>
+	{else}
+	{if $MG[trade_sell]}
+		<div class="cggl_index_ri auditing_index">
+				<div class="cggl_index_one">
+					<h2>产品订单</h2>
+				</div>
+				<div class="cggl_index_two auditing">
+					<ul class="classify order">
+						<li {if $nav == -1} class="on" {/if}><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?action={$action}">所有订单</a><span><img src="{DT_STATIC}{$MODULE[2][moduledir]}/images/jiange.jpg"></span></li>
+						<li {if $nav == 1} class="on" {/if}><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?action={$action}&nav=1">待买家付款</a><span><img src="{DT_STATIC}{$MODULE[2][moduledir]}/images/jiange.jpg"></span></li>
+						<li {if $nav == 2} class="on" {/if}><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?action={$action}&nav=2">待发货</a><span><img src="{DT_STATIC}{$MODULE[2][moduledir]}/images/jiange.jpg"></span></li>
+						<li {if $nav == 3} class="on" {/if}><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?action={$action}&nav=3">已发货</a><span><img src="{DT_STATIC}{$MODULE[2][moduledir]}/images/jiange.jpg"></span></li>
+						<li><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?action={$action}&nav=5">退款中</a><span><img src="{DT_STATIC}{$MODULE[2][moduledir]}/images/jiange.jpg"></span></li>
+						<li {if $nav == 4} class="on" {/if}><a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?action={$action}&nav=4">待评价</a><span><img src="{DT_STATIC}{$MODULE[2][moduledir]}/images/jiange.jpg"></span></li>
+						<li><a href="#">成功的订单</a><span><img src="{DT_STATIC}{$MODULE[2][moduledir]}/images/jiange.jpg"></span></li>								
+						<li><a href="#">关闭的订单</a></li>
+					</ul> 
+					<div class="enterprise">
+					    <!--全部-->
+						<div class="make" style="display: block;">
+							<form action="?">
+								<input type="hidden" name="action" value="{$action}"/>
+						    <div class="form">
+	                            <ul>
+			                    	<li>
+	        		            	    <span>商品名称</span><input type="test" name="kw" value="{$kw}">
+			                    	</li>
+	        		            	<li class="time">
+	                		    		<span>下单时间</span>{dcalendar('fromtime', $fromtime)}<span>至</span>{dcalendar('totime', $totime)}
+			                    	</li>
+	        		            </ul>
+	                		    <ul>
+	                    			<li>
+			                    	    <span>订单编号</span><input type="test" name="itemid" value="{$itemid}">
+			                    	</li>
+	        		            	<li class="source">
+	                		    		<span>订单来源</span>
+	                    				<select size="1" name="xz">
+	                    		    		<option selected value="xz">全部</option>
+			                    		    <option value="tj">PC</option>
+	        		            		    <option value="hb">安卓</option>
+	                		    		    <option value="tj">苹果</option>
+	                    				    <option value="hb">H5</option>
+			                    		</select> 
+	        		            	</li>
+	                		    	<li class="source">
+	                    				<span>支付方式</span>
+			                    		<select size="1" name="xz">
+	        		            		    <option selected value="xz">全部</option>
+			                    		    <option value="tj">微信</option>
+	        		            		    <option value="hb">支付宝</option>
+	                		    		    <option value="tj">银联</option>
+	                    				</select> 
+			                    	</li>
+	        		            </ul>
+	                		    <ul class="resetting_in">
+	                    			<li class="resetting_one">
+			                    	   <input type="submit" value=" 搜 索 " />
+
+	        		            	</li>
+	                		    	<li class="resetting_two">
+	                    			    <input type="button" value=" 重 置 " class="btn" onclick="Go('?action={$action}');"/>
+			                    	</li>
+	        		            </ul>
+							</div>
+							</form>
+							<div class="interfix_in">
+								<ul class="interfix goods">
+									<li>商品</li>
+									<li>单价（元）</li>
+									<li>数量</li>
+									<li>实付款（元）</li>
+									<li>
+	                        		    {$status_select}
+									</li>
+									<li>交易操作</li>
+								</ul>
+								{if !$lists}
+								<!--无订单信息-->                   
+								<div class="interfix_no order_no">
+									没有符合条件的订单信息
+								</div>
+								<!--有订单信息-->
+								{else}
+								<div class="interfix_on order_on">
+								{loop $lists $k $v}
+									<ul class="interfix goods">
+									    <li>{$v[title]}</li>
+									    <li>￥{$v[price]}</li>
+									    <li>{$v[number]}</li>
+									    <li>￥{$v[money]}</li>
+									    <li>{$v[dstatus]}</li>
+									    <li class="deal">
+									    	{if $v[status] == 0}
+												<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?itemid={$v[itemid]}&action=update&step=edit_price&confirm=1">确认</a>
+											{elseif $v[status] == 2}
+												<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?itemid={$v[itemid]}&action=update&step=send_goods">发货</a>
+											{elseif $v[status] == 4}
+												{if $v[mid] == 16 && !$v[buyer_star]}
+													<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?itemid={$v[itemid]}&action=update&step=comment">评价</a>
+												{/if}
+											{elseif $v[status] == 5}
+												<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?itemid={$v[itemid]}&action=update&step=refund_agree">退款</a>
+											{elseif $v[status] == 10}
+												{if $v[send_time]}
+													<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?itemid={$v[itemid]}&action=update&step=cod_success" onclick="return confirm('您确定已经收到货款，交易完成吗？此操作将不可撤销');">完成</a>
+												{else}
+													<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?itemid={$v[itemid]}&action=update&step=send_goods">发货</a>
+												{/if}
+											{/if}
+										</li>
+								    </ul>
+								    {/loop}
+								{/if}  
+							</div>	    
+						</div>
+					</div>
+				</div>
+		</div>
+
+		</div>
+	{/if}
+{/if}
+<!--[采购订单，我是买家]-->
+{elseif $action == 'order'}
+	<!--[采购订单，发出的评价]-->
+	{if $step == 'comment_detail'}
+		<div class="cggl_index_ri evaluate_index">
+			<div class="cggl_index_one">
+				<h2>发出的评价</h2>
+			</div>
+			<div class="cggl_index_two auditing">
+				<div class="interfix_in evaluate_in">
+					<ul class="interfix evaluate">
+						<li class="evaluate1">
+                             <select size="1" name="xz"><option selected value="xz">好评</option><option value="tj">中评</option><option value="hb">差评</option><option value="tj">全部</option></select> 
+						</li>
+						<li>评价内容</li>
+						<li>产品信息</li>
+						<li class="evaluate2">卖家</li>
+						<li class="evaluate2">操作</li>
+					</ul>                                                                                   
+					<!--无发出评价信息-->	                                     
+				{if !$lists}	                                     
+					<div class="interfix_no evaluate_no">
+						没有符合的评价
+					</div>
+					<!--有发出评价价信息-->
+					{else}
+					<div class="interfix_on evaluate_on">
+					{loop $lists $k $v}
+						<ul class="interfix evaluate">
+						    <li class="evaluate1">好评</li>
+						    <li>安徽的分工股份哈发布</li>
+						    <li>700克玫瑰八宝茶</li>
+						    <li class="evaluate2">大师傅的说法</li>
+						    <li class="cz_interfix evaluate2"><a href="#">查看</a>/<span><a href="#">删除</a></span></li>
+					    </ul>
+					   {/loop}
+					</div>
+					{/if}
+				</div>                                                                                                                              
+			</div>
+		</div>
+	{else}
+	<div class="index">
+	<!-- <form action="?">
+		<input type="hidden" name="action" value="{$action}"/>
+	<div class="form">
+    	<ul>
+    		<li>
+	    		<span>商品名称</span><input type="test" name="kw" value="{$kw}">
+			</li>
+			<li class="time">
+				<span>下单时间</span>{dcalendar('fromtime', $fromtime)}<span>至</span>{dcalendar('totime', $totime)}
+			</li>
+		</ul>
+		<ul>
+			<li>
+	    		<span>订单编号</span><input type="test" name="">
+			</li>
+			<li class="source">
+				<span>店铺名称</span><input type="test" name="">
+			</li>
+			<li class="source">
+				<span>订单来源</span>
+				<select size="1" name="xz">
+		    		<option selected value="xz">全部</option>
+		    		<option value="tj">PC</option>
+		    		<option value="hb">安卓</option>
+		    		<option value="tj">苹果</option>
+		    		<option value="hb">H5</option>
+				</select>
+			</li>
+		</ul>
+		<ul class="resetting_in">
+			<li class="resetting_one">
+	    		<input type="submit" value=" 搜 索 " />
+
+			</li>
+			<li class="resetting_two">
+	    		<input type="button" value=" 重 置 " class="btn" onclick="Go('?action={$action}');"/>
+			</li>
+		</ul>
+	</div>
+	</form> -->
+	    <div class="btomshow">
+	    	<div class="order">
+	            {if !$lists}
+	            <div class="no_list">
+	                <i><img src="{DT_STATIC}skin/mobile/images/xiangguan.png"></i>
+	                <p>没有相关订单</p>
+	            </div>   
+				{else}
+				<ul class="order_list clearfix" style="display: block;">
+				{php $lists = get_mall_order($lists);}
+					{loop $lists $k $v}
+	                <li class="clearfix"> 
+	                    <div class="module">
+	                        <div class="ico">
+	                            <span><img src="{DT_STATIC}skin/mobile/images/guan.png"></span>
+	                        </div>
+	                        <a href="/mobile/area.php?areaid={$v[areaid]}"><div class="contact">{$v[area]}特色馆</div></a>
+	                        <a href="trade.php?mobile=1&action=update&step=detail&itemid={$v[itemid]}">
+	                        <div class="await">{$v[dstatus]}</div>
+	                        </a>
+	                    </div>
+	                    <div class="item_list clearfix">
+	                        <div class="item_img"><span><img src="{$v[thumb]}"></span></div>
+	                        <div class="name_lf">{$v[title]}</div>
+	                    </div>    
+	                    <div class="upshot clearfix">
+	                        <h2>实付款：￥{$v[money]}</h2>
+	                        <span>
+	                        {if $v[status] == 1}
+	                        <!-- 未付款 -->
+								{if $DT[trade]}
+								<a href="{DT_STATIC}{$MODULE[2][moduledir]}trade.php?mobile=1&itemid={$v[itemid]}&action=update&step=pay" target="_blank"><img src="{DT_PATH}api/trade/{$DT[trade]}/pay.gif" align="absmiddle" title="{$DT[trade_nm]}付款"/></a>
+								{else}
+								<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?mobile=1&itemid={$v[itemid]}&action=update&step=pay">付款</a>
+								{/if}
+							{elseif $v[status] == 3}
+							<!-- 未收货 -->
+								<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?mobile=1&itemid={$v[itemid]}&action=update&step=receive_goods" onclick="return confirm('确认已收到货且质量与数量无误吗？\n\n请注意:确认后您的钱将直接支付给卖家');">收货</a>
+							{elseif $v[status] == 4}
+							<!-- 未评价 -->
+								{if $v[mid] == 16 && !$v[seller_star]}
+								<a href="{DT_STATIC}{$MODULE[2][moduledir]}/trade.php?mobile=1&itemid={$v[itemid]}&action=update&step=comment">评价</a>
+								{/if}
+							{/if}
+	                        </span>
+	                    </div>
+	                </li> 
+					{/loop}
+				{/if}
+	            </ul> 
+	    	</div>
+	    </div>
+	</div>
+
+
+				
+						<!-- <div class="interfix_in">
+							<ul class="interfix goods">
+								<li>商品</li>
+								<li>单价（元）</li>
+								<li>数量</li>
+								<li>实付款（元）</li>
+								<li>
+                            		{$status_select}
+								</li>
+								<li>交易操作</li>
+							</ul>
+							{if !$lists}
+							<!--无订单信息-->                    
+							<!-- <div class="interfix_no order_no">
+								没有符合条件的订单信息
+							</div> -->
+							<!-- {else} -->
+							<!--有订单信息-->
+							<!-- <div class="interfix_on order_on">
+								{loop $lists $k $v}
+									<ul class="interfix goods">
+							    		<li>{$v[title]}</li>
+							    		<li>￥{$v[price]}</li>
+							    		<li>{$v[number]}</li>
+							    		<li>￥{$v[money]}</li>
+							    		<li>{$v[dstatus]}</li>
+							    		<li class="deal">
+							    			{if $v[status] == 1}
+												{if $DT[trade]}
+												<a href="{DT_STATIC}{$MODULE[2][moduledir]}trade.php?itemid={$v[itemid]}&action=update&step=pay" target="_blank"><img src="{DT_PATH}api/trade/{$DT[trade]}/pay.gif" align="absmiddle" title="{$DT[trade_nm]}付款"/></a>
+												{else}
+												<a href="{DT_STATIC}{$MODULE[2][moduledir]}trade.php?itemid={$v[itemid]}&action=update&step=pay">付款</a>
+												{/if}
+											{elseif $v[status] == 3}
+												<a href="{DT_STATIC}{$MODULE[2][moduledir]}trade.php?itemid={$v[itemid]}&action=update&step=receive_goods" onclick="return confirm('确认已收到货且质量与数量无误吗？\n\n请注意:确认后您的钱将直接支付给卖家');">收货</a>
+											{elseif $v[status] == 4}
+												{if $v[mid] == 16 && !$v[seller_star]}
+												<a href="{DT_STATIC}{$MODULE[2][moduledir]}trade.php?itemid={$v[itemid]}&action=update&step=comment">评价</a>
+												{/if}
+											{/if}
+							    		</li>
+						    		</ul>
+						    	{/loop}
+						    {/if} -->
+	{/if}
+{elseif $action == 'update' && $step == 'pay'}
+
+<div class="index out_in">
+<form method="post" action="?" onsubmit="return check();" id="dform">
+	<input type="hidden" name="action" value="{$action}"/>
+	<input type="hidden" name="step" value="{$step}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+    <div class="confirm">
+        <div class="numeration">
+	    	<p class="numer">商品-订单编号{$td[itemid]}{if $DT[trade]}&nbsp;&nbsp;&nbsp;&nbsp;({$DT[trade_nm]}订单单号:{$td[trade_no]}){/if}</p>
+    		<p class="price">{$DT[money_sign]}{number_format($money, 2, '.', '')}</p>
+	    </div>
+    	<div class="paying">
+    		<div class="paying_lf">收款方</div>
+	    	<div class="paying_ri">{$td[seller]}</div>
+	    	<input type="hidden" id="password">
+    	</div>
+    </div>
+    <div class="add clearfix">
+    	<a href="javascript:void(0)" id="paya">立即支付</a>
+    </div>
+</form>
+</div>
+<script type="text/javascript">
+    $('#paya').one("click",function(){
+		var str = '<div class="defray"><div class="defray_in clearfix"><div class="defray_1"><span><img src="{DT_STATIC}skin/mobile/images/weixin.png"></span></div><div class="defray_2"><div class="defray_one">微信支付</div><div class="defray_two">仅安装微信6.0.2及以上版本客户端使用</div></div><div class="defray_3"><span><img src="{DT_STATIC}skin/mobile/images/zf.png"></span></div></div><div class="defray_in clearfix"><div class="defray_4"><span><img src="{DT_STATIC}skin/mobile/images/zhifubao.png"></span></div><div class="defray_2"><div class="defray_one">支付宝支付</div><div class="defray_two">安全信息确认登录</div></div><div class="defray_3"><span><img src="{DT_STATIC}skin/mobile/images/zf.png"></span></div></div></div>';
+		$('.index').append(str);
+    });
+	var total = {$money};
+	function check() {
+		if(total > {$_money}) {
+			Go('charge.php?action=pay&reason=trade|{$itemid}&amount='+(total-{$_money}));
+			return false;
+		}
+		if(Dd('password').value.length < 6) {
+			alert('请填写支付密码', 'password');
+			return false;
+		}
+		return confirm('您确认此订单，并立即支付吗？');
+	}
+	// window.setInterval(
+	// 	function() {
+	// 		total > {$_money} ? Dh('payword') : Ds('payword');
+	// 	}, 
+	// 500);
+</script>
+
+{elseif $action == 'update' && $step=='comment'}
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/js/criticism.js">
+<!-- 评论 -->
+<div class="index">
+	<!-- 商品 -->
+	<div class="goods">
+		<div class="goods_a clearfix">
+			<div class="goods_img"><img src="{$td[thumb]}"></div>
+			<div class="goods_writ">
+				<div class="writ_lf">
+					<h2>{$td[title]}</h2>
+					<p>x{$td[number]}</p>
+				</div>
+				<span>￥{$td[amount]}</span>
+			</div>
+		</div>
+	</div>	
+	<!-- 描述 -->
+	<form method="post" action="trade.php">
+	<input type="hidden" value="update" name="action">
+	<input type="hidden" value="comment" name="step">
+	<input type="hidden" value="{$td[itemid]}" name="itemid">
+	<input type="hidden" value="{$td[mallid]}" name="mallid">
+	<input type="hidden" value="{$td[buyer]}" name="buyer">
+	<input type="hidden" value="{$td[seller]}" name="seller">
+	<div class="describe clearfix" id="describe4">
+		<h2>描述相符</h2>
+		<ul class="comment_img">
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ul>
+		<input type="hidden" value="0" name="star" id="star">
+	</div>
+	<!-- 评价 -->
+	<div class="assess">
+		<textarea name="content" maxlength="500" cols="30"  rows="4" placeholder="亲，您的评价对其他买家有很大帮助"></textarea>
+		<span>还可以输入500个字</span>
+	</div>
+	<!-- 图片 -->
+	<ul class="print clearfix">
+		<li class="false"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<div class="describe clearfix" id="describe">
+		<h2>物流服务</h2>
+		<ul class="comment_img">
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ul>
+	</div>
+	<div class="describe clearfix" id="describe2">
+		<h2>发货速度</h2>
+		<ul class="comment_img">
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ul>
+	</div>
+	<div class="describe clearfix" id="describe3">
+		<h2>服务态度</h2>
+		<ul class="comment_img">
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ul>
+	</div>
+	<div class="print_n clearfix">
+		<h2>匿名评论</h2>
+		<span class=""></span>
+	</div>
+	<div class="referring">
+		<input type="submit" name="submit" value="提交">
+	</div>
+	</form>
+</div>
+
+{elseif $action == 'update' && $step=='detail'}
+
+	{if $td[status] != 4}
+	<div class="index">
+		<!--正在发货-->
+		<div class="proceed_in clearfix">
+			<div class="proceed clearfix">
+				<h2>订单号: {$td['itemid']}</h2>
+				<span>
+					{if $td[status] == 1}
+					未付款
+					{elseif $td[status] == 2}
+					未发货
+					{elseif $td[status] == 3}
+					已发货
+					{elseif $td[status] == 5}
+					申请退款
+					{/if}
+				</span>
+			</div>
+			<div class="proceedin clearfix">
+				<div class="proceedin_fl"><a href="#">
+					<h2>您的订单预计{date('m月d日',(time()+7200))}送达您手中</h2>
+					<p>{date('Y-m-d H:i:s',time())}</p>
+				</a></div>
+				<div class="proceedin_ri"><a href="trade.php?mobile=1&action=update&step=express">
+					<img src="{DT_STATIC}skin/mobile/images/xiala.png">
+				</a></div>
+			</div>
+		</div>
+		<!--收货地址-->
+		<div class="recei clearfix">
+			<div class="recei_bg"></div>
+			<div class="recei_in clearfix">
+				<div class="name clearfix">
+					<span>收货人：{$td[buyer_name]}</span>
+					<em>{$td[buyer_mobile]}</em>
+				</div>
+				<div class="nameid clearfix">
+					收货地址：{$td[buyer_address]}
+				</div>
+			</div>
+			<div class="recei_bg"></div>
+		</div>
+		<!--商品-->
+		<div class="goods">
+		{php $changguan = get_changguan($td[seller])}
+			<div class="guanname">{$changguan[changguan]}</div>
+			<div class="goods_a clearfix"><a href="{DT_PATH}mobile/index.php?moduleid=16&itemid={$td[mallid]}">
+				<div class="goods_img"><img src="{$td[thumb]}"></div>
+				<div class="goods_writ">
+					<div class="writ_lf">
+						<h2>{$td[title]}</h2>
+						<p>x{$td[number]}</p>
+					</div>
+					<span>￥{$td[price]}</span>
+				</div>
+			</a></div>
+		</div>
+		<!--信息-->
+		<div class="message clearfix">
+			<div class="pay clearfix">
+				<span>支付方式</span>
+				<h2>微信支付</h2>
+			</div>
+			<div class="distri clearfix">
+				<h2>配送信息</h2>
+				<div class="join"><span>配送日期：</span><em>{date('Y-m-d H:i:s',$td[send_time])}</em></div>
+			</div>
+		</div>
+		<!--消费-->
+		<div class="expense clearfix">
+			<div class="expense_in clearfix">
+				<div class="expense_a clearfix"><span>商品总额</span><em>￥{$td[amount]}</em></div>
+				<div class="expense_a clearfix"><span>+运费</span><em>￥{$td[fee]}</em></div>
+			</div>
+			<div class="payment clearfix">
+				<div class="payment_a clearfix"><em>￥{$td[total]}</em><span>实付款：</span></div>
+				<div class="payment_time clearfix">下单时间：{$td[adddate]}</div>
+			</div>
+		</div>
+	</div>	
+	<!--取消订单-->
+	<div class="cancel">
+		<a href="#">取消订单</a>
+	</div>
+	{else}
+	<div class="index">
+	<!--正在发货-->
+	<div class="proceed_in clearfix">
+		<div class="proceed clearfix">
+			<h2>订单号: {$td[itemid]}</h2>
+			<span>交易成功</span>
+		</div>
+		<div class="proceedin clearfix">
+			<div class="proceedin_fl"><a href="#">
+				<h2>快件已签收，签收人签收</h2>
+				<p>{$td[updatedate]}</p>
+			</a></div>
+			<div class="proceedin_ri"><a href="#">
+				<img src="{DT_STATIC}skin/mobile/images/xiala.png">
+			</a></div>
+		</div>
+	</div>
+	<!--收货地址-->
+	<div class="recei clearfix">
+		<div class="recei_bg"></div>
+		<div class="recei_in clearfix">
+			<div class="name clearfix">
+				<span>收货人：{$td[buyer_name]}</span>
+				<em>{$td[buyer_mobile]}</em>
+			</div>
+			<div class="nameid clearfix">
+				收货地址：{$td[buyer_address]}
+			</div>
+		</div>
+		<div class="recei_bg"></div>
+	</div>
+	<!--商品-->
+	<div class="goods">
+	{php $changguan = get_changguan($td[seller])}
+		<div class="guanname">{$changguan[changguan]}</div>
+		<div class="goods_a clearfix"><a href="{DT_PATH}mobile/index.php?moduleid=16&itemid={$td[mallid]}">
+			<div class="goods_img"><img src="{$td[thumb]}"></div>
+			<div class="goods_writ">
+				<div class="writ_lf">
+					<h2>{$td[title]}</h2>
+					<p>x{$td[number]}</p>
+				</div>
+				<span>￥{$td[price]}</span>
+			</div>
+		</a></div>
+	</div>
+	<!--信息-->
+	<div class="message clearfix">
+		<div class="pay clearfix">
+			<span>支付方式</span>
+			<h2>微信支付</h2>
+		</div>
+		<div class="distri clearfix">
+			<h2>配送信息</h2>
+			<div class="join"><span>配送日期：</span><em>{date('Y-m-d H:i:s',$td[send_time])}</em></div>
+		</div>
+	</div>
+	<!--消费-->
+	<div class="expense clearfix">
+		<div class="expense_in clearfix">
+			<div class="expense_a clearfix"><span>商品总额</span><em>￥{$td[amount]}</em></div>
+			<div class="expense_a clearfix"><span>+运费</span><em>￥{$td[fee]}</em></div>
+		</div>
+		<div class="payment clearfix">
+			<div class="payment_a clearfix"><em>￥{$td[total]}</em><span>实付款：</span></div>
+			<div class="payment_time clearfix">下单时间：{$td[adddate]}</div>
+		</div>
+	</div>
+</div>	
+	<!--取消订单-->
+	<div class="cancel">
+		<!-- <a href="#">取消订单</a> -->
+		<a href="trade.php?mobile=1&action=update&step=delete&itemid={$td[itemid]}" onclick="if(confirm('确定删除订单？')){return true;}else{return false;}">删除订单</a>
+	</div>
+	{/if}
+
+{/if}
+
+
+
+<script>
+  (function (doc, win) {
+         var docEl = doc.documentElement,
+             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+             recalc = function () {
+                 var clientWidth = docEl.clientWidth;
+                 if (!clientWidth) return;
+                 if(clientWidth>=640){
+                     docEl.style.fontSize = '100px';
+                 }else{
+                     docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                 }
+             };
+   
+         if (!doc.addEventListener) return;
+         win.addEventListener(resizeEvt, recalc, false);
+         doc.addEventListener('DOMContentLoaded', recalc, false);
+  })(document, window);
+  $(function () {
+    $("#box_title").click(function(){
+        $("#box_content").toggleClass("active");
+      });
+  })  
+</script>
+</body>
+</html>

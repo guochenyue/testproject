@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>{$head_name}</title>
+	<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/sj.css">
+    <link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/mima.css">   	
+	<script type="text/javascript" src="static/lib/jquery/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">
+	$(document).bind("mobileinit", function() {
+	　　{if $EXT[mobile_ajax]}
+		$.mobile.defaultPageTransition = 'slide';
+		{else}
+		$.mobile.ajaxEnabled = false;
+		{/if}
+	});
+	var AJPath = 'ajax.php';
+	var Dbrowser = '{$DT_MOB[browser]}';
+	{if !DT_DEBUG}
+	if(!('ontouchend' in document) && window.location.href.indexOf('device.php') == -1) window.location='device.php';
+	{/if}
+	</script>
+	<script type="text/javascript" src="static/js/common.js"></script>
+	{if $JS}
+	{loop $JS $js}
+	<script type="text/javascript" src="static/{$js}.js"></script>
+	{/loop}
+	{/if}
+	<script type="text/javascript" src="static/js/fix.js"></script>
+</head>
+<body>
+{if $action == 'success'}
+{php $head_name = '找回密码'}
+{elseif $action == 'user'}
+{php $head_name = '短信找回'}
+{else}
+{php $head_name = '修改密码'}
+{/if}
+<div class="header">
+    <div class="titl"><a href="javascript:void(0)" onclick="window.history.back();"><img src="{DT_STATIC}skin/mobile/images/fanhui.png"></a><h2>{$head_name}</h2></div>
+</div>
+{if $action == 'success'}
+<div class="index">
+<form method="post" id="form-verify">
+    <div class="cue">
+        已绑号码：{substr_replace($mobile,'****',3,4)}
+    </div>
+    <input type="hidden" name="action" value="verify"/>
+    <div class="code clearfix">
+    	<input type="tel" name="code" id="code" placeholder="请输入验证码">
+    	<button type="" class="buttonin" onclick="Dcode();return false;">获取验证码</button>
+    </div>
+<form>
+    <div class="add clearfix">
+    	<a href="javascript:Dverify()">下一步</a>
+    </div>
+    <div class="issue">
+    	<h2>手机收不到验证码怎么办？</h2>
+    	<p>1.检查垃圾短信，在设置中将发件人设置为白名单。</p>
+    	<p>2.一个手机号只能验证一个账号。</p>
+    	<p>3.一个账号一天只能发3次。</p>
+    </div>
+</div>
+<script>
+function Dverify() {
+	var val,len;
+	val = $('#code').val();
+	if(!$('#code').val().match(/^[a-z0-9]{6}$/)) {
+		alert('请填写您收到的验证码');
+		return false;
+	}
+	$.post('forgot.php', $('#form-verify').serialize(), function(data) {
+		if(data == 'ok') {
+			Go('forgot.php');
+		} else {
+			alert('验证失败');
+		}
+	});
+	return;
+}
+function Dcode(i) {
+	$.post('forgot.php', {'action':'send'}, function(data) {
+		if(data == 'ok') {
+			if(!i) alert('发送成功');
+			Dtimer();
+		} else if(data == 'max') {
+			alert('发送次数过多，请明日再试');
+			Go('index.php?reload={$DT_TIME}');
+		} else {
+			alert('发送失败，请重试');
+		}
+	});
+}
+function Dtimer() {
+	var i = {if $type=='mobile'}180{else}60{/if};
+	$('#send').hide();
+	$('#timer').html('重新发送('+i+')');
+	$('#timer').show();
+	var time_int=window.setInterval(
+		function() {
+			if(i == 1) {
+				$('#send').show();
+				$('#timer').html('');
+				$('#timer').hide();
+				clearInterval(time_int);
+			} else {
+				i--;
+				$('#timer').html('重新发送('+i+')');
+			}
+		},
+	1000);
+}
+</script>
+{elseif $action == 'user'}
+<div class="index">
+	<form method="post" id="form-{$type}">
+	<input type="hidden" name="action" value="check"/>
+	<input type="hidden" name="type" value="{$type}"/>
+    <div class="cuee">
+        <input type="tel" name="{$type}" id="{$type}" placeholder="请输入绑定的手机号码">
+    </div>
+    <div class="code code_in clearfix">
+    	<input name="captcha" id="captcha" type="text" size="6" onfocus="showcaptcha();" value="点击显示" placeholder="验证码" class="">
+    	<img src="http://192.168.100.146/skin/default/image/loading.gif" title="验证码,看不清楚?请点击刷新
+字母不区分大小写" alt="" align="absmiddle" id="captchapng" onclick="reloadcaptcha();" style="display:none;cursor:pointer;">
+    </div>
+    <div class="add clearfix">
+    	<a href="javascript:Duser()">下一步</a>
+    </div>
+	</form>
+    <div class="issue">
+    	<h2>手机收不到验证码怎么办？</h2>
+    	<p>1.检查垃圾短信，在设置中将发件人设置为白名单。</p>
+    	<p>2.一个手机号只能验证一个账号。</p>
+    	<p>3.一个账号一天只能发3次。</p>
+    </div>
+</div>
+<script type="text/javascript">
+	function showcaptcha() {
+	if(Dd('captchapng').style.display=='none') {
+		Dd('captchapng').style.display='';
+	}
+	if(Dd('captchapng').src.indexOf('loading.gif') != -1) {
+		Dd('captchapng').src='{DT_STATIC}api/captcha.png.php?action=image';
+	}
+	if(Dd('captcha').value=='点击显示') {
+		Dd('captcha').value='';
+	}
+	Dd('captcha').className = '';
+	}
+	function reloadcaptcha() {
+		Dd('captchapng').src = '{DT_STATIC}api/captcha.png.php?action=image&refresh='+Math.random();
+		Dd('ccaptcha').innerHTML = '';
+		Dd('captcha').value = '';
+	}
+	function checkcaptcha(s) {
+	s = s.trim();
+	var t = encodeURIComponent(s);
+	if(t.indexOf('%E2%80%86') != -1) s = decodeURIComponent(t.replace(/%E2%80%86/g, ''));
+	if(!is_captcha(s)) return;
+	$.post(AJPath, 'action=captcha&captcha='+s,
+	function(data) {
+	if(data == '0') {
+	Dd('ccaptcha').innerHTML = '&nbsp;&nbsp;<img src="{DT_STATIC}skin/default/image/check_right.gif" align="absmiddle"/>';
+	Dd('captcha').value = s;
+	} else {
+	Dd('captcha').focus;
+	Dd('ccaptcha').innerHTML = '&nbsp;&nbsp;<img src="{DT_STATIC}skin/default/image/check_error.gif" align="absmiddle"/>';
+	}
+	}
+	);
+	}
+	function is_captcha(v) {
+	if(v == '点击显示') return false;
+	if(v.match(/^[a-z0-9A-Z]{1,}$/)) {
+	return v.match(/^[a-z0-9A-Z]{4,}$/);
+	} else {
+	return v.length > 1;
+	}
+	}
+	$(function() {
+	$('#captcha').bind('keyup blur', function() {
+	checkcaptcha($('#captcha').val());
+	});
+	});
+</script>
+<script>
+	function Duser() {
+		val = $('#mobile').val();
+		if(!val.match(/^1[3|4|5|7|8]{1}[0-9]{9}$/)) {
+			alert('请填写正确的手机号码');
+			return false;
+		}
+		val = $('#captcha').val();
+		if(!is_captcha(val)) {
+			alert('请填写验证码');
+			return false;
+		}
+		$.post('forgot.php', $('#form-{$type}').serialize(), function(data) {
+			if(data == 'ok') {
+				Go('forgot.php?action=success');
+			} else if(data == 'no') {
+				{if $type=='mobile'}
+				alert('手机号未注册或未通过验证');
+				{else}
+				alert('邮件地址未注册');
+				{/if}
+				reloadcaptcha();
+			} else if(data == 'captcha') {
+				alert('验证码错误');
+				reloadcaptcha();
+			} else {
+				alert('验证失败，请重试');
+				reloadcaptcha();
+			}
+		});
+		return;
+	}
+</script>
+{else}
+<div class="index">
+<form method="post" id="form-verify_pass">
+	<input type="hidden" name="action" value="verify_pass"/>
+    <div class="amend">
+    	<div class="amend_1">修改密码</div>
+    	<div class="amend_2">
+    	    <input type="password" name="password" id="password" maxlength="20" placeholder="6-20位数字、字母或符号组合">
+    	</div>
+    </div>
+<form>
+    <div class="add clearfix">
+    	<a href="javascript:Dverify();">提交</a>
+    </div>
+</div>
+<script>
+function Dverify() {
+	var val,len;
+	val = $('#password').val();
+	len = val.length;
+	if(len < {$MOD[minpassword]} || len > {$MOD[maxpassword]}) {
+		alert('密码长度限制为{$MOD[minpassword]}-{$MOD[maxpassword]}');
+		return false;
+	}
+	$.post('forgot.php', $('#form-verify_pass').serialize(), function(data) {
+		if(data == 'ok') {
+			alert('密码修改成功，请登录');
+			setTimeout(function() {
+				Go('login.php?forward=my.php');
+			}, 1000);
+		} else {
+			alert('修改失败');
+		}
+	});
+	return;
+}
+</script>
+{/if}
+<script>
+	(function (doc, win) {
+	       var docEl = doc.documentElement,
+	           resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	           recalc = function () {
+	               var clientWidth = docEl.clientWidth;
+	               if (!clientWidth) return;
+	               if(clientWidth>=640){
+	                   docEl.style.fontSize = '100px';
+	               }else{
+	                   docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+	               }
+	           };
+	 
+	       if (!doc.addEventListener) return;
+	       win.addEventListener(resizeEvt, recalc, false);
+	       doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+</script>
+</body>
+</html>

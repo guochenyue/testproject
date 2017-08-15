@@ -1,0 +1,234 @@
+{template 'header', 'mobile'}
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/index.css">
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/swiper.min.css">
+<script src="{DT_STATIC}skin/mobile/js/jquery.slides.min.js"></script>
+<div class="page_load"></div>
+<div class="header">
+    <div class="header_in">
+        <div class="banner">
+            {if $ads}
+                <ul class="banner_in clearfix" id="slides">
+                {loop $ads $t}
+                <li><a href="{$t[url]}"><img src="{DT_STATIC}skin/mobile/images/banner.jpg"></a></li>
+                    <!-- <img src="{$t[image_src]}"> -->
+                {/loop}
+                </ul>
+            {/if}
+        </div> 
+
+        <div class="top clearfix">
+            <div class="entry">
+                <a href="search.php?action=cate"><img src="{DT_STATIC}skin/mobile/images/denglv.png"></a>
+            </div>
+            <div class="search">
+                <a href="search.php"><input type="text" name="" placeholder="输入货品名称"></a>
+                <a class="sear" href="#"><img src="{DT_STATIC}skin/mobile/images/shous.png"></a>
+            </div>
+            <div class="shop">
+                <a href="cart.php"><img src="{DT_STATIC}skin/mobile/images/gouwc.png"></a>
+            </div>
+        </div>
+    </div>
+    <!--分类-->     
+    <div class="classify">
+        <ul class="clearfix">
+        {php $child = get_maincat(0,16,1);}
+            {loop $child $k $v}
+            {php $k = $k+3}
+            <li><a href="?moduleid=16&catid={$v[catid]}"><img src="{DT_STATIC}skin/mobile/images/wenhua{$k}.png"><p>{$v[catname]}</p></a></li>
+            {/loop}
+            <li><a href="?moduleid=16"><img src="{DT_STATIC}skin/mobile/images/gengd.png"></a><p>全部产品</p></li> 
+        </ul>
+    </div>
+    <!--资讯-->
+    <div class="inform">
+        <div class="inform_lf">
+            <img src="{DT_STATIC}skin/mobile/images/rmzx.png">
+        </div>
+        <span></span>
+        <div id="demo">
+            <div class="demoIn clearfix">
+                <ul id="notice">  
+                    <li><a class="clearfix" href="#">
+                        <h3>1农产狂欢！多种新鲜等你来抢！</h3>
+                    </a></li>
+                    <li><a class="clearfix" href="#">
+                        <h3>2文化狂欢！多种新鲜等你来抢！</h3>
+                    </a></li>
+                    <li><a class="clearfix" href="#">
+                        <h3>3旅游狂欢！多种新鲜等你来抢！</h3>
+                    </a></li>
+                    <li><a class="clearfix" href="#">
+                        <h3>4农产狂欢！多种新鲜等你来抢！</h3>
+                    </a></li>
+                    <li><a class="clearfix" href="#">
+                        <h3>5文化狂欢！多种新鲜等你来抢！</h3>
+                    </a></li>
+                    <li><a class="clearfix" href="#">
+                        <h3>6旅游狂欢！多种新鲜等你来抢！</h3>
+                    </a></li>
+                </ul> 
+                <ul id="demo2"></ul>
+            </div>  
+        </div>
+    </div>
+    <div class="kg"></div>
+</div> 
+<div class="index">
+    <!--限时抢购-->
+    <div class="limit">
+        <div class="panic clearfix">
+                <a href="#" class="panic_as">
+                <div class="panic_in" onload="countTime()">
+                <strong><span>限时</span>抢购</strong>
+                <p class="time">
+                    <i><img src="{DT_STATIC}skin/mobile/images/xiansisj.png"></i>
+                    <span id="_h">99</span>
+                    <var><img src="{DT_STATIC}skin/mobile/images/maohao.png"></var>
+                    <span id="_m">99</span>
+                    <var><img src="{DT_STATIC}skin/mobile/images/maohao.png"></var>
+                    <span id="_s">99</span>
+                </p>
+            </div></a>
+            <a href="#" class="panic_am"><div class="panicin">
+                <span>马上来抢购</span>
+                <i><img src="{DT_STATIC}skin/mobile/images/qiangg.png"></i>
+            </div></a>
+        </div>
+        <!-- 抢购商品信息部分 -->
+        {php $goods = get_ms_goods()}
+        <div class="seckill clearfix" id="list">
+            <div class="listIn clearfix">
+                <ul class="fl" id="list1">
+                    {loop $goods $k $v}
+                    {if $k < 8}
+                    <li class="seck_1">
+                       <a href="?moduleid=16&itemid={$v[itemid]}" class="print">
+                       <img data="{str_replace('.thumb.'.file_ext($v[thumb]), '',$v[thumb])}"></a>
+                       <a href="?moduleid=16&itemid={$v[itemid]}" class="writing">
+                       <span>{dsubstr($v[title],40,'...')}</span>
+                       </a>
+                    </li>
+                    {/if}
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+    <!--展馆推荐-->
+    <div class="pavilion">
+        <div class="pavi_print">
+            <a href="#"><img src="{DT_STATIC}skin/mobile/images/tjzg.jpg"></a>
+        </div>
+        <div class="pavilion_in">
+            <ul class="clearfix" id="pavilion_inn">
+                {php $tsgoods = get_mobile_changguan()}
+                {loop $tsgoods $k $v}
+                    <li>
+                        <a href="area.php?moduleid=16&areaid={$v[areaid]}"><img data="/skin/lqts/images/tese/{$v[username]}.jpg"></a>
+                        <div class="recom">
+                            <h2>[{$v[changguan]}]</h2>
+                        </div>
+                    </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+    <!--推荐特色-->
+    {php $goods = get_mobile_goods('4,5,6')}
+    {loop $goods $k $v}
+    <div class="groom" id="groom{$k}">
+        <div class="tit">            
+        {if $k==0}
+            <h2><!-- <i><img src="{DT_STATIC}skin/mobile/images/title.png"></i> -->农副产品</h2>
+            <a href="?moduleid=16&catid=4"><span>更多<i><img src="{DT_STATIC}skin/mobile/images/dengd.png"></i></span></a>
+        {elseif $k==1}
+            <h2 class="tit_b"><!-- <i><img src="{DT_STATIC}skin/mobile/images/title.png"></i> -->文化产品</h2>
+            <a href="?moduleid=16&catid=5"><span>更多<i><img src="{DT_STATIC}skin/mobile/images/dengd.png"></i></span></a>
+        {elseif $k==2}
+            <h2 class="tit_c"><!-- <i><img src="{DT_STATIC}skin/mobile/images/title.png"></i> -->旅游产品</h2>
+            <a href="?moduleid=16&catid=6"><span>更多<i><img src="{DT_STATIC}skin/mobile/images/dengd.png"></i></span></a>
+        {/if}
+        </div>
+        <div class="groom_in clearfix">
+        {loop $v $m $n}
+            {if $m==0}
+                <div class="groom_lf">
+                    <div class="titl {if $k == 2}lvtitl{/if}">
+                        <a href="?moduleid=16&itemid={$n[itemid]}">【{$n[areaid]}馆】{dsubstr($n[title],38,'..')}</a>
+                        {if $k != 2}
+                        <p><a href="?moduleid=16&itemid={$n[itemid]}">￥{$n[price]}</a></p>
+                        {/if}
+                    </div>
+                    <div class="{if $k == 2}tour_print{else}groom_print{/if}">
+                        <a href="?moduleid=16&itemid={$n[itemid]}"><img data="{$n[thumb]}" style="{if $k == 2}width:1.97rem;height:1.97rem; border-radius: 50%;{/if}"></a>
+                    </div>
+                    {if $k == 2}
+                    <div class="help">
+                        <em>赞{if $n[comments]}$n[comments]{else}0{/if}人</em>
+                    </div>
+                    {/if}
+                </div>
+            {elseif $m==1}
+            <div class="groom_ri">
+                <div class="groom_ri1 clearfix">
+                    <div class="titl titl2">
+                        <a href="?moduleid=16&itemid={$n[itemid]}">【{$n[areaid]}馆】<p>{dsubstr($n[title],12,'..')}</p></a>
+                        {if $k != 2}
+                        <p class="groom_down"><a href="?moduleid=16&itemid={$n[itemid]}">￥{$n[price]}</a></p>
+                        {/if}
+                        {if $k == 2}
+                        <div class="help1 clearfix">
+                            <em>赞{if $n[comments]}$n[comments]{else}0{/if}人</em>
+                        </div>
+                        {/if}
+                    </div>
+                    <div class="groom_print2">
+                       <a href="?moduleid=16&itemid={$n[itemid]}"><img data="{$n[thumb]}" style="{if $k == 2} width:1.67rem;height:1.67rem;border-radius: 50%;{/if}"></a>
+                    </div>
+                </div>    
+            {elseif $m==2}
+                <div class="groom_ri2 clearfix">
+                    <div class="groom_print3">
+                       <a href="?moduleid=16&itemid={$n[itemid]}"><img data="{$n[thumb]}" style="width:1.31rem;height:1.31rem; border-radius: 50%;"></a>
+                    </div>  
+                    <div class="titl titl3">
+                        <a href="?moduleid=16&itemid={$n[itemid]}">【{$n[areaid]}馆】<p>{dsubstr($n[title],12,'..')}</p></a>
+                        {if $k != 2}
+                        <p class="groom_down"><a href="?moduleid=16&itemid={$n[itemid]}">￥{$n[price]}</a></p>
+                        {/if}
+                        {if $k == 2}
+                        <div class="help1">
+                            <em>赞{if $n[comments]}$n[comments]{else}0{/if}人</em>
+                        </div>
+                        {/if}
+                    </div>                                      
+                </div>
+            </div>
+            {/if}
+        {/loop}
+        </div>
+        </div>
+        {if $k==0}
+        <div class="pavilion">
+            <div class="pavi_print2">
+            <a href="#"><img src="{DT_STATIC}skin/mobile/images/guang1.jpg"></a>
+            </div>
+        </div>
+        {elseif $k==1}
+        <div class="pavilion">
+            <div class="pavi_print3">
+            <a href="#"><img src="{DT_STATIC}skin/mobile/images/guangg2.jpg"></a>
+            </div>
+        </div>
+        {/if}
+    {/loop}
+
+
+    <div class="kg"></div>
+    <div class="love_in">
+        <div class="love_tit"><i><img src="{DT_STATIC}skin/mobile/images/xin.png"></i>猜你喜欢</div>
+        <div class="like_in clearfix">
+        </div>
+    </div>
+</div>
+{template 'footer', 'mobile'}

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>账户安全</title>
+	<script src="{DT_STATIC}skin/mobile/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/mobile/static/js/common.js"></script>
+</head>
+<body>
+<div class="header">
+    <div class="titl"><a href="javascript:window.history.back();"><img src="{DT_STATIC}skin/mobile/images/fanhui.png"></a>
+    {if $action == 'changepwd'}
+        <h2>修改密码</h2>
+    {elseif $action == 'changemobile'}
+        <h2>修改手机</h2>
+    {else}
+        <h2>账户安全</h2>
+    {/if}
+    </div>
+</div>
+{if $action == 'changepwd'}
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/sj.css">
+<div class="index">
+    <div class="cue_in">
+        已绑定手机号验证，让用户更安全
+    </div>
+    <div class="cue">
+        已绑号码：{substr_replace($mobile,'****',3,4)}
+        <input type="hidden" id="mobile" value="{$user[mobile]}">
+    </div>
+    <div class="code clearfix">
+        <input type="text" id="code" name="code" placeholder="请输入验证码">
+        <a href="javascript:Dcode();">获取验证码</a>
+    </div>
+    <div class="add clearfix">
+        <a href="javascript:Dverify();">下一步</a>
+    </div>
+    <div class="issue">
+        <h2>手机收不到验证码怎么办？</h2>
+        <p>1.检查垃圾短信，在设置中将发件人设置为白名单。</p>
+        <p>2.一个手机号只能验证一个账号。</p>
+        <p>3.一个账号一天只能发3次。</p>
+    </div>
+</div>
+<script>
+function Dverify(){
+    var val,len;
+    val = $('#code').val();
+    if(!$('#code').val().match(/^[a-z0-9]{6}$/)) {
+        alert('请填写您收到的验证码');
+        return false;
+    }
+    $.post('{DT_PATH}mobile/forgot.php', {'action':'verify','code':val}, function(data) {
+        if(data == 'ok') {
+            Go('{DT_PATH}mobile/forgot.php');
+        } else {
+            alert('验证失败');
+        }
+    });
+    return;
+}
+function Dcode(i) {
+    var mobile = $('#mobile').val();
+    $.post('{DT_PATH}mobile/forgot.php', {'action':'send','mobile':mobile}, function(data) {
+        if(data == 'ok') {
+            if(!i) alert('发送成功');
+            Dtimer();
+        } else if(data == 'max') {
+            alert('发送次数过多，请明日再试');
+            Go('index.php?reload={$DT_TIME}');
+        } else {
+            alert('发送失败，请重试');
+        }
+    });
+}
+function Dtimer() {
+    var i = {if $type=='mobile'}180{else}60{/if};
+    $('#send').hide();
+    $('#timer').html('重新发送('+i+')');
+    $('#timer').show();
+    var time_int=window.setInterval(
+        function() {
+            if(i == 1) {
+                $('#send').show();
+                $('#timer').html('');
+                $('#timer').hide();
+                clearInterval(time_int);
+            } else {
+                i--;
+                $('#timer').html('重新发送('+i+')');
+            }
+        },
+    1000);
+}
+</script>
+{elseif $action == 'changemobile'}
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/sj.css">
+<div class="index">
+    <div class="cue_in">
+        已绑定手机号验证，让用户更安全
+    </div>
+    <div class="cue">
+        已绑号码：{substr_replace($mobile,'****',3,4)}
+        <input type="hidden" id="mobile" value="{$user[mobile]}">
+    </div>
+    <div class="code clearfix">
+        <input type="text" id="code" name="code" placeholder="请输入验证码">
+        <a href="javascript:Dcode();">获取验证码</a>
+    </div>
+    <div class="add clearfix">
+        <a href="javascript:Dverify();">下一步</a>
+    </div>
+    <div class="issue">
+        <h2>手机收不到验证码怎么办？</h2>
+        <p>1.检查垃圾短信，在设置中将发件人设置为白名单。</p>
+        <p>2.一个手机号只能验证一个账号。</p>
+        <p>3.一个账号一天只能发3次。</p>
+    </div>
+</div>
+<script>
+function Dverify(){
+    var val,len;
+    val = $('#code').val();
+    if(!$('#code').val().match(/^[a-z0-9]{6}$/)) {
+        alert('请填写您收到的验证码');
+        return false;
+    }
+    $.post('{DT_PATH}mobile/forgot.php', {'action':'verify','code':val}, function(data) {
+        if(data == 'ok') {
+            Go('?mobile=1&action=checkmobile');
+        } else {
+            alert('验证失败');
+        }
+    });
+    return;
+}
+function Dcode(i) {
+    var mobile = $('#mobile').val();
+    $.post('{DT_PATH}mobile/forgot.php', {'action':'send','mobile':mobile}, function(data) {
+        if(data == 'ok') {
+            if(!i) alert('发送成功');
+            Dtimer();
+        } else if(data == 'max') {
+            alert('发送次数过多，请明日再试');
+            Go('index.php?reload={$DT_TIME}');
+        } else {
+            alert('发送失败，请重试');
+        }
+    });
+}
+function Dtimer() {
+    var i = {if $type=='mobile'}180{else}60{/if};
+    $('#send').hide();
+    $('#timer').html('重新发送('+i+')');
+    $('#timer').show();
+    var time_int=window.setInterval(
+        function() {
+            if(i == 1) {
+                $('#send').show();
+                $('#timer').html('');
+                $('#timer').hide();
+                clearInterval(time_int);
+            } else {
+                i--;
+                $('#timer').html('重新发送('+i+')');
+            }
+        },
+    1000);
+}
+</script>
+{elseif $action == 'checkmobile'}
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/sj.css">
+<div class="index">   
+    <form method="post" action="send.php" id="dform">
+    <input type="hidden" name="action" value="{$action}"/>
+    <input type="hidden" name="step" value="1"/>
+        <div class="cue_in">
+            新手机号验证后，即可绑定成功
+        </div>
+        <div class="cuee">
+            <input type="text" size="30" name="mobile" id="mobile" value="{$mobile}"/>
+        </div>
+        <div class="code code_in clearfix">
+            <input type="text" id="code" placeholder="请输入验证码">
+            <a href="javascript:Dcode();">获取验证码</a>
+        </div>
+        <div class="add clearfix">
+            <a href="javascript:Dverify()">下一步</a>
+        </div>
+        <div class="issue">
+            <h2>手机收不到验证码怎么办？</h2>
+            <p>1.检查垃圾短信，在设置中将发件人设置为白名单。</p>
+            <p>2.一个手机号只能验证一个账号。</p>
+            <p>3.一个账号一天只能发3次。</p>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+function Dverify(){
+    var val,len;
+    val = $('#code').val();
+    if(!$('#code').val().match(/^[a-z0-9]{6}$/)) {
+        alert('请填写您收到的验证码');
+        return false;
+    }
+    var mobile = $('#mobile').val();
+    $.post('{DT_PATH}mobile/forgot.php', {'action':'changemobile','code':val,'mobile':mobile,'userid':{$userid}}, function(data) {
+        if(data == 'ok') {
+            Go('?mobile=1&action=changesuccess');
+        } else {
+            alert('验证失败');
+        }
+    });
+    return;
+}
+function Dcode(i) {
+    var mobile = $('#mobile').val();
+    $.post('{DT_PATH}mobile/forgot.php', {'action':'send','mobile':mobile}, function(data) {
+        if(data == 'ok') {
+            if(!i) alert('发送成功');
+            Dtimer();
+        } else if(data == 'max') {
+            alert('发送次数过多，请明日再试');
+            Go('index.php?reload={$DT_TIME}');
+        } else {
+            alert('发送失败，请重试');
+        }
+    });
+}
+function Dtimer() {
+    var i = {if $type=='mobile'}180{else}60{/if};
+    $('#send').hide();
+    $('#timer').html('重新发送('+i+')');
+    $('#timer').show();
+    var time_int=window.setInterval(
+        function() {
+            if(i == 1) {
+                $('#send').show();
+                $('#timer').html('');
+                $('#timer').hide();
+                clearInterval(time_int);
+            } else {
+                i--;
+                $('#timer').html('重新发送('+i+')');
+            }
+        },
+    1000);
+}
+</script>
+{elseif $action == 'changesuccess'}
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/sj.css">
+<div class="index">
+    <div class="suc">
+        <a href="javascript:void(0)">修改成功</a>
+        <span id="time">5</span>
+    </div>
+    <script>
+        delayURL();    
+        function delayURL() { 
+            var delay = document.getElementById("time").innerHTML;
+            var t = setTimeout("delayURL()", 1000);
+            if (delay > 0) {
+                delay--;
+                document.getElementById("time").innerHTML = delay;
+            } else {
+            clearTimeout(t); 
+                window.location.href = "/mobile/my.php";
+            }        
+        } 
+    </script>    
+</div>
+{else}
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}skin/mobile/css/zhanghao.css">
+<div class="ba_index">
+    <div class="binding">
+        <div class="binding_lf">
+        {if $user[mobile]}
+        	<div class="bindi1">绑定手机<span>(<a>{$user[mobile]}</a>)</span></div>
+        {else}
+            <div class="bindi1">尚未绑定手机<span>(<a></a>)</span></div>
+        {/if}
+        	<div class="bindi2">用于安全验证、找回密码等重要操作</div>
+        </div>
+        <div class="binding_ri">
+            <a href="?mobile=1&action=changemobile">修改手机</a>
+        </div>
+    </div>
+    <div class="binding">
+        <div class="binding_lf">
+        	<div class="bindi1">修改密码</div>
+        	<div class="bindi2">用于登录，身份验证等操作</div>
+        </div>
+        <div class="binding_ri">
+            <a href="?mobile=1&action=changepwd">修改密码</a>
+        </div>
+    </div> 
+    <div class="hint">温馨提示：若手机已停,用请电脑登录www.laoquguan.com进行审核解决。</div>
+</div>
+<!-- <script>
+function check() {
+    var mobile = $('mobile').val();
+    $.post('{DT_PATH}mobile/forgot.php', 'mobile='+mobile, function(data) {
+        if(data == 'ok') {
+            Go('?mobile=1&action=changemobile');
+        } else {
+            alert('验证失败');
+        }
+    });
+    return;
+}
+</script> -->
+{/if}
+
+<script>
+	(function (doc, win) {
+	       var docEl = doc.documentElement,
+	           resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	           recalc = function () {
+	               var clientWidth = docEl.clientWidth;
+	               if (!clientWidth) return;
+	               if(clientWidth>=640){
+	                   docEl.style.fontSize = '100px';
+	               }else{
+	                   docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+	               }
+	           };
+	 
+	       if (!doc.addEventListener) return;
+	       win.addEventListener(resizeEvt, recalc, false);
+	       doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+</script>
+</body>
+</html>

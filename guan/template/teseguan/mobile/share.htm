@@ -1,0 +1,150 @@
+{template 'header', 'mobile'}
+<style type="text/css">
+.clearfix:after{
+	clear:both;content:' ';
+	display:block;
+	font-size:0;
+	line-height:0;
+	visibility:hidden;
+	width:0;
+	height:0
+}
+.clearfix{
+	*zoom:1
+}
+html,body{
+	font-family: "微软雅黑";
+	list-style: none;
+}
+.qrcode {
+	height:3rem;
+	background:#FFFFFF;
+	text-align:center;
+	display:none;
+}
+.qrcode div {
+	line-height:0.3rem;
+	font-size:12px;
+	color:#666666;
+}
+.share {
+	height:1.8rem;
+	background:#FFFFFF;
+	text-align:center;
+	margin-top: 1rem;
+}
+.share ul{
+	padding: 0rem;
+	margin: 0rem;
+}
+.share li {
+	width:25%;
+	float:left;
+	list-style: none;
+}
+.share img {
+	border-radius:0.15rem;
+}
+.share span {
+	display:block;
+	font-size:12px;
+	padding:0.02rem 0 0.12rem 0;
+}
+.head-bar-back{
+	position: absolute;
+	top: 0rem;
+	left: 0rem;	
+}
+.head-bar-back a{
+	display: block;
+}
+.head-bar-back a span{
+	font-size: 18px;
+	color: #666;
+	line-height: 0.86rem;
+	float: left;
+}
+.head-bar-back a i{
+	float: left;
+}
+.head-bar-back a i img{
+	width: 0.21rem;
+	height: 0.39rem;
+	display: block;
+	margin: 0.23rem;
+}
+.head-bar{
+	position: relative;
+}
+.head-bar-title{	
+	width: 6.4rem;
+	text-align: center;
+	font-size: 20px;
+	color: #666;
+	line-height: 0.86rem;
+}
+</style>
+<div id="head-bar">
+	<div class="head-bar">
+		<div class="head-bar-back">
+			<a onclick="javascript:history.back(-1);" class="clearfix">
+				<i><img src="{DT_STATIC}skin/mobile/images/fanhui.png"></i>
+			    <span>返回</span>
+			</a>
+		</div>
+		<div class="head-bar-title">分享好友</div>
+	</div>
+	<div class="head-bar-fix"></div>
+</div>
+<div class="qrcode">
+	<img src="{DT_PATH}api/qrcode.png.php?auth={$auth}" width="140" height="140"/>
+	<div></div>
+</div>
+<div class="share">
+	<ul class="clearfix">
+		<li onclick="$('.qrcode').hide();$('.qrcode div').html('请用微信扫一扫上面的二维码打开网址<br/>点右上方的分享按钮，选择发送给朋友<br/><a href=&#34;http://app.destoon.com/scan/&#34; rel=&#34;external&#34; style=&#34;color:#2E7DC6;text-decoration:none;&#34;>如何扫描？</a>');$('.qrcode').slideDown('fast');"><img src="static/img/share-wx.png" width="60" height="60"/><span>微信好友</span></li>
+		<li onclick="$('.qrcode').hide();$('.qrcode div').html('请用微信扫一扫上面的二维码打开网址<br/>点右上方的分享按钮，选择分享到朋友圈<br/><a href=&#34;http://app.destoon.com/scan/&#34; rel=&#34;external&#34; style=&#34;color:#2E7DC6;text-decoration:none;&#34;>如何扫描？</a>');$('.qrcode').slideDown('fast');"><img src="static/img/share-py.png" width="60" height="60"/><span>微信朋友圈</span></li>
+		<li onclick="$('.qrcode').hide();$('.qrcode div').html('请用手机QQ扫一扫上面的二维码打开链接<br/>点右上方的分享按钮，选择发送给好友<br/><a href=&#34;http://app.destoon.com/scan/&#34; rel=&#34;external&#34; style=&#34;color:#2E7DC6;text-decoration:none;&#34;>如何扫描？</a>');$('.qrcode').slideDown('fast');"><img src="static/img/share-qq.png" width="60" height="60"/><span>QQ好友</span></li>
+		<li onclick="$('.qrcode').hide();$('.qrcode div').html('请用手机QQ扫一扫上面的二维码打开链接<br/>点右上方的分享按钮，选择分享到QQ空间<br/><a href=&#34;http://app.destoon.com/scan/&#34; rel=&#34;external&#34; style=&#34;color:#2E7DC6;text-decoration:none;&#34;>如何扫描？</a>');$('.qrcode').slideDown('fast');"><img src="static/img/share-qzone.png" width="60" height="60"/><span>QQ空间</span></li>
+		<li onclick="$('.qrcode').hide();"><a href="http://www.jiathis.com/send/?webid=tsina&url={urlencode($linkurl)}&title={urlencode($item[title])}" target="_blank" rel="external"><img src="static/img/share-weibo.png" width="60" height="60"/><span>新浪微博</span></a></li>
+		<li onclick="$('.qrcode').hide();"><a href="http://www.jiathis.com/send/?webid=tqq&url={urlencode($linkurl)}&title={urlencode($item[title])}" target="_blank" rel="external"><img src="static/img/share-tqq.png" width="60" height="60"/><span>腾讯微博</span></a></li>
+		<li onclick="$('.qrcode').hide();"><a href="{$sms}" rel="external"><img src="static/img/share-sms.png" width="60" height="60"/><span>短信</span></a></li>
+		<li onclick="$('.qrcode').hide();"><a href="mailto:?subject={$item[title]}&body={$linkurl}" rel="external"><img src="static/img/share-email.png" width="60" height="60"/><span>邮件</span></a></li>
+	</ul>
+</div>
+<script>
+  (function (doc, win) {
+         var docEl = doc.documentElement,
+             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+             recalc = function () {
+                 var clientWidth = docEl.clientWidth;
+                 if (!clientWidth) return;
+                 if(clientWidth>=640){
+                     docEl.style.fontSize = '100px';
+                 }else{
+                     docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                 }
+             };
+   
+         if (!doc.addEventListener) return;
+         win.addEventListener(resizeEvt, recalc, false);
+         doc.addEventListener('DOMContentLoaded', recalc, false);
+  })(document, window);
+    window.onload=function () {  
+        document.addEventListener('touchstart',function (event) {  
+            if(event.touches.length>1){  
+                event.preventDefault();  
+            }  
+        })  
+        var lastTouchEnd=0;  
+        document.addEventListener('touchend',function (event) {  
+            var now=(new Date()).getTime();  
+            if(now-lastTouchEnd<=300){  
+                event.preventDefault();  
+            }  
+            lastTouchEnd=now;  
+        },false)  
+    };  
+</script>
+</body>
+</html>

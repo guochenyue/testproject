@@ -1,0 +1,74 @@
+<!--底部-->
+<div class="footer">
+	<div class="footone">
+		<div class="foot">
+			<ul class="lqza">
+				<li><span>老</span>老一辈的决心</li>
+				<li><span>区</span>二十八个革命老区</li>
+				<li><span>助</span>助民助家助财</li>
+				<li><span>爱</span>传递爱的温暖</li>
+			</ul>
+			<div class="footin">
+                <ul class="jrwm">
+                	<h2><a href="#">购物中心</a></h2>
+                	<li>购物流程</li>
+                	<li>会员介绍</li>
+                	<li>红色旅行</li>
+                	<li>常见旅行</li>
+                	<li>联系客服</li>
+                </ul>
+                <ul class="rzzn">
+                	<h2><a href="#">支付方式</a></h2>
+                	<li><a href="#">注册与登录</a></li>
+                </ul>
+                <ul class="wmfw">
+                	<h2><a href="#">老区服务</a></h2>
+                	<li><a href="#">资源整合</a></li>
+                	<li><a href="#">资源规划</a></li>
+                	<li><a href="#">金融服务</a></li>
+                	<li><a href="#">产品流通</a></li>
+                </ul>
+                <ul class="hssy">
+                	<h2><a href="#">场馆入驻</a></h2>
+                	<li><a href="#">战略合作</a></li>
+                	<li><a href="#">共建单位</a></li>
+                	<li><a href="#">支持单位</a></li>
+                </ul>
+                <ul class="lxwm">
+                	<h2>快速导航</h2>
+                	<li>全国老区综合服务平台</li>
+                	<li>地址：北京丰台区小屯路9号</li>
+                	<li>邮编：100040</li>
+                	<li>电话：010-53551133</li>
+                </ul>
+                <ul class="lxwm lxwm2">
+                	<span><img src="images/ptzz.png"></span>
+                </ul>
+			</div>
+		</div>
+	</div>
+	<div class="foottwo">
+		<div class="foottwoin">
+			<h2 class="daoh">关于我们    法律声明    廉正举报    友情链接</h2>
+			<h2>©2009-2017 te.laoqu.org 版权所有 京ICP备：21548463578</h2>
+		</div>
+	</div>
+</div>
+<!--[以下为系统关键代码，请勿删除]-->
+<script type="text/javascript">
+if(document.body.clientHeight > Dd('main').scrollHeight) Dd('main').style.height=document.body.clientHeight+'px';
+if(get_cookie('m_side') == 11 && Dd('side_oh').className == 'side_h') {Dh('side');Dd('side_oh').className = 'side_s';}
+var destoon_message = {$_message};
+var destoon_chat = {$_chat};
+{if $_message && $_sound}
+if(window.location.href.indexOf('message.php') == -1) $('#destoon_space').html(sound('message_{$_sound}'));
+{/if}
+{if $_chat}
+if(window.location.href.indexOf('chat.php') == -1) $('#destoon_space').html(sound('chat_new'));
+{/if}
+{if $_userid && $DT[pushtime]}
+window.setInterval('PushNew()',{$DT[pushtime]}*1000);
+{/if}
+</script>
+</body>
+</html>
