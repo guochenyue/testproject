@@ -1,0 +1,30 @@
+*{margin:0; padding:0;}
+body{background:#FFF; font-size:12px; font-family:"Microsoft YaHei";}
+ul{list-style:none;}
+img{border:none;}
+a{text-decoration:none;}
+a:hover{text-decoration:none; color:red;}
+
+.left{float:left;}
+.right{float:right;}
+.clear{clear:both; display:block}
+.clearfix:after {visibility: hidden; display: block; clear: both; height: 0; font-size: 0; content: ".";}
+.clearfix{zoom:1;}
+.warpper{width:1188px; margin:0 auto;}
+
+
+.login-top{margin-top:33px;}
+.animate{width:420px; height:350px; background:url(../../img/login/login-bg.gif) no-repeat; margin:80px auto 0; padding:50px 90px 0;}
+.animate p{margin-top:28px;}
+.animate label{float:left; width:80px; text-align:right; color:#666; font-size:14px; margin-right:23px; margin-top:5px;}
+.text{width:265px; height:32px; border:1px solid #ead1b2; padding:0px 30px 0 10px; vertical-align:middle; background:url(../../img/login/person.gif) right center no-repeat;}
+.password{background:url(../../img/login/password.gif) right center no-repeat;}
+.keeplogin,.button{margin-left:103px;}
+.keeplogin input{margin-top:4px;*margin-top:0px;}
+.keeplogin label{margin-top:0px; width:auto; margin-left:10px;}
+.keeplogin a{font-size:14px; color:#666;}
+.keeplogin a:hover{color:red;}
+
+.button a{width:120px; height:35px; background:url(../../img/login/btn.gif) no-repeat; display:inline-block; text-align:center; line-height:35px; color:#fff; font-size:16px;}
+.button a:hover{background:url(../../img/login/btnhover.gif) no-repeat;}
+.err{display:inline-block; margin-top:5px; color:#af2032; background:url(../../img/login/findpwd.png) -17px 0 no-repeat; margin-left:106px; padding-left:25px;}

@@ -1,0 +1,551 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的收藏</title>
+<link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/member-center.css"/>
+     <link href="css/jquery.lightbox.css" type="text/css" rel="stylesheet" />
+      <style>
+    	.sidebar-info{z-index:100;  display:none; position:absolute; top:40px; left:0;}
+		.content-top{height:auto;}
+		.main-title h3{margin-top:10px; border-bottom:2px solid #d9be9a; font-size:16px; color:#333; height:26px; line-height:26px; padding-left:10px;}
+		.sidebar{height:auto; position:relative;}
+		.sidebarlist{cursor:pointer;}
+    </style>
+    <script src="js/jquery_1.9.js"></script>
+    <script>
+$(function(){
+	$(".about-left ul").not(":first").show().parent().addClass("p").children("p").click(function(){
+		$(this).parent().toggleClass("p").children("ul").toggle()});
+})
+</script>
+</head>
+
+<body>
+	<!--content-top-->
+    <div class="clearfix">
+         <div id="nav">
+            <div class="content-top">
+                <!--sidebar-->
+                <div class="sidebar">
+                <ul id="sidebar">
+                    <li><h3 class="sidebarlist">商品服务分类</h3>
+                    	<div class="sidebar-info">
+                        <ul class="side-li">	
+                           	<li>
+                           		<h3>国画</h3>
+                                <ul class="hiden-box">
+                                	<li>   
+                                    <div class="cell-box">
+                                        <p>人物</p>
+                                        <div class="a-box">
+                                            <a href="#">师傅呢房名</a><span>|</span>
+                                            <a href="#">如果个人挺好</a><span>|</span>
+                                            <a href="#">二个听歌</a><span>|</span>
+                                            <a href="#">个人认同感</a><span></span>     
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>山水</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>  
+                                        </div>
+                                    </div>
+                                     <div class="cell-box">
+                                        <p>花鸟</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>         
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>大写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>小写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                            		</li>	
+                                </ul>
+                           	</li>
+                            <li>
+                            	<h3>油画</h3>
+                                <ul class="hiden-box">
+                                	 <li>    
+                                    <div class="cell-box">
+                                        <p>肖像画</p>
+                                        <div class="a-box">
+                                            <a href="#">头像</a><span>|</span>
+                                            <a href="#">胸像</a><span>|</span>
+                                            <a href="#">半身像</a><span>|</span>
+                                            <a href="#">单人像</a><span></span>
+                                            <a href="#">双人像</a><span>|</span>
+                                            <a href="#">群体像</a><span></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>风俗画</p>
+                                        <div class="a-box">
+                                            <a href="#">社会生活</a><span>|</span>
+                                            <a href="#">风土人情</a><span></span>                                  
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>历史画</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></</a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>静物画</p>
+                                        <div class="a-box">
+                                            <a href="#">日常工具</a><span>|</span>
+                                            <a href="#">花卉</a><span>|</span>
+                                            <a href="#">水果</a><span>|</span>
+                                            <a href="#">食品</a><span>|</span>  
+                                            <a href="#">猎获物</a>
+                                        </div>
+                                    </div>
+                            </li>
+                                </ul>
+                            </li>
+                            <li>
+                            	<h3>版画</h3>
+                                <ul class="hiden-box">
+                                	<li>
+                                    <div class="cell-box">
+                                        <p>木版画</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>铜版画</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>石版画</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>丝漏版画</p>
+                                        <div class="a-box">  
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>纸版画</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>凹印版画</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a>
+                                        </div>
+                                    </div> 
+                                    <div class="cell-box">
+                                        <p>木版画</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>木版画</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a>
+                                        </div>
+                                    </div>
+                            </li>
+                                </ul>
+                            </li>
+                            <li>
+                            	<h3>雕塑</h3>
+                                <ul class="hiden-box">
+                                	<li data-hidden="li" id="hiden-3">
+                                <li>   
+                                    <div class="cell-box">
+                                        <p>人物</p>
+                                        <div class="a-box">
+                                            <a href="#">师傅呢房名</a><span>|</span>
+                                            <a href="#">如果个人挺好</a><span>|</span>
+                                            <a href="#">二个听歌</a><span>|</span>
+                                            <a href="#">个人认同感</a><span></span>     
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>山水</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>  
+                                        </div>
+                                    </div>
+                                     <div class="cell-box">
+                                        <p>花鸟</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>         
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>大写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>小写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                            		</li>	
+                                </ul>
+                           	</li>
+                            <li>
+                            	<h3>沉香</h3>
+                                <ul class="hiden-box">
+                                	<li>   
+                                    <div class="cell-box">
+                                        <p>人物</p>
+                                        <div class="a-box">
+                                            <a href="#">师傅呢房名</a><span>|</span>
+                                            <a href="#">如果个人挺好</a><span>|</span>
+                                            <a href="#">二个听歌</a><span>|</span>
+                                            <a href="#">个人认同感</a><span></span>     
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>山水</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>  
+                                        </div>
+                                    </div>
+                                     <div class="cell-box">
+                                        <p>花鸟</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>         
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>大写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>小写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                            		</li>	
+                                </ul>
+                           	</li>
+                             <li>
+                            	<h3>陶瓷</h3>
+                                <ul class="hiden-box">
+                                	<li>   
+                                    <div class="cell-box">
+                                        <p>人物</p>
+                                        <div class="a-box">
+                                            <a href="#">师傅呢房名</a><span>|</span>
+                                            <a href="#">如果个人挺好</a><span>|</span>
+                                            <a href="#">二个听歌</a><span>|</span>
+                                            <a href="#">个人认同感</a><span></span>     
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>山水</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>  
+                                        </div>
+                                    </div>
+                                     <div class="cell-box">
+                                        <p>花鸟</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>         
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>大写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>小写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                            		</li>	
+                                </ul>
+                           	</li>
+                            <li>
+                            	<h3>宝玉石</h3>
+                                <ul class="hiden-box">
+                                	<li>   
+                                    <div class="cell-box">
+                                        <p>人物</p>
+                                        <div class="a-box">
+                                            <a href="#">师傅呢房名</a><span>|</span>
+                                            <a href="#">如果个人挺好</a><span>|</span>
+                                            <a href="#">二个听歌</a><span>|</span>
+                                            <a href="#">个人认同感</a><span></span>     
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>山水</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>  
+                                        </div>
+                                    </div>
+                                     <div class="cell-box">
+                                        <p>花鸟</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>         
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>大写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell-box">
+                                        <p>小写意</p>
+                                        <div class="a-box">
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span>|</span>
+                                            <a href="#"></a><span></span>
+                                        </div>
+                                    </div>
+                            		</li>	
+                                </ul>
+                           	</li>
+                           
+                        </ul>
+                    </div>
+                    </li>
+                    <!--sidebar-info-->
+                 </ul>   
+                </div>
+                <!--right-con-->
+                <div class="right-con">
+                    <div class="nav">
+                        <a id="spe-a1" href="#">商城</a>
+                        <a href="#">博物馆</a>
+                        <a href="#">体验店</a>
+                        <a href="#">展览活动</a>
+                        <a href="#">艺术家</a>
+                        <a href="#">集典基金</a>
+                        <a href="#">在线拍卖</a>
+                        <a href="#">鉴定</a> 
+                        <a href="#">租赁</a>              
+                    </div>                    
+               </div>  
+               </div>
+           </div>	
+           </div>
+           <div class="aboutus-center">
+           		<p>集典艺购 > 用户中心 > <span class="us-selected">买家中心</span></p>
+                <div class="about-content clearfix">
+                	<div class="about-left order-left left">
+                    	<p class="order-title">买家中心</p>
+                    	<ul class="order-list">
+                            <li class="m"><p>交易信息</p>
+                            	<ul>
+                                    <li><p><a href="">我的订单</a></p></li>
+                                    <li><p><a href="" class="us-selected">我的收藏</a></p></li>
+                                    <li><p><a href="">我的拍卖</a></p></li>
+                                    <li><p><a href="">我的预约</a></p></li>   
+                                </ul>
+                            </li>
+                            <li class="m"><p>服务信息</p>
+                                <ul>
+                                    <li><p><a href="">拍卖介绍</a></p></li>
+                                    <li><p><a href="">保证金规则</a></p></li>
+                                    <li><p><a href="">代理出价</a></p></li>
+                                    <li><p><a href="">竞拍延时规则</a></p></li>
+                                </ul>   
+                            </li>
+                            <li class="m"><p>账户信息</p>
+                                <ul>
+                                    <li><p><a href="">关于我们</a></p></li>
+                                    <li><p><a href="">诚聘英才</a></p></li>
+                                    <li><p><a href="">联系我们</a></p></li>
+                                    <li><p><a href="">法律声明</a></p></li>
+                                </ul>
+                            </li>
+    					</ul>
+                    </div>
+                    <div class="order-right left">
+                    	<p class="my-collect">我的收藏</p>
+                        <ul class="order-step">
+                        	<li>收藏的商品（<span>1</span>）</li>
+                        </ul>
+                        <table class="order-table collect-table">
+                        	<tr>
+                            	<th width="50%">商品信息</th>
+                                <th>|</th>
+                                <th width="30%">单价</th>
+                                <th>|</th>
+                                <th width="20%">操作</th>
+                            </tr>
+                            <tr>
+                            	<td>
+                                	<div class="collectdetail clearfix">
+                                        <img class="left" src="img/buy/tu.jpg" alt="" />
+                                        <span class="left">徐悲鸿&nbsp;&nbsp;&nbsp; 奔马图</span>
+                        			</div>
+                                </td>                                     
+                                <td></td>
+                                <td>会员价：￥8800.00</td>
+                                <td></td>
+                                <td>
+                                	<p class="collect"><a href="">取消收藏</a></p>
+                        			<p class="delete"><a href="">购买</a></p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="right" style="margin-top:50px;">
+                            <ul class="pages">
+                                <li class="item item-prev">上一页</li>
+                                <li class="item active">1</li>
+                                <li class="item">2</li>
+                                <li class="item">3</li>
+                                <li class="item">4</li>
+                                <li class="pn-break">. . . </li>
+                                <li class="item">下一页</li>
+                            </ul>
+                            <span class="total">共 100 页 </span>
+                            <span class="p-skip">
+                                到第<input class="p-down" type="text" />页</span>
+                                <a href="" class="btn-default">确定</a>
+            
+       		 			</div>
+                 </div>
+                </div> 
+           </div>
+          
+</body>
+</html>
+<script src="js/jquery_1.9.js"></script> 
+<script src="js/main.js"></script>
+<script src="js/jquery.min.js"></script>  
+<script type="text/JavaScript" src="js/cloud-carousel.1.0.5.js"></script> 
+<script src="js/merged-without-jquery.js" type="text/javascript"></script>
+<script src="js/jquery.lightbox.min.js"></script>
+<script src="js/jquery.hoverex.js"></script>
+    <script>
+    	jQuery(document).ready(function($){
+      $('#mylightbox').lightbox();})
+$(function(){
+	$(".sidebar-info").hide();
+	$("#sidebar>li").mouseover(function(){
+		$(this).find(".sidebar-info").show();	
+	}).mouseout(function(){
+		$(this).find(".sidebar-info").hide();
+	});
+})
+</script>
+

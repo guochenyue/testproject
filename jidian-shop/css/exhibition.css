@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+.decorate-center{width:1126px; margin:35px auto 0; color:#333; font-size:14px;}
+.us-selected{color:#dd6b58;}
+.decorate-content{margin-top:20px;}
+.decorate-left{float:left; width:168px; height:304px; border:1px solid #ead1b1; border-top:3px solid #ead1b1;}
+.decorate-left h3{font-size:18px; color:#c0a287; margin:14px 0 14px 45px;}
+.decorate-left ul li{height:30px; line-height:30px; margin-bottom:6px; font-size:14px; color:#333; padding-left:22px;}
+.decorate-left ul li.selected{background:#c0a287;}
+.decorate-left ul li.selected a{color:#fff;}
+.decorate-left ul li a{display:inline-block; color:#333; text-indent:30px; font-size:15px;}
+.decorate-left ul li a:hover{color:#f40;}
+.decorate-left ul li.selected a:hover{color:#fff;}
+
+.decorate-right{width:930px; float:right;}
+.decorate-banner{border:1px solid #ead1b1;}
+.exhibition-title{font-size:16px; color:#dd6b58; margin-top:40px; height:30px; line-height:30px; border-bottom:1px solid #dd6b58;}
+.decorate-right form{margin:20px 0px 0 100px;}
+.decorate-right form p{margin-top:20px;}
+.decorate-right form p span{float:left; margin-top:5px; padding-right:10px;}
+.decorate-right form p input{width:300px; height:25px; border:1px solid #ccc;}
+textarea{width:400px; height:120px; border:1px solid #ccc;}
+.decorate-right form p label{width:100px; float:left; text-align:right; margin-top:5px; margin-right:10px;}
+.yuding{display:inline-block; background:url(../img/detail/tobuybg.jpg); width:110px; height:34px; line-height:34px; text-align:center;  border:none; color:#fff; cursor:pointer; font-size:15px; margin-left:260px; margin-bottom:10px;}
+.yuding:hover{background:url(../img/detail/tobuyhover.png) no-repeat; color:#fff;}

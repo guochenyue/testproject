@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+.clear{clear:both;}
+.warpper{width:1190px; margin:0 auto;}
+.left{float:left;}
+.right{float:right;}
+.shoppingcart{margin:60px 0 30px;}
+.jidian{height:33px; border-bottom:1px solid #bdbdbd; padding-left:30px;}
+.jidian li{height:31px; width:100px; text-align:center; line-height:34px; font-size:15px; color:#dd6b58; border:1px solid #bdbdbd; border-top:2px solid #dd6b58;  border-bottom:1px solid #fff;}
+.table{margin-left:5px; margin-top:20px;}
+.table th{height:17px; background:#f4f4f4; padding:8px 0; font-weight:normal; color:#000; text-align:center;}
+.tr{height:128px; border-bottom:1px solid #e2e2e2;}
+.tr td{text-align:center;}
+.collect a,.delete a{color:#000;}
+.collect a:hover,.delete a:hover{color:#F00;}
+.cartdetail{margin:20px 0 20px 24px; border-right:1px dashed #b0adad;}
+.cartdetail img{padding:1px; border:1px solid #e2e2e2;}
+.cartdetail span{margin-left:15px; color:#000; margin-top:44px; font-size:14px;}
+.tr td p.delete{margin-top:10px;}
+.qk{height:122px; background:#f4f4f4; margin-top:20px; padding:18px 18px 0;}
+.qktop{height:44px; border-bottom:1px solid #e2e2e2;}
+.jiesuan{font-size:14px; color:#333; font-weight:bold;}
+.red{color:#dd6b58;}
+
+.tishi{width:400px; float:left; font-size:16px; color:#dd6b58; margin-top:20px;}
+.settle{display:inline-block;width:110px; height:30px; line-height:30px; text-align:center; color:#fff; background:#dd6b58; margin-left:10px; margin-top:20px; font-size:14px;}
+.settle:hover{background:#ec8b7b; color:#fff;}
+.back{display:inline-block;width:110px; height:30px; line-height:30px; text-align:center; color:#fff; background:#58879d; margin-left:10px; margin-top:20px;font-size:14px;}
+.back:hover{background:#6d99ae; color:#fff;}

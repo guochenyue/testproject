@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>订单完成</title>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<meta http-equiv=Content-Language content=zh-CN />
+<link rel="stylesheet" href="css/confirm.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/reset.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 6]>
+  <link rel="stylesheet" type="text/css" href="css/jquery.lightbox.ie6.css" />
+<![endif]-->
+</head>
+<body>
+<div class="top-wrapper">
+        <div class="top-info">
+            <div class="top-left">
+                <div data-toggle="arrowdown" id="arrow1" class="user-name">
+                    <a href="#">集典艺购</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow2" class="msg-info">
+                    <i class="fa fa-envelope fa-gray"></i>
+                    <a href="#">消息</a>
+                    <span class="down-icon"></span>
+                </div>
+                <a class="a-float-left" href="#">手机集典艺购</a>
+                <!--hidden-box-->
+                <div data-toggle="hidden-box" id="nav-box1" class="user-box">
+                    <img class="my-head" src="img/user-head.jpg" />
+                    <div class="my-grow">
+                        <h1><a href="#">账号管理</a>&nbsp;|&nbsp;<a href="logon.html">退出</a></h1>
+                        <p>
+                            <h2><a href="#">查看我会员特权</a></h2>
+                        </p>
+                    </div>
+                    <p style="height: 10px; clear: both;">&nbsp;</p>
+                    <div class="my-card">
+                        <div class="cards-info">
+                        </div>
+                        <div class="toggle-box">
+                            <div class="toggle">
+                                 <i style="vertical-align: top" class="fa fa-angle-left arrow-left"></i>
+                                 <i style="vertical-align: top" class="fa fa-angle-right arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box2" class="msg-box">               	
+                </div>
+            </div>
+            <!--top-right-->
+            <div class="top-right">
+                <div data-toggle="arrowdown" id="arrow3" class="user-name">
+                    <a href="#">我的账号</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow4" class="user-name">
+                    <a class="mine" href="#">购物车</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow5" class="user-name">
+                    <a class="shoucang" href="#">收藏夹</a>
+                    <span class="down-icon"></span>
+                </div>
+               
+                <span class="vertical-line">|</span>
+				<a class="a-float-left" href="logon.html">登录</a>
+			    <a class="a-float-left" href="register.html">注册</a>            
+                <!--hidden-box-->
+                <div data-toggle="hidden-box" id="nav-box3" class="my-taobao-box">
+                    <ul>
+                        <li>已买到的宝贝</li>
+                        <li>我的足迹</li>
+                        <li>我的上新</li>
+                        <li>我的优惠</li>
+                    </ul>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box4" class="shopping-box">
+                    <span>您购物车里还没有任何宝贝。</span><a class="check-shopp" href="#">查看我的购物车</a>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box5" class="get-box">
+                    <ul>
+                        <li>收藏的宝贝</li>
+                        <li>收藏的店铺</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--scroll-top-->
+    </div>
+    <div class="warpper">
+    	<div class="order clearfix">
+        	<img class="left" src="img/buy/succesdsful.jpg" alt="" />
+            <img class="right" src="img/buy/step2.jpg" alt="" />
+        </div>	
+        <div class="succes">
+        	<img src="img/buy/step3.jpg" alt="" />
+        </div>
+        <table class="carlist" width="100%">
+        	<tr>
+            	<th width="30%">订单号</th>
+                <th width="20%">付款方式</th>
+                <th width="20%">商品数量</th>
+                <th width="20%">应付金额</th>
+                <th width="10%">可获积分</th>
+            </tr>
+            <tr>
+            	<td>JD1234567890 </td>
+                <td>支付宝在线支付 </td>
+                <td>1</td>
+                <td class="o">￥00,00.00 </td>
+                <td class="o">0</td>
+            </tr>
+            <tr>
+            	<td>JD1234567890 </td>
+                <td>支付宝在线支付 </td>
+                <td>1</td>
+                <td class="o">￥00,00.00 </td>
+                <td class="o">0</td>
+            </tr>
+        </table>
+        <div class="finish">
+        <p class="right" style="margin-top:100px;">
+        	<a href="index.html" class="finish-order1">继续购物</a>
+            <a href="javascript:topay(11987576,200,0)" class="finish-order">去支付</a>
+            <a href="orderetail.html" class="finish-order">查看订单</a>	
+        </p>
+        </div>
+    </div>
+    <!--help-->
+    <div class="help">
+        <div class="help-info3">
+            <h1><span class="help-text">业务介绍</span></h1>
+            <a class="help-a" href="#">集典艺购</a>
+            <a class="help-a" href="#">集典网拍</a>
+            <a class="help-a" href="#">集典基金</a>
+            <a class="help-a" href="#">集典鉴定</a>
+        </div>
+        <div class="help-info3">
+            <h1><span class="help-text">拍卖学堂</span></h1>
+            <a class="help-a" href="#">拍卖介绍</a>
+            <a class="help-a" href="#">保证金规则</a>
+            <a class="help-a" href="#">代理出价</a>
+            <a class="help-a" href="#">竞拍延时规则</a>
+            <a class="help-a" href="#">竞拍服务协议</a>
+            
+        </div>
+        <div class="help-info3">
+            <h1><span class="help-text">公司信息</span></h1>
+            <a class="help-a" href="#">关于我们</a>
+            <a class="help-a" href="#">诚聘英才</a>
+            <a class="help-a" href="#">联系我们</a>
+            <a class="help-a" href="#">法律声明</a>
+        </div>
+        <div class="help-info3">
+            <h1><span class="help-text">配送、售后</span></h1>
+            <a class="help-a" href="#">配送范围、时间</a>
+            <a class="help-a" href="#">退换货说明</a>
+            <a class="help-a" href="#">验货与拒收政策</a>
+            <a class="help-a" href="#">退换货规则</a>
+        </div>
+        <div class="help-info">
+        	
+        	 <a class="help-a" href="#"><img src="img/code.png"></a>
+        	 	           
+           <a class="help-a" href="#"><img src="img/code.png"></a>
+            
+        </div>
+    </div>
+    
+    <!--footer-->
+   
+    <div class="footer">
+        <div class="footer-right">
+        	
+            <p class="gary-text"><span>Copyright © 2014 集典艺购 jidian-ejoy.com 版权所有</span></p>
+            <div class="some-info">
+                <img src="img/some.png" />
+            </div>
+        </div>
+
+    </div>
+    
+    <!--backtoTop1-->
+    <!--兼容所有现代浏览器同时包括 ie6/7/8/9 （ie6会有一点点抖动）-->
+    <div class="backtoTop" id="backToTop1">
+        <div id="backToTop-up" class="up-back"><i class="fa fa-angle-up"></i></div>
+        <div id="backToTop-down" class="down-back"><i class="fa fa-angle-down"></i></div>
+    </div>
+     <script src="js/jquery_1.9.js"></script>
+   
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<title>用户登录和注册</title>
+		<link rel="stylesheet" type="text/css" href="css/logon/register.css" />
+        <script src="js/jquery_1.9.js"></script>
+        <script>
+			$(function(){
+				$("#content").children().hide();
+				$("#content").children(":first").show();
+				$("#menu").children(":first").addClass("tabon");
+				$("#menu li").click(function(){
+					$(this).addClass("tabon").siblings().removeClass("tabon").parent().next().children().eq($(this).index()).show().siblings().hide();
+					
+				})
+				
+			})
+	</script>
+	</head>
+	<body>
+		<div class="warpper">
+        	<div class="register-top">
+            	<img src="img/logo3.jpg" alt="" />
+            </div>
+			<div id="register">
+            	<ul id="menu" class="clearfix">
+            		<li class="tabon li1">个人用户</li>
+                    <li class="li2">企业用户</li>
+                    <li class="li3">艺术家</li>
+        		</ul>
+                <div id="content">
+                    <form action="" method="post" class="form1">
+                        <p>
+                            <label ><span class="hong">*</span>&nbsp;用户名：</label>
+                            <input type="text"  class="text"/>
+                            <span class="err">用户名不能为空</span>
+                        </p>
+                        <p>
+                            <label><span class="hong">*</span>&nbsp;密码：</label>
+                            <input class="text password" type="password" />
+                            <span class="err">用户名不能为空</span>
+                        </p>
+                        <p>
+                            <label><span class="hong">*</span>&nbsp;确认密码：</label>
+                            <input class="text password" type="password"  />
+                            <span class="success"></span>
+                        </p>
+                        <p class="argree">
+                        	<input type="checkbox" checked="checked" value="" class="left" />
+                        	我已阅读并同意<span class="hui">《集典用户注册协议》</span>
+                       </p>
+                       <p>
+                       		<input type="submit" class="register-button" value="立即注册" />
+                       </p>
+                    </form>
+                    <form class="form2">
+                    	<h2 class="wel">欢迎注册成为企业用户</h2>
+                        <div class="account">
+                        	<span>账户信息</span>	
+                            <div class="accountcontent">
+                            	<p>
+                                    <label ><span class="hong">*</span>&nbsp;用户名：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;密码：</label>
+                                    <input class="text password" type="password" />
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;确认密码：</label>
+                                    <input class="text password" type="password"  />
+                                </p>
+                            </div>
+                        </div>
+                        <div class="linkman">
+                       		<span>联系人信息</span>
+                            <div class="accountcontent">
+                            	<p>
+                                    <label ><span class="hong">*</span>&nbsp;联系人姓名：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;所在部门：</label>
+                                    <select class="shortselect">
+                                    	<option>请选择</option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;固定电话：</label>
+                                    <input class="text" type="text"  />
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;验证手机：</label>
+                                    <input class="text" type="text"  />
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;短信验证码：</label>
+                                    <input class="text short" type="text"  />
+                                  	<a class="test" href="">获取短信验证码</a>
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;联系人邮箱：</label>
+                                    <input class="text" type="text"  />
+                                </p>
+                            </div>
+                        </div>
+                        <div class="company">
+                       		<span>公司信息</span>
+                            <div class="accountcontent">
+                            	<p>
+                                    <label ><span class="hong">*</span>&nbsp;公司名称：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;公司所在地：</label>
+                                    <select class="shortselect">
+                                    	<option>请选择</option>
+                                    </select>
+                                    <select class="shortselect">
+                                    	<option>请选择</option>
+                                    </select>
+                                    <select class="shortselect">
+                                    	<option>请选择</option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <label><span class="hong">*</span>&nbsp;公司地址：</label>
+                                    <input class="text" type="text"  />
+                                </p>
+                                <p>
+                                    <label>企业人数：</label>
+                                     <select class="shortselect">
+                                    	<option>请选择</option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <label>公司行业：</label>
+                                    <select class="longselect">
+                                    	<option>请选择</option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <label>公司性质：</label>
+                                    <select class="longselect">
+                                    	<option>请选择</option>
+                                    </select>
+                                </p>
+                                <p class="clearfix">
+                                    <label style="margin-top:10px;" ><span class="hong">*</span>&nbsp;验证码：</label><input class="text short"  style="float:none; margin-top:-20px;" type="text"  /><img  src="img/login/test.jpg" alt="" />
+                                    <span style="color:#666; margin:0px 10px; display:inline-block;">看不清？</span>
+                                    <a href="" style="color:#dd6b58;  display:inline-block;">换一张</a>
+                                </p>
+                                 <p class="argree">
+                                    <input type="checkbox" value="" checked="checked" class="left" />
+                                    我已阅读并同意<span class="hui">《集典用户注册协议》</span>
+                               </p>
+                               <p>
+                                    <input type="submit" class="register-button" value="立即注册" />
+                               </p>
+                            </div>
+                           
+                        </div>
+                    </form>
+                    <form class="form3">
+                    	<div>
+                        		<p>
+                                    <label ><span class="hong">*</span>&nbsp;姓名：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p class="clearfix">
+                                    <label ><span class="hong">*</span>&nbsp;性别：</label>
+                                    <input class="left radio" type="radio" value=""/><span class="left sex">男</span>
+                                    <input class="left radio" type="radio" value=""/><span class="left sex">女</span>
+                                </p>
+                                 <p>
+                                    <label ><span class="hong">*</span>&nbsp;身份证号码：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p>
+                                    <label ><span class="hong">*</span>&nbsp;联系方式：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p>
+                                    <label ><span class="hong">*</span>&nbsp;电子邮箱：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p>
+                                    <label >照片：</label>
+                                    <input type="file"/>
+                                </p>
+                                <p>
+                                    <label ><span class="hong">*</span>毕业院校：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                 <p>
+                                    <label ><span class="hong">*</span>现任职务：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p>
+                                    <label ><span class="hong">*</span>画风流派：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                <p>
+                                    <label >代表作：</label>
+                                    <input type="text"  class="text"/>
+                                </p>
+                                 <p>
+                                    <label style="margin-top:25px;" >个人简介：</label>
+                                    <textarea></textarea>
+                                </p>
+                                 <p>
+                                    <label style="margin-top:25px;" >自我评价<br/>（成就）：</label>
+                                    <textarea></textarea>
+                                </p>
+                                 <p class="clearfix">
+                                    <label style="margin-top:10px;" ><span class="hong">*</span>&nbsp;验证码：</label><input class="text short"  style="float:none; margin-top:-20px;" type="text"  /><img  src="img/login/test.jpg" alt="" />
+                                    <span style="color:#666; margin:0px 10px; display:inline-block;">看不清？</span>
+                                    <a href="" style="color:#dd6b58;  display:inline-block;">换一张</a>
+                                </p>
+                                 <p class="argree">
+                                    <input type="checkbox" value="" class="left" checked="checked" />
+                                    我已阅读并同意<span class="hui">《集典用户注册协议》</span>
+                               </p>
+                               <p>
+                                    <input type="submit" class="register-button" value="立即注册" />
+                               </p>
+                        </div>	
+                    </form>
+				</div>
+            </div>			
+		</div>
+	
+		</script>
+	</body>
+</html>

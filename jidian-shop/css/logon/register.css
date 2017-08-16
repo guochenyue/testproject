@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+body{background:#FFF; font-size:12px; font-family:"Microsoft YaHei";}
+ul{list-style:none;}
+img{border:none;}
+a{text-decoration:none;}
+a:hover{text-decoration:none; color:red;}
+
+.left{float:left;}
+.right{float:right;}
+.clear{clear:both; display:block}
+.clearfix:after {visibility: hidden; display: block; clear: both; height: 0; font-size: 0; content: ".";}
+.clearfix{zoom:1;}
+.warpper{width:1188px; margin:0 auto;}
+.hong{color:#dd6b58;}
+.hui{color:#8e7257;}
+.register-top{margin-top:33px;}
+/*个人*/
+.err{display:inline-block; margin-top:5px; color:#af2032; background:url(../../img/login/findpwd.png) -17px 0 no-repeat; margin-left:10px; padding-left:25px;}
+.success{width:16px; height:16px; display:inline-block; margin-top:5px; margin-left:10px; background:url(../../img/login/findpwd.png) 0 0 no-repeat;}
+#register{width:890px; min-height:410px; border:5px solid #ead1b1; background:#fff; margin:70px auto 0;}
+#menu{width:358px; height:43px; margin:0 auto 50px; position:relative;}
+#menu li{float:left; width:126px; height:43px; line-height:42px; text-align:center; color:#ead1b1; font-size:16px; background:url(../../img/login/tab.png) no-repeat; position:absolute; cursor:pointer;}
+.li1{left:0; top:0;}
+.li2{left:110px; top:0;}
+.li3{left:220px; top:0;}
+#menu li.tabon{color:#fff; background:url(../../img/login/tabon.png) no-repeat; z-index:10;}
+.form1,.form3{margin-left:200px;}
+.form1 p,.form2 p,.form3 p{margin-bottom:30px;}
+.form1 label,.form2 label,.form3 label{color:#666; fonr-size:14px; width:85px; float:left; text-align:right; margin-top:5px; margin-right:20px; display:inline;}
+.text{width:265px; height:32px; line-height:32px; padding:0 30px 0 10px; vertical-align:middle; border:1px solid #ead1b2; background:url(../../img/login/person.gif) right center no-repeat; display:inline;}
+.password{background:url(../../img/login/password.gif) right center no-repeat;}
+.argree{margin-left:105px;}
+.argree input{margin-top:2px; margin-right:5px; _margin-top:-2px;}
+.register-button{width:120px; height:35px; background:url(../../img/login/btn.gif) no-repeat; border:none; text-align:center; line-height:35px; color:#fff; font-size:16px; margin-left:150px; cursor:pointer;}
+.register-button:hover{background:url(../../img/login/btnhover.gif) no-repeat;}
+/*企业*/
+.form2{margin:0 18px;}
+.wel{ font-size:22px; color:#dd6b58; padding-bottom:10px; border-bottom:2px solid #ead1b1}
+.account{height:245px; border-bottom:1px solid #ead1b1; padding-top:10px;}
+.accountcontent{margin-left:180px;}
+.linkman{margin:20px 0; border-bottom:1px solid #ead1b1}
+.linkman .text,.company .text,.form3 .text{background:none;}
+.shortselect{width:82px; height:32px; border:1px solid #ead1b2; color:#666; margin-right:25px;}
+.longselect{width:305px; height:32px; border:1px solid #ead1b2; color:#666; }
+.short{width:100px; height:32px; margin-right:10px;}
+.test{display:inline-block; width:148px; height:32px; background:#f0dfc8; line-height:32px; text-align:center; border:1px solid #ebd4b6; color:#666;}
+textarea{width:400px; height:100px; border:1px solid #ead1b2;}
+.radio{margin-right:6px; margin-top:6px;}
+.sex{margin-right:10px; margin-top:5px;}

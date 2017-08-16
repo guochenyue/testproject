@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+.decorate-center{width:1126px; margin:35px auto 0; color:#333; font-size:14px;}
+.us-selected{color:#dd6b58;}
+.decorate-content{margin-top:20px;}
+.decorate-left{float:left; width:168px; height:304px; border:1px solid #ead1b1; border-top:3px solid #ead1b1;}
+.decorate-left h3{font-size:18px; color:#c0a287; margin:14px 0 14px 45px;}
+.decorate-left ul li{height:30px; line-height:30px; margin-bottom:6px; font-size:14px; color:#333; padding-left:22px;}
+.decorate-left ul li.selected{background:#c0a287;}
+.decorate-left ul li.selected a{color:#fff;}
+.decorate-left ul li a{display:inline-block; color:#333; padding-left:30px; font-size:15px;}
+.decorate-left ul li a:hover{color:#f40;}
+.decorate-left ul li.selected a:hover{color:#fff;}
+
+.decorate-right{width:930px; float:right;}
+#zSlider{width:930px; height:306px; border:1px solid #ead1b1; overflow:hidden; position:relative;}
+#picshow{position:relative;}
+#picshow,#picshow_img{width:598px; height:306px; overflow:hidden; float:left; z-index:10; position:relative;}
+#picshow_img li{width:598px; height:306px; overflow:hidden; float:left; display:none;}
+#picshow_img img{width:598px; height:306px;}
+#select_btn{width:332px; height:306px; color:#111; float:right; display:inline; background-color:#fff;}
+#select_btn li{padding:15px 0 15px 35px; width:322px; height:72px; border-bottom:2px solid #ead1b1; cursor:pointer; position:relative; left:-20px; z-index:0;}
+#select_btn li h3{font-size:16px; margin-bottom:15px;}
+#select_btn li p{font-size:12px; color:#666; line-height:20px; width:290px;}
+#select_btn li:hover{background:url(../img/fund/background-bg.jpg) no-repeat; z-index:100;}
+#select_btn li:hover h3{color:#dd6b58;}
+#select_btn li.current{background:url(../img/fund/background-bg.jpg) no-repeat; z-index:100;}
+#select_btn li.current h3{color:#dd6b58;}
+#select_btn li.current:hover{background:url(../img/fund/background-bg.jpg) no-repeat; z-index:100;}
+#select_btn li.current:hover h3{color:#dd6b58;}
+#select_btn a{color:#000;}
+
+
+.information{margin:35px 0;}
+.person{width:226px; height:378px; border:1px solid #ccc; padding:0 12px;}
+.person h2{font-size:16px; color:#666; fonr-weight:normal; margin-top:20px; padding-bottom:10px; padding-left:70px; margin-bottom:10px; border-bottom:1px solid #ccc;}
+.photo{margin-right:10px;}
+.person p{line-height:23px;}
+.name{font-size:13px; color:#666; font-weight:bold; margin-left:135px;}
+.come{color:#333; margin-top:10px;}
+.come a{float:right; background:url(../img/fund/share.png) 0 4px no-repeat; padding-left:20px;}
+
+.box{width:640px; padding:10px; height:146px; border:1px solid #fff; border-bottom:1px solid #ccc; margin-bottom:10px;}
+.box:hover{border:1px solid #ccc; background:#f0f0f0;}
+.box img{width:150px; height:150px; margin-right:45px;}
+.jieshao{width:430px;}
+.come span{font-size:16px; color:#666;}
+.jieshao p{margin-top:10px; font-size:13px; color:#666; line-height:22px;}
+.jieshao p a{float:right; color:#333;}
+.jieshao p a:hover{color:#f40;}

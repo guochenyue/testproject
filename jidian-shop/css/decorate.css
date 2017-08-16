@@ -1,0 +1,30 @@
+/* CSS Document */
+.decorate-center{width:1126px; margin:35px auto 0; color:#333; font-size:14px;}
+.us-selected{color:#dd6b58;}
+.decorate-content{margin-top:20px;}
+.decorate-left{float:left; width:168px; height:304px; border:1px solid #ead1b1; border-top:3px solid #ead1b1;}
+.decorate-left h3{font-size:18px; color:#c0a287; margin:14px 0 14px 45px;}
+.decorate-left ul li{height:30px; line-height:30px; margin-bottom:6px; font-size:14px; color:#333; padding-left:22px;}
+.decorate-left ul li.selected{background:#c0a287;}
+.decorate-left ul li.selected a{color:#fff;}
+.decorate-left ul li a{display:inline-block; color:#333; background:url(../img/fund/decorate-list.png) no-repeat;text-indent:30px; font-size:15px;}
+.decorate-left ul li a.a1{ background-position:-84px 1px; }
+.decorate-left ul li a.a2{  background-position:-7px -34px;}
+.decorate-left ul li a.a3{  background-position:-7px -71px;}
+.decorate-left ul li a.a4{  background-position:-7px -106px;}
+.decorate-left ul li.selected a.a1{background-position:-7px 3px;}
+.decorate-left ul li.selected a.a2{background-position:-84px -35px;}
+.decorate-left ul li.selected a.a3{background-position:-84px -72px;}
+.decorate-left ul li.selected a.a4{background-position:-84px -106px;}
+.decorate-left ul li a:hover{color:#f40;}
+.decorate-left ul li.selected a:hover{color:#fff;}
+
+.decorate-right{width:930px; float:right;}
+.decorate-banner{border:1px solid #ead1b1;}
+.case{margin:20px 0;}
+.home-case{width:272px; height:424px; overflow:hidden; margin:0 19px; display:inline;}
+.home-case dt img{width:250px; height:250px; padding:8px; border:1px solid #ccc;}
+.home-title{font-size:14px; text-align:center; color:#dd6b58; margin:15px 0;}
+.home-shuoming{color:#666; text-indent:2em; line-height:22px; font-size:13px;}
+.introduce-title{font-size:16px; color:#dd6b58; text-align:center;margin-bottom:15px;}
+.liucheng{width:726px; margin-left:100px; margin-top:20px;}

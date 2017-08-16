@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>集典艺购-中国最专业艺术电商网站</title>
+    <meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+   
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+        <style>
+    	a {
+    margin:0;
+    padding:0;
+    text-decoration: none;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    color: #6c6c6c;
+}
+a:hover{
+    color: #f40;
+    transition: color .2s ease-in-out;
+    
+}
+    	</style>
+    
+<!--[if IE 6]>
+  <link rel="stylesheet" type="text/css" href="css/jquery.lightbox.ie6.css" />
+<![endif]-->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+/*
+ * 功能：取单选框的值
+ */
+function getradiovalue(objradio){
+		var result = "";
+		try{
+			if(typeof(objradio.value)=="undefined"){
+				for(var i=0;i<objradio.length;i++){
+					if(objradio[i].checked){
+						return objradio[i].value;
+					}
+				}
+			}else{
+				if(objradio.checked) result = objradio.value;
+			}
+		}catch(e){result = "";}
+		return result;
+}
+
+function buyerinfoSelect(issame){
+	if("true"==issame){
+		document.getElementById('buyerinfoInput').style.display="none";
+	}else{
+		document.getElementById('buyerinfoInput').style.display="";
+	}
+}
+//email验证
+function isValidEmail(inEmail){
+	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	return filter.test(inEmail);
+}
+	/**
+	* FormField类,描述表单字段,第一个参数为字段的name属性值,第二个参数为字段的中文名
+	*/
+	function FormField(fieldName, fieldLabel){
+		this.fieldName = fieldName;
+		this.fieldLabel = fieldLabel;
+	}
+	//验证表单数据
+	function validateFormData(){
+		var form = document.forms[0];
+		var fields = new Array(new FormField("recipients","收货人姓名"), new FormField("address","收货人地址"),
+						new FormField("email","电子邮件"), new FormField("postalcode","邮政编码"));
+		for(var i=0;i<fields.length;i++){
+			//var field = eval("form."+ fields[i].fieldName);
+			var field = $("#"+fields[i].fieldName);	
+			if(field.val().trim()==""){
+				alert(fields[i].fieldLabel+ " 不能为空");
+				return false;
+			}
+		}
+		
+		if(getradiovalue(form.gender)==""){
+			alert("请选择收货人的性别");
+			return false;
+		}		
+		if(!isValidEmail(form.email.value)){
+			alert("收货人的email格式不正确");
+			return false;
+		}
+		if(!/^\d{6}$/.test(form.postalcode.value.trim())){
+			alert("收货人的邮政编码必须是6位数字");
+			return false;
+		}
+		if(form.mobile.value.trim()!=""){
+			if(!/^1[35]\d{9}$/.test(form.mobile.value.trim())){
+				alert("收货人的手机号格式不正确");
+				return false;
+			}
+		}
+		form.tel.value = "";
+		if(form.maintel.value.trim()!=""){
+			if(/^\d{7,8}$/.test(form.maintel.value.trim())){
+				form.tel.value = form.forepart.value+"-"+ form.maintel.value;
+				if(form.extension.value.trim()!="") form.tel.value += "-"+ form.extension.value;
+			}else{
+				alert("收货人的电话号码至少7位");
+				return false;
+			}
+		}
+	
+		if(form.tel.value=="" && form.mobile.value.trim()==""){
+			alert("收货人的手机和电话至少有一项必填");
+			return false;
+		}
+		
+		if(getradiovalue(form.buyerIsrecipients)=="false"){
+			var buyerfields = new Array(new FormField("buyer","购买者的姓名"), new FormField("buyer_address","购买者的地址"),
+						new FormField("buyer_postalcode","购买者的邮政编码"));
+			for(var i=0;i<buyerfields.length;i++){
+				var buyerfield = eval("form."+ buyerfields[i].fieldName);
+				if(buyerfield.value.trim()==""){
+					alert(buyerfields[i].fieldLabel+ " 不能为空");
+					return false;
+				}
+			}
+			if(getradiovalue(form.buyer_gender)==""){
+				alert("请选择购买者的性别");
+				return false;
+			}			
+			form.buyer_tel.value = "";
+			if(/^\d{7,8}$/.test(form.buyer_maintel.value.trim())){
+				form.buyer_tel.value = form.buyer_forepart.value+"-"+ form.buyer_maintel.value;
+				if(form.buyer_extension.value.trim()!="") form.buyer_tel.value += "-"+ form.buyer_extension.value;
+			}
+			if(form.buyer_tel.value=="" && form.buyer_mobile.value.trim()==""){
+				alert("购买者的手机和电话至少有一项必填");
+				return false;
+			}
+		}
+		return true;
+	}
+function sendForm(){
+	var form = document.forms[0];
+	//if(validateFormData()) 
+	//form.submit();
+	$("#savedeliver").attr("action", "/customer/shopping/saveDeliverInfo.do").submit();
+}
+
+	function pageinit(){
+		initPhone();
+		showBuyInfo();
+	}
+	
+	function showBuyInfo(){
+		var form = document.forms[0];
+		if(getradiovalue(form.buyerIsrecipients)=="false") 
+			document.getElementById('buyerinfoInput').style.display="";
+	}
+	
+	function initPhone(){
+		var form = document.forms[0];
+		var phone = form.tel.value;
+		if(phone!=""){
+			var tels = phone.split("-");
+			if(tels.length>=2){
+				form.forepart.value = tels[0];
+				form.maintel.value = tels[1];
+				if(tels.length==3) form.extension.value = tels[2];
+			}
+		}
+		var buyerphone = form.buyer_tel.value;
+		if(buyerphone!=""){
+			var tels = buyerphone.split("-");
+			if(tels.length>=2){
+				form.buyer_forepart.value = tels[0];
+				form.buyer_maintel.value = tels[1];
+				if(tels.length==3) form.buyer_extension.value = tels[2];
+			}
+		}
+	}
+//-->
+</SCRIPT>
+
+</head>
+<body>
+    <!--scroll-head-->
+    <div class="scroll-head"></div>
+    <!--top-->
+    <div class="top-wrapper">
+        <div class="top-info">
+            <div class="top-left">
+                <div data-toggle="arrowdown" id="arrow1" class="user-name">
+                    <a href="#" style="font-size:12px;">集典易购</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow2" class="msg-info">
+                    <i class="fa fa-envelope fa-gray"></i>
+                    <a href="#" style="font-size:12px;">消息</a>
+                    <span class="down-icon"></span>
+                </div>
+                <a class="a-float-left" href="#" style="font-size:12px;">手机集典易购</a>
+                
+                <!--hidden-box-->
+                <div data-toggle="hidden-box" id="nav-box1" class="user-box">
+                    <img class="my-head" src="img/user-head.jpg" />
+                    <div class="my-grow">
+                        <h1><a href="#" style="font-size:12px;">账号管理</a>&nbsp;|&nbsp;<a href="#" style="font-size:12px;">退出</a></h1>
+                        <p>
+                            <h2><a href="#" style="font-size:12px;">查看我会员特权</a></h2>
+                            <!--
+                            <a href="#">我的成长</a>
+                            -->
+                        </p>
+                    </div>
+                    <p style="height: 10px; clear: both;">&nbsp;</p>
+                    <div class="my-card">
+                        <div class="cards-info">
+                        	<!--
+                            <ul>
+                                <li><img src="img/icon.png" /></li>
+                                <li><img src="img/icon.png" /></li>
+                            </ul>
+                            -->
+                        </div>
+                        <div class="toggle-box">
+                            <div class="toggle">
+                                 <i style="vertical-align: top" class="fa fa-angle-left arrow-left"></i>
+                                 <i style="vertical-align: top" class="fa fa-angle-right arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box2" class="msg-box">
+                	
+                </div>
+            </div>
+            <!--top-right-->
+            <div class="top-right">
+                <div data-toggle="arrowdown" id="arrow3" class="user-name">
+                    <a href="#" style="font-size:12px;">我的账号</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow4" class="user-name">
+                    <i class="fa fa-shopping-cart fa-orange"></i>
+                    <a href="#" style="font-size:12px;">购物车</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow5" class="user-name">
+                    <i class="fa fa-star fa-gray"></i>
+                    <a href="#" style="font-size:12px;">收藏夹</a>
+                    <span class="down-icon"></span>
+                </div>
+               
+                <span class="vertical-line">|</span>
+                <div data-toggle="arrowdown" id="arrow6" class="user-name">
+                    <a href="#" style="font-size:12px;">卖家中心</a>
+                    <span class="down-icon"></span>
+                </div>
+                <a class="a-float-left" href="#" style="font-size:12px;">联系客服</a>
+               
+                <!--hidden-box-->
+                <div data-toggle="hidden-box" id="nav-box3" class="my-taobao-box" style="font-size:12px;">
+                    <ul>
+                        <li>已买到的宝贝</li>
+                        <li>我的足迹</li>
+                        <li>我的上新</li>
+                        <li>我的优惠</li>
+                    </ul>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box4" class="shopping-box" style="font-size:12px;">
+                    <span>您购物车里还没有任何宝贝。</span><a class="check-shopp" href="#">查看我的购物车</a>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box5" class="get-box" style="font-size:12px;">
+                    <ul>
+                        <li>收藏的宝贝</li>
+                        <li>收藏的店铺</li>
+                    </ul>
+                </div>
+                
+                <div data-toggle="hidden-box" id="nav-box7" class="nav-box">
+                	 
+                </div>
+            </div>
+        </div>
+        <!--scroll-top-->
+        
+    </div>
+       
+    
+    <form action="" id="savedeliver" method="post">
+
+<TABLE cellSpacing=0 cellPadding=0 align="center" border=0>
+  <TBODY>
+  <TR>
+    <TD align="center"><IMG height=36 src="img/buy/az-s-checkout-shipping-bann.gif" > </TD></TR></TBODY></TABLE><BR>
+
+<TABLE cellSpacing=0 cellPadding=0 width="90%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#eeeecc 
+        border=0><TBODY>
+        <TR>
+          <TD bgColor="#ffffff">
+            <TABLE cellSpacing=0 cellPadding=4 width="100%" border=0>
+              <TBODY>
+              <TR bgColor="#eeeecc">
+                <TD><strong><span class=h1><strong>请输入配送地址</strong>:</span></strong></TD>
+                <TD bgColor="#eeeecc">&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=1 cellPadding=4 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=2>&nbsp;</TD>
+        </TR>
+        <TR>
+          <TD width=214>
+            <DIV align="right">收货人姓名<span id="NameLable"></span>：</DIV></TD>
+          <TD><input type="text" id="recipients" name="deliverForm.recipients" maxlength="8" size="30"/><FONT color="#ff0000">*</FONT>&nbsp;<input type="radio"" name="deliverForm.gender" value="MAN"/>先生 <input type="radio" name="deliverForm.gender" value="WOMEN"/>女士</TD></TR>
+        <TR>
+          <TD height="27">
+            <DIV align="right">收货人地址<span id="AddressLable"></span>： </DIV></TD>
+          <TD><input type="text" id="address" name="deliverForm.address" maxlength="100" size="60"/><FONT 
+            color="#ff0000">*</FONT></TD></TR>
+        <TR>
+          <TD height="27">
+            <DIV align="right">电子邮件<span id="EmailLable"></span>：</DIV></TD>
+          <TD><input type="text" id="email" name="deliverForm.email" maxlength="45" size="30"/><FONT color="#ff0000">*</FONT></TD></TR>
+        <TR>
+          <TD height="27">
+            <DIV align="right">邮政编码<span id="PostalcodeLable"></span>：</DIV></TD>
+          <TD><input type="text" id="postalcode" name="deliverForm.postalcode" maxlength="6" size="20"/><FONT 
+            color="#ff0000">*</FONT> <font color="#ff0000">请正确填写邮政编码，以免延误您的订单送达时间。不知道邮编？<a href="http://www.cpdc.com.cn/webmodules/postcode/CPDC_03G01.aspx" target="_blank">请进这里查询</a></font></TD></TR>
+        <TR>
+          <TD><input type="hidden" name="deliverForm.tel" />
+            <DIV align=right>电话<span id="TelLable"></span>：</DIV></TD>
+          <TD><table width="30%" border="0" cellpadding="0" cellspacing="2">
+            <tr>
+              <td><input value="" size="4" name="forepart" maxlength="4" onkeypress="InputIntNumberCheck()"></td>
+              <td><input id="maintel" name="maintel" size="8" maxlength="8" onkeypress="InputIntNumberCheck()"></td>
+              <td><input id="extension" name="extension" size="4" maxlength="4" onkeypress="InputIntNumberCheck()"></td>
+            </tr>
+            <tr>
+              <td><span class="STYLE1">区号</span></td>
+              <td><span class="STYLE1">电话号码</span></td>
+              <td><span class="STYLE1">分机</span></td>
+            </tr>
+          </table></TD>
+        </TR>
+        <TR>
+          <TD>
+            <DIV align=right>手机<span id="MobileLable"></span>：</DIV></TD>
+          <TD><input type="text" id="mobile" name="deliverForm.mobile" maxlength="15" size="20"/> 
+<font color="#ff0000">（手机和电话至少有一项必填）</font></TD></TR>
+        <TR>
+          <TD>
+            <DIV align="right">购买人与收货人是否相同<FONT color="#ff0000">*</FONT>：</DIV></TD>
+          <TD><input type="radio" name="deliverForm.buyerIsrecipients" value="true" onclick="buyerinfoSelect(this.value)"/> <b>相同</b>
+		  <input type="radio" name="deliverForm.buyerIsrecipients" value="false" onclick="buyerinfoSelect(this.value)"/> <b>不相同</b> </TD>
+        </TR>
+		  <!---------------------------->
+        <TR id="buyerinfoInput" style="display: none">
+          <TD></TD>
+          <TD nowrap><div class="OkMsg" >
+		  <TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+            <TR>
+              <TD align="right" height="25"><FONT color="#f47a22">*</FONT> 购买者姓名：</TD>
+              <TD align="left"><input type="text" id="buyer" name="deliverForm.buyer" maxlength="8" size="30" />
+              &nbsp;<input type="radio" name="deliverForm.buyer_gender" value="MAN" />先生 <input type="radio" name="deliverForm.buyer_gender" value="WOMEN"/>女士</TD>
+            </TR>
+            <TR>
+              <TD align="right" height="25"><FONT color="#f47a22">*</FONT> 详细地址：</TD>
+              <TD align="left"><input type="text" id="buyer_address" name="deliverForm.buyer_address" maxlength="100" size="60" />
+              </TD>
+            </TR>
+            <TR>
+              <TD align="right" height="25"><FONT color="#f47a22">*</FONT> 邮政编码：</TD>
+              <TD><TABLE cellSpacing="0" cellPadding="0" border="0">
+                  <TR>
+                    <TD align="left" height="20"><input type="text" id="buyer_postalcode" name="deliverForm.buyer_postalcode" maxlength="6" size="20"/>
+                    </TD>
+                    <TD align="left">&nbsp;&nbsp;<font color="#ff0000">请正确填写邮政编码，以免延误您的订单送达时间。</font> </TD>
+                  </TR>
+                </TABLE></TD>
+            </TR>
+            <TR>
+              <TD align="right" height="25"><FONT color="#f47a22">*</FONT> 电话：</TD>
+              <TD><TABLE cellSpacing="0" cellPadding="0" border="0">
+                  <TR>
+                    <TD align="left" colSpan="3"><input type="text" id="buyer_mobile" name="deliverForm.buyer_mobile" maxlength="15" size="20"/> </TD>
+                    <TD height="25">&nbsp;移动电话</TD>
+                  </TR>
+                  <TR>
+                    <input type="hidden" name="deliverForm.buyer_tel" />
+					<td><input value="0871" size="4" name="buyer_forepart" id="buyer_forepart" maxlength="4" onkeypress="InputIntNumberCheck()"></td>
+					<td><input name="buyer_maintel" id="buyer_maintel" size="8" maxlength="8" onkeypress="InputIntNumberCheck()"></td>
+					<td><input name="buyer_extension" id="buyer_extension" size="4" maxlength="4" onkeypress="InputIntNumberCheck()"></td>
+                    <TD height="25">&nbsp;固定电话</TD>
+                  </TR>
+                  <TR>
+                    <TD align="center">区号</TD>
+                    <TD align="center">电话</TD>
+                    <TD align="center">分机</TD>
+                    <TD>&nbsp;</TD>
+                  </TR>
+                </TABLE></TD>
+            </TR>
+            <TR>
+              <TD height="20">&nbsp;</TD>
+              <TD align="left"> <font color="#ff0000">（请留下您的联系电话，必要时，我们会通过电话向您确认相关信息。）</font></TD>
+            </TR>
+          </TABLE></div>
+		  </TD>
+        </TR>
+		  <!---------------------------->
+
+        <tr>
+          <td colspan=2 align="center"><img onclick="sendForm();" src="img/buy/az-sfl-shipping-to-this-boo.gif" vspace=5 border=0 style="cursor:pointer;"></td></tr>
+		  </tbody></table>
+      </td></tr></tbody></table>
+</form>
+    
+    <div class="help-split"></div>
+    
+    <!--help-->
+    <div class="help">
+        <div class="help-info3">
+            <h1><span class="help-text">业务介绍</span></h1>
+            <a class="help-a" href="#">集典艺购</a>
+            <a class="help-a" href="#">集典网拍</a>
+            <a class="help-a" href="#">集典基金</a>
+            <a class="help-a" href="#">集典鉴定</a>
+        </div>
+        <div class="help-info3">
+            <h1><span class="help-text">拍卖学堂</span></h1>
+            <a class="help-a" href="#">拍卖介绍</a>
+            <a class="help-a" href="#">保证金规则</a>
+            <a class="help-a" href="#">代理出价</a>
+            <a class="help-a" href="#">竞拍延时规则</a>
+            <a class="help-a" href="#">竞拍服务协议</a>
+            
+        </div>
+        <div class="help-info3">
+            <h1><span class="help-text">公司信息</span></h1>
+            <a class="help-a" href="#">关于我们</a>
+            <a class="help-a" href="#">诚聘英才</a>
+            <a class="help-a" href="#">联系我们</a>
+            <a class="help-a" href="#">法律声明</a>
+        </div>
+        <div class="help-info3">
+            <h1><span class="help-text">配送、售后</span></h1>
+            <a class="help-a" href="#">配送范围、时间</a>
+            <a class="help-a" href="#">退换货说明</a>
+            <a class="help-a" href="#">验货与拒收政策</a>
+            <a class="help-a" href="#">退换货规则</a>
+        </div>
+        <div class="help-info">
+        	
+        	 <a class="help-a" href="#"><img src="img/code.png"></a>
+        	 	           
+           <a class="help-a" href="#"><img src="img/code.png"></a>
+            
+        </div>
+    </div>
+    
+    <!--footer-->
+   
+    <div class="footer">
+        <div class="footer-right">
+        	
+            <p class="gary-text"><span>Copyright © 2014 集典易购 jidian-ejoy.com 版权所有</span></p>
+            <div class="some-info">
+                <img src="img/some.png" />
+            </div>
+        </div>
+
+    </div>
+    
+    <!--backtoTop1-->
+    <!--兼容所有现代浏览器同时包括 ie6/7/8/9 （ie6会有一点点抖动）-->
+    <div class="backtoTop" id="backToTop1">
+        <div id="backToTop-up" class="up-back"><i class="fa fa-angle-up"></i></div>
+        <div id="backToTop-down" class="down-back"><i class="fa fa-angle-down"></i></div>
+    </div>
+    
+    <script src="js/jquery_1.9.js"></script>
+   
+    <script src="js/main.js"></script>
+    <script src="js/img-show.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/merged-without-jquery.js" type="text/javascript"></script>
+    <script src="js/jquery.lightbox.min.js"></script>
+    <script src="js/jquery.hoverex.js"></script>
+     
+</body>
+
+   <script type="text/javascript">
+var btb=$(".rightNav");
+//将整个导航的div放进进btb
+var tempS;
+//定义参数
+$(".rightNav").hover(function(){
+//定义个伪类
+	var thisObj = $(this);
+	//定义参数
+	tempS = setTimeout(function(){
+	//setTimeout指定的毫秒数后调用函数或计算表达式
+		thisObj.find("a").each(function(i){
+		//通过each方法就可以匹配到每一个a标签
+			var tA=$(this);
+			//定义参数
+			setTimeout(function(){
+			//定义指定的毫秒数后调用函数或计算表达式
+				tA.animate({right:"0"},300);
+				//调整当鼠标触及到任意的a标签上所有的标签都会在0.3秒展开
+			},50*i);
+			//定义当第一个展开以后，后面的结果多久才展开0.05*200
+		});
+	},200);
+	//当鼠标触到a标签以后花多少时间展开第一个
+},function(){
+//在jquery定义方法
+	if(tempS){
+	//判断tempS
+		clearTimeout(tempS);
+		//clearTimeout方法可取消由 setTimeout() 方法
+	}
+	$(this).find("a").each(function(i){
+	//通过each方法就可以匹配到每一个a标签
+		var tA=$(this);
+		//定义参数
+		setTimeout(function(){
+		//定义指定的毫秒数后调用函数或计算表达式
+			tA.animate({right:"-110"},300,function(){
+			//调整当鼠标离开所有的a标签，标签都会在0.3秒回缩，回缩多少-110
+			});
+		},50*i);
+		//定义当第一个展开以后，后面的结果多久才展开0.05*200
+	});
+});
+
+
+    jQuery(document).ready(function($){
+      $('#mylightbox').lightbox();
+      
+      
+      $('.example2').jsizedCarousel({
+                // size of the biggest slide
+                front : {
+                    width: 900,
+                    height: 340
+                },
+                // determinies how much the slides decrease
+                // from distance
+                // default 0.15
+                sizeDecrease : 0.2,
+	            // distance between slides in px
+                distanceBetween: 20,
+                changeInterval: 5
+            });
+
+    });
+    
+   function sendForm(){
+     window.location.href = "paymentway.html";
+   }
+    
+</script>
+</html>

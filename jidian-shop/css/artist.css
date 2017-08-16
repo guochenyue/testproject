@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+.artist{width:954px; margin:0 auto;}
+.recommend-list{margin-top:36px; border-bottom:1px solid #dadada;}
+.recommend-left{float:left;width:603px; height:150px; padding:25px 50px 25px 0; border-right:1px dashed #e9e9e9;}
+.artist-photo{padding:5px; border:1px solid #dadada; margin-right:50px;}
+.artist-recommend{width:394px;}
+.artist-recommend h3{font-size:18px; color:#666; font-weight:normal;}
+.artist-recommend h3 span{font-size:36px; color:#dd6b58; }
+.artist-recommend h3 em{font-style:normal; font-size:14px; color:#999;}
+.artist-recommend p a{margin-top:20px; font-size:12px; color:#999; line-height:24px;}
+.artist-recommend a{color:#666; float:right; font-size:13px; margin-top:15px;}
+
+.recommend-right{width:250px; margin-left:50px; float:right; margin-top:20px;}
+.recommend-right dt img{width:102px; height:100px; padding:5px; border:1px solid #dadada; margin-top:20px;}
+.recommend-right dd{width:130px; margin-left:5px; text-align:center; float:left; margin-top:40px; font-size:14px; color:#666;}
+
+.new{margin:50px 0;}
+.new-list{width:222px; height:345px; float:left; margin:0 7px; display:inline; border:1px solid #fff; cursor:pointer;}
+.new-list:hover{border:1px solid #dedede; background:#f1efef;}
+.new-artist{width:190px; margin:10px auto 0;}
+.new-artist img{width:180px; height:180px; padding:5px; border:1px solid #dadada;}
+.new-artist p{font-size:14px; color:#666; margin-top:20px; margin-left:40px;}
+.new-artist p.name{font-size:24px; color:#dd6b58; margin-left:60px;}
+
+.search-artist{width:100%; height:40px; line-height:40px; background:#e3e4e5; margin:30px 0; padding-left:20px; font-size:14px; color:#666;}
+.search-artist span{float:left; width:25px; height:24px; background:url(../img/fund/artist-search.jpg) no-repeat; margin-top:12px; margin-right:5px;}
+.artist-name{margin-top:25px; margin-left:20px;}
+.artist-title{font-size:15px; color:#333; float:left;}
+#artist-menu li{float:left; font-size:17px; color:#666; margin-left:20px; cursor:pointer;}
+#artist-content{margin-left:90px; margin-top:20px;}
+#artist-content li{font-size:14px; color:#666; float:left; margin-bottom:15px;}
+#artist-menu li.xuang{color:#dd6b58;}
+#artist-content li a{font-size:14px; color:#666;}
+#artist-content li a:hover,.artist-recommend p a:hover{color:#dd6b58;}
+#artist-content li span{padding:0 12px;}

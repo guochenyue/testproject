@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<TITLE>条件筛选</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK rel=stylesheet href="css/search.fliter.css">
+<script type=text/javascript src="js/jquery.min.js"></script>
+</HEAD>
+<BODY>
+<div class="selectNumberScreen">
+	<div id="selectList" class="screenBox screenBackground">
+		<dl class="listIndex" attr="terminal_brand_s">
+		  <dt>类　　别：</dt>
+		  <dd><a href="javascript:void(0)" values2="" values1="" attrval="国画">国画</a> 
+		  <a href="javascript:void(0)" values2="" values1="" attrval="油画">油画</a>
+		  <a href="javascript:void(0)" values2="" values1="" attrval="版画">版画</a> 
+		  <a href="javascript:void(0)" values2="" values1="" attrval="国有版雕">国有版雕</a> 
+		  <a href="javascript:void(0)" values2="" values1="" attrval="沉香">沉香</a> 
+		  <a href="javascript:void(0)" values2="" values1="" attrval="陶瓷">陶瓷</a> 
+		  <a href="javascript:void(0)" values2="" values1="" attrval="宝玉石">宝玉石</a> 
+		  <!--<span class=more><label>更多</label><em class=open></em></span>--> </dd>
+		</dl>
+		<dl class="listIndex" attr="价格范围">
+		  <dt>价格范围：</dt>
+		  <dd><a href="javascript:void(0)" values2="499" values1="1" attrval="1-499">1-499</a> 
+		  <a href="javascript:void(0)" values2="999" values1="500" attrval="500-999">500-999</a>
+		  <a href="javascript:void(0)" values2="1999" values1="1000" attrval="1000-1999">1000-1999</a>
+		  <a href="javascript:void(0)" values2="2999" values1="2000" attrval="2000-2999">2000-2999</a>
+		  <a href="javascript:void(0)" values2="4999" values1="3000" attrval="3000-4999">3000-4999</a>
+		  <a href="javascript:void(0)" values2="9999" values1="5000-9999" attrval="5000-9999">5000-9999</a>
+		  <a href="javascript:void(0)" values2="19999" values1="19999" attrval="10000-19999">10000-19999</a>
+		  <a href="javascript:void(0)" values2="49999" values1="49999" attrval="20000-49999">20000-49999</a>
+		  <a href="javascript:void(0)" values2="50000" values1="50000" attrval="50000">50000以上</a>
+		  </dd>
+		</dl>
+		<dl class=" listIndex" attr="terminal_os_s">
+		  <dt>内&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;容：</dt>
+		  <dd><a href="javascript:void(0)" values2="" values1="" attrval="人物">人物</a> 
+		  <a href="javascript:void(0)" values2="" values1="" attrval="山水">山水</a> 
+		  <a href="javascript:void(0)" values2="" values1="" attrval="花鸟">花鸟</a>
+		  <a href="javascript:void(0)" values2="" values1="" attrval="大写意">大写意</a>
+		 
+		  </dd>
+		</dl>
+		<dl class=" listIndex" attr="terminal_activity_s">
+		  <dt>艺&nbsp;&nbsp;术&nbsp;&nbsp;家：</dt>
+		  <dd><a href="javascript:void(0)" values2="" values1="" attrval="齐白石">齐白石</a>
+		  <a href="javascript:void(0)" values2="" values1="" attrval="齐白石">齐白石</a>
+		  <a href="javascript:void(0)" values2="" values1="" attrval="张大千">张大千</a> </dd>
+		</dl>
+		<dl class="noBorder listIndex" attr="terminal_sellFeature_s">
+		  <dt>特&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;点：</dt>
+		  <dd><a href="javascript:void(0)" values2="" values1="" attrval="xxx">xxx</a>
+		  <a href="javascript:void(0)" values2="" values1="" attrval="xxx">xxx</a>
+		  <a href="javascript:void(0)" values2="" values1="" attrval="xxx">xxx </a></dd>
+		</dl>
+	</div>
+	<div class="hasBeenSelected">
+		<dl>
+		  <dt>您已选择：</dt>
+		  <dd style="DISPLAY: none" class=clearDd>
+		  <div class=clearList></div>
+		  <div style="DISPLAY: none" class="eliminateCriteria">清除筛选条件</div>
+		</dl>
+	</div>
+    <div style="text-align:center; margin-top:20px;">
+    	<a href="" class="que">确认</a>
+    </div>
+</div>
+<script>
+    var dlNum  =$("#selectList").find("dl");
+    for (i = 0; i < dlNum.length; i++) {
+        $(".hasBeenSelected .clearList").append("<div class=\"selectedInfor selectedShow\" style=\"display:none\"><span></span><label></label><em></em></div>");
+    }
+    
+    var refresh = "true";
+    
+    $(".listIndex a ").live("click",function(){
+        var text =$(this).text();
+        var selectedShow = $(".selectedShow");
+        var textTypeIndex =$(this).parents("dl").index();
+        var textType =$(this).parent("dd").siblings("dt").text();
+        index = textTypeIndex -(2);
+        $(".clearDd").show();
+        $(".selectedShow").eq(index).show();
+        $(this).addClass("selected").siblings().removeClass("selected");
+        selectedShow.eq(index).find("span").text(textType);
+        selectedShow.eq(index).find("label").text(text);
+        var show = $(".selectedShow").length - $(".selectedShow:hidden").length;
+        if (show > 1) {
+            $(".eliminateCriteria").show();
+        }
+       
+    });
+    $(".selectedShow em").live("click",function(){
+        $(this).parents(".selectedShow").hide();
+        var textTypeIndex =$(this).parents(".selectedShow").index();
+        index = textTypeIndex;
+        $(".listIndex").eq(index).find("a").removeClass("selected");
+        
+        if($(".listIndex .selected").length < 2){
+            $(".eliminateCriteria").hide();
+        }
+    });
+    
+    $(".eliminateCriteria").live("click",function(){
+        $(".selectedShow").hide();
+        $(this).hide();
+        $(".listIndex a ").removeClass("selected");
+    }); 
+</script>
+</BODY>
+</HTML>

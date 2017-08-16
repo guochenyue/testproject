@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>水印</title>
+<script type="text/javascript" src="http://www.update8.com/images/js/juery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		$(".water").each(function(i,ele){
+			var _this=$(ele),
+			_position=_this.position(),
+			_height=_this.height(),
+			_width=_this.width(),
+			_alt=_this.attr('alt')||'';
+			$('<div/>').css({height:_height,width:_width,position:'absolute',zIndex:9999,top:_position.top,left:_position.left,backgroundImage:'url(../5.jpg)',backgroundPosition:'10 10',backgroundRepeat:'no-repeat'}).appendTo('body');
+			});
+		});
+</script>
+</head>
+
+<body> 
+<img class="water" alt="图片水印" src="../2.jpg" />
+</body>
+</html>

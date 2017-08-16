@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title>用户登录</title>
+		<link rel="stylesheet" type="text/css" href="css/logon/login.css" />
+	</head>
+	<body>
+    	<div class="warpper">
+        	<div class="login-top">
+            	<img src="img/logo2.jpg" alt="" />
+            </div>
+			<div id="login" class="animate">
+				<form action="/user/userLogon.do" method="post" onsubmit="return checkfm(this)">
+					<p>
+						<label for="username" class="uname" data-icon=""> 邮箱/用户名:</label>
+						<input class="text" id="username" name="buyerForm.username" required="required"type="text" placeholder="" />
+					</p>
+                    <span class="err">用户名不能为空！</span>
+					<p>
+                    	<label for="password" class="youpasswd" data-icon="">密码:</label>
+						<input class="text password" id="password" name="buyerForm.password" required="required"type="password" placeholder="" />
+					</p>
+                    <span class="err">用户名不能为空！</span>
+					<p class="keeplogin clearfix">
+						<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" class="left" />
+						<label for="loginkeeping" >自动登陆</label>
+						<a class="right" href="/user/password/findPasswordUI.do">忘记密码？</a>
+					</p>
+					<p class="button">
+                    	<a href="" style="margin-right:50px;">登录</a>
+                        <a href="">免费注册</a>
+					</p>
+				</form>
+			</div>
+        </div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+.aboutus-center{width:1126px; margin:35px auto 0; color:#333; font-size:14px;}
+.us-selected{color:#dd6b58;}
+.about-content{width:1124px; margin-top:20px;}
+.about-left{width:138px; padding:20px 0 20px 30px; height:auto;border:1px solid #ead1b1; border-top:3px solid #ead1b1; margin-right:20px; display:inline;}
+	.about-left ul{margin-top:5px;}
+	.about-left li{padding:8px 0;}
+	.about-left li ul{padding-left:5px;}
+	.about-left li.p,.about-left li.m{background:url(../images/m.gif) 2px 11px no-repeat;cursor:pointer;text-indent:17px;}
+	.about-left li.p{background:url(../images/p.gif) no-repeat 2px 11px;}
+.about-right{width:930px; height:auto; background:#f7f5f3; padding:50px 0; border:1px solid #ddd; border-top:3px solid #ead1b1;}
+.about-rightcontent{width:752px; margin:0 auto;}
+.about-title{padding-bottom:30px; text-align:center; font-size:24px; color:#333; font-weight:normal; border-bottom:2px solid #ead1b1; margin-bottom:30px;}
+.about-title .time{font-size:12px; color:#999; display:inline-block; margin-top:8px;}
+.about-rightcontent p{font-size:16px; line-height:28px; margin-top:10px; text-indent:3em;}
+.about-rightcontent img{margin-left:60px; margin-top:10px;}
+.about-rightcontent p.yigou{color:#000; font-size:18px;}

@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+.rent-center{width:1126px; margin:35px auto 0; color:#333; font-size:14px;}
+.us-selected{color:#dd6b58;}
+.rent-content{margin-top:20px;}
+.rent-left{float:left;}
+.left-top{width:168px; height:304px; border:1px solid #ead1b1; border-top:3px solid #ead1b1;}
+.left-top h3{width:128px; height:30px; line-height:30px; background:#c0a287; color:#fff;  padding-left:40px; font-size:15px;}
+.left-top h3 span{display:inline-block; width:21px; height:17px; background:url(../img/fund/rent-list.jpg) 0 2px no-repeat; margin-right:5px;}
+.rent-list{padding:0 5px;}
+.rent-list li{height:32px; line-height:32px; border-bottom:1px dashed #ccc; padding-left:20px;}
+.rent-list li a{color:#333; font-size:14px;}
+
+.left-bottom{margin-top:40px;width:168px; height:auto; border:1px solid #ead1b1; border-top:3px solid #ead1b1;}
+.left-bottom h3{width:128px; height:30px; line-height:30px; background:#c0a287; color:#fff;  padding-left:40px; font-size:15px;}
+.recommend{padding:0 5px;}
+.recommend-content{width:160px; height:70px; background:#f3f3f3;margin-top:5px;}
+.recommend-content img{width:58px; height:58px; border:1px solid #ccc; float:left; margin:5px;}
+.content-right{width:88px; float:right; color:#999;}
+.recommend li{margin:15px 0; cursor:pointer;}
+.content-right p{font-size:13px; color:#999; margin-top:6px;}
+.look{width:60px; height:20px; line-height:20px; text-align:center; display:inline-block; background:url(../img/fund/look.png) no-repeat; color:#fff; font-size:13px; margin-left:5px;}
+.look:hover{color:#fff;}
+.rent-count{display:inline-block; width:24px; height:18px; background:url(../img/fund/count.png) no-repeat; margin:0 10px;}
+.count1{background-position:0px 6px;}
+.count2{background-position:0px -30px;}
+.count3{background-position:0px -66px;}
+.count4{background-position:0px -103px;}
+.count5{background-position:0px -138px;}
+.count6{background-position:0px -174px;}
+.count7{background-position:0px -210px;}
+.count8{background-position:0px -247px;}
+.count9{background-position:0px -282px;}
+.count10{background-position:0px -319px;}
+
+
+
+.rent-right{width:956px; float:right;}
+.fund-banner{border:1px solid #ead1b1; margin-left:30px;}
+.introduce-content{margin-top:40px;}
+.show{margin-left:30px; float:left; margin-right:9px; margin-bottom:25px;}
+.show dt{width:178px; height:178px; border:1px solid #ccc; padding:10px; margin-bottom:10px;}
+.show dt img{width:180px; height:175px;}
+.show dd{color:#666; margin-left:30px; margin-top:10px;}
+
+

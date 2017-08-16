@@ -1,0 +1,66 @@
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+.clear{clear:both;}
+
+.showBox{
+	width:545px;
+	height:344px;
+	padding:0 25px 25px;
+	margin-top:20px;
+	float:left;
+	display:inline;
+}
+.warpper{width:1190px; margin:0 auto;}
+.fenlei{font-size:17px; color:#8e7257; margin-left:30px;}
+.left-pro{width:548px; *width:550px;text-align:left;float:left}
+.left-pro .t1{width:120px;float:left}
+.left-pro .t2{width:300px;text-indent:0;float:left;padding-left:10px; margin-left:20px;display:inline;}
+.left-pro .t2 img{text-indent:0;}
+#showArea img{cursor:pointer;display:block;margin-bottom:6px;width:112px;padding:1px;border:1px solid #e6e6e6;height:96px;float:left}
+#zoom1{display:block;padding:6px; border:1px solid #e6e6e6;}
+#main_img{cursor:pointer;display:block;}
+#gotop{cursor:pointer;display:block;margin-left:50px; margin-top:10px;margin-bottom:5px;}
+#gobottom{cursor:pointer;display:block;margin-left:50px; margin-top:5px;}
+#showArea{height:312px;overflow:hidden}
+
+
+.rightside{width:568px; margin-right:15px; float:right; display:inline;}
+.shuoming{font-size:24px;color:#58879d; height:56px; line-height:56px; margin-top:20px; border-bottom:1px solid #ead1b2;}
+.price{font-size:18px; color:#666666; margin-top:10px; width:280px; border-bottom:1px solid #ead1b2; height:44px; line-height:44px; text-decoration:line-through;}
+.red{color:#dd6b58; border-bottom:none; text-decoration:none;}
+.tocar{width:110px; height:34px; line-height:34px; display:inline-block; background:url(../img/detail/tocarbg.jpg) no-repeat; color:#fff; text-align:center; margin-top:20px; font-size:14px;}
+.zulin{width:110px; height:34px; line-height:34px; display:inline-block; background:url(../img/detail/tobuybg.jpg) no-repeat; color:#fff; text-align:center; margin-top:20px; font-size:14px;}
+.tocar:hover{background:url(../img/detail/tocarhover.jpg) no-repeat;}
+.tobuy{width:110px; height:34px; line-height:34px; display:inline-block; background:url(../img/detail/tobuybg.jpg) no-repeat; color:#fff; text-align:center; margin-top:20px; margin-left:0px; font-size:14px;}
+.tobuy:hover,.zulin:hover{background:url(../img/detail/tobuyhover.png) no-repeat;}
+.tocar:hover,.tobuy:hover,.zulin:hover{color:#fff;}
+.shou{background:url(../img/detail/shoucang.jpg) 0 5px no-repeat; height:24px; line-height:24px; padding-left:25px; color:#666; margin-top:15px; font-size:14px;}
+.share{margin-top:10px;}
+.share span{float:left;font-size:14px; color:#666; display:inline-block; background:url(../img/detail/share.jpg) 0 5px no-repeat; height:24px; line-height:24px; padding-left:25px; margin-right:29px;}
+.share img{float:left; margin-right:7px;}
+.share2{padding-left:82px; margin-top:16px;}
+
+
+#menu{height:26px; border-bottom:1px solid #bdbdbd; margin:30px 0; padding-left:30px;}
+#menu li{float:left; width:99px; height:24px; line-height:25px; margin-right:5px; color:#666; cursor:pointer; text-align:center;}
+.selected{border-top:2px solid #dd6b58; border-left:1px solid #bdbdbd; border-right:1px solid #bdbdbd; color:#dd6b58; border-bottom:1px solid #fff;}
+#meuncontent{margin:0 30px;}
+#meuncontent div h3{padding-top:25px; height:25px; border-bottom:4px solid #d9bf9a;}
+#meuncontent div h3 span{width:100px; height:25px; display:inline-block; text-align:center; line-height:25px; color:#fff; background:#d9bf9a; font-size:14px;}
+.xiangqing{float:left; padding:8px; border:1px solid #e6e6e6; border-right:1px solid #a09d9e; border-bottom:1px solid #a09d9e; margin-right:48px;}
+.neirong{margin-top:55px; margin-left:30px;}
+.wenzi{margin-bottom:20px;}
+.wenzi p.name{font-size:30px; color:#58879d;}
+.wenzi p{font-size:24px; color:#888; margin-bottom:24px;}
+.wenzi p.last{line-height:40px; font-size:18px;}
+.wenzi p.last span{font-size:24px;}
+.show{margin:0 150px;}
+.show img{float:left; padding:16px; border:1px solid #e6e6e6; margin-top:20px;}
+.help{margin-top:50px;}
